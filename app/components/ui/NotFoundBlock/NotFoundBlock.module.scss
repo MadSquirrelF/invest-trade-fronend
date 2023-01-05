@@ -1,0 +1,22 @@
+.root {
+	@apply relative h-screen w-full;
+	.container {
+		@apply relative flex  items-center  p-10 bg-white rounded-xl;
+		box-shadow: 1px 1px 5px blue;
+		margin-top: 300px;
+		.image {
+			@apply relative h-96 w-96;
+		}
+		.text {
+			p {
+				@apply text-lg my-4;
+			}
+			button {
+				@apply relative;
+				a {
+					@apply relative w-full h-full;
+				}
+			}
+		}
+	}
+}

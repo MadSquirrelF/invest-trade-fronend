@@ -1,0 +1,54 @@
+.root {
+	opacity: 0;
+	pointer-events: none;
+	height: 100vh;
+	width: 100vw;
+	background-color: rgba(0, 0, 0, 0.6);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	.content {
+		padding: 20px;
+		border-radius: 10px;
+		background-color: white;
+		width: 50vw;
+	}
+}
+.rootActive {
+	transition: 0.2s ease-in;
+	opacity: 1;
+	height: 100vh;
+	width: 100vw;
+	background-color: rgba(0, 0, 0, 0.6);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	.content {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 20px;
+		border-radius: 10px;
+		background-color: white;
+		width: 30vw;
+		position: relative;
+		span {
+			position: absolute;
+			top: 5px;
+			right: -50px;
+			cursor: pointer;
+			transition: transform 0.1s ease-in-out 0s;
+			&:hover {
+				transform: scale(1.1);
+			}
+		}
+	}
+}

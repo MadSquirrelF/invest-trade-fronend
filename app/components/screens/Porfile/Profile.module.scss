@@ -1,0 +1,47 @@
+.root {
+	@apply relative h-screen w-full flex items-center justify-center;
+	.container {
+		@apply relative w-full flex items-stretch justify-between;
+		.info {
+			@apply relative;
+			hr {
+				@apply mt-4 text-gray-600;
+			}
+			.box {
+				@apply relative mt-5;
+				h2 {
+					@apply text-primary font-black;
+					font-size: 30px;
+				}
+			}
+			.title {
+				@apply relative flex items-center;
+				.image {
+					@apply relative  mr-11;
+					width: 160px;
+					height: 160px;
+					img {
+						@apply rounded-full;
+					}
+				}
+				.name {
+					h2 {
+						@apply text-primary font-black;
+						font-size: 30px;
+					}
+				}
+			}
+		}
+
+		.form {
+			@apply relative w-full;
+
+			.fields {
+				@apply relative w-1/2;
+				button {
+					@apply mt-5;
+				}
+			}
+		}
+	}
+}

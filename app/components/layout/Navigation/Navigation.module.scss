@@ -1,0 +1,145 @@
+.header {
+	@apply bg-black z-10 fixed;
+	transition: all 0.7s ease-in-out;
+
+	background: linear-gradient(
+		180deg,
+		rgba(255, 255, 255, 0) 0%,
+		black 53%,
+		black 72%,
+		rgba(0, 212, 255, 0) 100%
+	);
+	padding: 10px 10%;
+	width: 100%;
+	&.black {
+		background: rgba(4, 0, 255, 0.01);
+		box-shadow: inset 0px -29px 90px #000000;
+		border-radius: 0px 0px 30px 30px;
+		backdrop-filter: blur(10px);
+	}
+	&.blue {
+		background: rgba(4, 0, 255, 0.01);
+		box-shadow: inset 0px -35px 40px #0400ff42;
+		backdrop-filter: blur(10px);
+		border-radius: 0px 0px 30px 30px;
+	}
+	&.blueGradient {
+		background: blue;
+		backdrop-filter: blur(10px);
+		box-shadow: inset 0px -29px 90px #000000;
+		border-radius: 0px 0px 30px 30px;
+	}
+	&.blueGradientHome {
+		background: blue;
+		backdrop-filter: blur(10px);
+		box-shadow: inset 0px -29px 90px #000000;
+		border-radius: 0px 0px 30px 30px;
+	}
+
+	hr {
+		@apply h-1 text-gray-600 pb-3;
+	}
+	.Topcontainer {
+		@apply flex-center-between z-2;
+		padding-bottom: 16px;
+	}
+	.Bottomcontainer {
+		@apply flex-center-between  z-2;
+		padding-bottom: 16px;
+		.menutoogle {
+			display: none;
+			svg {
+				font-size: 40px;
+				fill: white;
+			}
+		}
+		.headerCart {
+			.CartButton {
+				@apply bg-white text-center items-center flex cursor-pointer;
+				padding: 8px 16px;
+				transition: background-color 0.15s ease-in-out,
+					border-color 0.15s ease-in-out;
+				border: 1px solid transparent;
+				border-radius: 30px;
+				width: 160px;
+				font-weight: 600;
+				transition: all;
+				position: relative;
+				box-shadow: 1px 1px 10px white;
+
+				span {
+					color: black;
+					font-weight: 600;
+					font-size: 16px;
+				}
+				.delimeter {
+					width: 1px;
+					height: 25px;
+					background-color: black;
+					margin-left: 10px;
+					margin-right: 1px;
+				}
+				&:active {
+					background-color: darken(white, 5%);
+					transform: translateY(1px);
+				}
+				&:hover {
+					.arrow {
+						opacity: 1;
+						transform: translateX(0px);
+					}
+					.TotalCount {
+						opacity: 0;
+					}
+				}
+				.arrow {
+					position: absolute;
+					top: 50;
+					right: 20px;
+					transition: transform 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
+					opacity: 0;
+					transform: translateX(-5px);
+				}
+				.TotalCount {
+					position: absolute;
+					top: 25%;
+					right: 16px;
+					display: flex;
+					transition: transform 0.5s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
+					opacity: 1;
+
+					transform: translateX(0px);
+					svg {
+						margin-right: 8px;
+						margin-bottom: 1px;
+					}
+					span {
+						font-weight: 600;
+						font-size: 16px;
+					}
+				}
+			}
+		}
+		@media (max-width: 1450px) {
+			.menutoogle {
+				display: inline-block;
+				cursor: pointer;
+				&:hover {
+					svg {
+						@apply fill-yellow-700;
+					}
+				}
+				&:active {
+					svg {
+						transition: all 0.2s ease-in-out;
+						transform: translateY(3px);
+					}
+				}
+				svg {
+					font-size: 40px;
+					fill: white;
+				}
+			}
+		}
+	}
+}

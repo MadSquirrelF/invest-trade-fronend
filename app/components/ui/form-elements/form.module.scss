@@ -1,0 +1,100 @@
+.button {
+	@apply btn-primary;
+	padding: 10px 40px;
+	font-size: 12px;
+	&:hover {
+		box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.767);
+	}
+	&:active {
+		transition: all 0.2s ease-in-out;
+		transform: translateY(1px);
+	}
+}
+.smallbutton {
+	@apply btn-primary p-2;
+	svg {
+		@apply h-6 w-6;
+	}
+}
+.UploadField {
+	@apply relative;
+	.uploadFlex {
+		@apply flex;
+		.uploadImageContainer {
+			@apply shrink-0 relative;
+			width: 96px;
+			height: 96px;
+			img {
+				@apply image-like-bg rounded-md;
+			}
+			span {
+				@apply animate-fade;
+			}
+		}
+		.content {
+			@apply block mr-6;
+			.error {
+				@apply relative -bottom-3;
+			}
+			label {
+				@apply font-extrabold text-black block mb-4;
+			}
+			input {
+				font-size: 14px;
+				@apply block w-full border-0  text-black file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-base file:font-semibold file:bg-primary  file:text-white transition-opacity;
+			}
+			&:hover {
+				input {
+					@apply opacity-100;
+				}
+			}
+		}
+	}
+}
+
+.common {
+	@apply relative 
+   transition-colors focus-within:border-primary;
+	label {
+		@apply block font-extrabold text-black;
+	}
+}
+.field {
+	@apply text-left mb-10 mt-3;
+
+	input {
+		@apply border border-gray-300 rounded-lg focus:border-primary
+     bg-transparent text-black font-medium
+     w-full m-0;
+		height: 44px;
+		padding: 0 12px;
+	}
+}
+.error {
+	@apply absolute -bottom-6 left-0  w-full text-primary;
+	font-size: 14px;
+}
+.editorWrapper {
+	@apply border-0 mt-10;
+
+	.wrapper {
+		.toolbar {
+			@apply mt-4 outline-border-none rounded-t-lg mb-0 bg-primary  p-3;
+
+			div {
+				@apply m-0;
+
+				div {
+					@apply outline-border-none rounded-lg shadow-none transition-colors border-gray-100 bg-gray-100 hover:bg-white mx-1.5;
+				}
+			}
+		}
+
+		.editor {
+			@apply h-40 border rounded-b-lg cursor-text border-gray-100 px-4 text-black overflow-hidden;
+			&:focus-within {
+				@apply border-primary;
+			}
+		}
+	}
+}

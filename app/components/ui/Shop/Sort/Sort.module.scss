@@ -1,0 +1,40 @@
+.sort {
+	@apply relative  z-3;
+	.label {
+		@apply flex items-center;
+		svg {
+			@apply mr-2;
+		}
+		b {
+			@apply mr-2;
+			font-size: 16px;
+		}
+		span {
+			@apply text-primary cursor-pointer;
+			font-size: 16px;
+			border-bottom: 1px dashed blue;
+		}
+	}
+	.popup {
+		@apply absolute left-0 mt-4 bg-white overflow-hidden;
+		box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+		border-radius: 10px;
+		padding: 10px 0;
+		ul {
+			@apply overflow-hidden;
+			.item {
+				padding: 12px 20px;
+				cursor: pointer;
+				font-size: 14px;
+				&.active,
+				&:hover {
+					background: rgba(34, 30, 254, 0.05);
+				}
+				&.active {
+					font-weight: bold;
+					color: blue;
+				}
+			}
+		}
+	}
+}

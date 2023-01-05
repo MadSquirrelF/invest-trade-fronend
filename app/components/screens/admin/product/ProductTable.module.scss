@@ -1,0 +1,13 @@
+.table {
+	@apply mb-5;
+	.row {
+		@apply flex items-center px-4 justify-between;
+
+		.cell {
+			@apply text-white font-semibold py-3;
+		}
+	}
+}
+.button {
+	@apply btn-primary px-4 py-2;
+}

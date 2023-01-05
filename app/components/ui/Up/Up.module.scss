@@ -1,0 +1,50 @@
+.root {
+	background-color: white;
+	position: fixed;
+	width: 70px;
+	height: 70px;
+	bottom: 40px;
+	right: 80px;
+	z-index: 1;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	cursor: pointer;
+	border: 2px solid blue;
+	span {
+		font-size: 30px;
+		transform: rotate(-46deg);
+	}
+}
+.show {
+	opacity: 1;
+	transition: transform 0.2s ease-in-out;
+	background-color: white;
+	position: fixed;
+	width: 70px;
+	height: 70px;
+	bottom: 40px;
+	right: 80px;
+	z-index: 5;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	border: 2px solid blue;
+	filter: drop-shadow(-2px 2px 3px black);
+	&:hover {
+		background-color: rgb(134, 142, 255);
+	}
+	&:active {
+		transform: translateY(3px);
+		background-color: rgb(87, 97, 248);
+	}
+
+	span {
+		font-size: 30px;
+		transform: rotate(-46deg);
+	}
+}

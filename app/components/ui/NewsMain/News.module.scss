@@ -1,0 +1,166 @@
+.wrapper {
+	@apply flex items-start mt-52;
+	.IconContainer {
+		@apply flex relative items-center mr-4;
+		animation: at-ripple 0.6s linear infinite;
+		border-radius: 50%;
+		.CountMessage {
+			@apply absolute top-0 flex items-center justify-center right-0;
+			background-color: red;
+			border-radius: 50%;
+			width: 20px;
+			height: 20px;
+		}
+		span {
+			@apply text-white;
+			font-weight: 900;
+			font-size: 12px;
+		}
+		svg {
+			@apply fill-white  cursor-pointer;
+			font-size: 48px;
+			&:hover {
+				transform: scale(1.05);
+			}
+		}
+	}
+	@keyframes at-ripple {
+		0% {
+			box-shadow: 0 4px 10px rgba(0, 0, 255, 0.1), 0 0 0 0 rgba(0, 0, 255, 0.1),
+				0 0 0 5px rgba(0, 0, 255, 0.1), 0 0 0 10px rgba(0, 0, 255, 0.1);
+		}
+		100% {
+			box-shadow: 0 4px 10px rgba(0, 0, 255, 0.1),
+				0 0 0 5px rgba(0, 0, 255, 0.1), 0 0 0 10px rgba(0, 0, 255, 0.1),
+				0 0 0 20px rgba(0, 0, 255, 0);
+		}
+	}
+
+	.content {
+		@apply block text-left;
+		h3 {
+			@apply text-white;
+			text-shadow: 3px 3px 1px rgba(0, 0, 0, 0.25);
+			font-size: 30px;
+			font-weight: 900;
+			max-width: 448px;
+		}
+		.title {
+			@apply flex items-center;
+			h2 {
+				@apply text-white mr-1;
+				line-height: 21px;
+				font-size: 24px;
+				font-weight: 700;
+			}
+			svg {
+				@apply fill-white cursor-pointer;
+				font-size: 48px;
+				&:hover {
+					transform: scale(1.05);
+				}
+			}
+		}
+		span {
+			@apply font-thin text-white;
+			font-size: 24px;
+		}
+
+		a {
+			@apply text-gray-300 text-link;
+			font-size: 20px;
+		}
+	}
+}
+.root {
+	@apply relative flex items-center justify-center h-screen w-full z-1;
+	overflow: hidden;
+	.wrapper {
+		@apply block relative w-full z-1 h-full;
+		overflow: hidden;
+		.title {
+			@apply relative text-right;
+			h1 {
+				@apply uppercase text-black font-black;
+				font-size: 48px;
+				line-height: 1;
+				span {
+					@apply uppercase text-primary font-black;
+					font-size: 48px;
+					line-height: 1;
+				}
+			}
+		}
+		.swiper {
+			@apply relative w-full  mt-10;
+			padding: 24px;
+			.button {
+				@apply btn-primary cursor-pointer mt-7;
+			}
+
+			.slide {
+				@apply mb-6 overflow-hidden relative cursor-pointer;
+				border: 1px solid gray;
+				height: 522px;
+				border-radius: 12px;
+				width: 500px;
+				background-color: #efefef;
+				transition: all 0.2s ease-in-out;
+				&:hover {
+					background-color: #fbfafa;
+					border: 1px solid #a0a0a0;
+					box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.46);
+					transition: all 0.2s ease-in-out;
+					.content {
+						.user {
+							transition: all 0.2s ease-in-out;
+							box-shadow: none;
+						}
+					}
+				}
+
+				.image {
+					@apply relative w-full h-1/2 rounded-xl;
+				}
+				.content {
+					.user {
+						@apply absolute flex-center-between;
+						background-color: #fbfafa;
+						box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+						border-radius: 12px;
+						top: 45%;
+						left: 11%;
+						.box {
+							@apply flex items-center;
+							padding: 16px;
+
+							p {
+								@apply text-black  font-semibold;
+								font-size: 16px;
+							}
+							svg {
+								margin-right: 10px;
+								font-size: 24px;
+							}
+						}
+						.eye {
+							svg {
+								fill: blue;
+							}
+						}
+					}
+					.info {
+						@apply block  text-center mt-16;
+						h1 {
+							@apply uppercase text-black font-extrabold;
+							font-size: 24px;
+						}
+						p {
+							@apply mt-7;
+						}
+					}
+				}
+			}
+		}
+	}
+}

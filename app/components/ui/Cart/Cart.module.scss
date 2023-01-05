@@ -1,0 +1,32 @@
+.root {
+	@apply relative flex items-center justify-center  w-full h-screen;
+	padding: 300px 10%;
+	.cart {
+		@apply relative text-center;
+		h2 {
+			@apply text-4xl;
+		}
+		p {
+			@apply mt-4;
+		}
+		img {
+			margin: 0 auto;
+		}
+		.back {
+			@apply mt-20 z-2;
+			a {
+				@apply btn-primary bg-gray-300 p-4  rounded-3xl;
+				span {
+					@apply text-gray-700;
+				}
+				&:hover {
+					@apply bg-primary;
+					transition: all 0.2s ease-in-out;
+					span {
+						@apply text-white;
+					}
+				}
+			}
+		}
+	}
+}

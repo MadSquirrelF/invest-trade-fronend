@@ -1,0 +1,26 @@
+.arrow {
+	@apply flex items-center justify-center rounded-full  bg-primary bg-opacity-60  text-white  animate-fade absolute z-20 bottom-8;
+	transition: all 0.1s ease-in-out;
+	font-size: 24px;
+	padding: 8px;
+	&.left {
+		@apply bg-white bg-opacity-60 text-gray-800;
+		right: 96px;
+		&:hover {
+			@apply bg-opacity-90;
+		}
+		&:active {
+			transform: translateY(3px);
+		}
+	}
+
+	&.right {
+		right: 32px;
+		&:hover {
+			@apply bg-opacity-90;
+		}
+		&:active {
+			transform: translateY(3px);
+		}
+	}
+}

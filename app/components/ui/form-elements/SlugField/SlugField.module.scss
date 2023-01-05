@@ -1,0 +1,7 @@
+.root {
+	position: relative;
+}
+.badge {
+	@apply uppercase absolute top-8 right-3 font-bold cursor-pointer rounded-full p-1.5 transition-colors border-gray-300 bg-gray-300 hover:bg-gray-100 
+  text-xs text-gray-500;
+}

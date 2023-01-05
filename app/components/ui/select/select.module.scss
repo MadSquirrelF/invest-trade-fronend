@@ -1,0 +1,13 @@
+.selectContainer {
+	@apply relative transition-colors focus-within:border-primary;
+	width: 45%;
+	label {
+		@apply block font-extrabold text-black;
+		span {
+			@apply text-xs uppercase text-black block mb-2;
+		}
+	}
+	.error {
+		@apply absolute -bottom-6 left-0 text-sm w-full text-primary;
+	}
+}

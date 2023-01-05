@@ -1,0 +1,47 @@
+@import '../../../assets/styles/variables';
+
+.slider {
+	@apply relative mx-auto mt-11 bg-transparent;
+	border-radius: 30px;
+	max-width: 1200px;
+
+	.slide {
+		@apply relative shadow-xl flex items-end bg-transparent;
+		border-radius: 30px;
+		height: 45vh;
+
+		@include fade-bg-gradient();
+		h1 {
+			@apply text-white absolute  font-bold z-2;
+			top: 32px;
+			left: 32px;
+			font-size: 12px;
+		}
+
+		.image {
+			@apply image-like-bg;
+			border-radius: 30px;
+		}
+
+		.content {
+			@apply relative z-2;
+			padding: 32px;
+
+			.heading {
+				@apply text-white uppercase  font-bold mb-1 text-shadow;
+				font-size: 48px;
+			}
+
+			.subHeading {
+				@apply text-gray-100 font-medium  uppercase  mb-4 text-shadow;
+				font-size: 14px;
+				max-width: 512px;
+			}
+
+			.button {
+				@apply btn-primary;
+				padding: 8px 40px;
+			}
+		}
+	}
+}

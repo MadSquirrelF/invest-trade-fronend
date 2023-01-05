@@ -1,0 +1,35 @@
+.container {
+	@apply flex justify-center items-center;
+	.form {
+		padding: 10px;
+		h1 {
+			color: #0000ff;
+		}
+		h3 {
+			@apply bg-transparent text-left font-bold text-black;
+			letter-spacing: -1px;
+		}
+		.button {
+			text-align: center;
+			button {
+				width: 100%;
+				&:hover {
+					filter: drop-shadow(0px 5px 5px #0000ffa4);
+				}
+				&:active {
+					background-color: darken(#0000ff, 5%);
+					transform: translateY(1px);
+				}
+			}
+		}
+		p {
+			@apply text-sm font-normal mt-2 text-black text-center;
+			letter-spacing: normal;
+			cursor: pointer;
+			a {
+				@apply text-primary text-link;
+				letter-spacing: normal;
+			}
+		}
+	}
+}

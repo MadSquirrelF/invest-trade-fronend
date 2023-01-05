@@ -1,0 +1,224 @@
+@import '../../../../assets/styles/variables.scss';
+
+.root {
+	@apply relative h-auto w-full;
+	.wrapper {
+		@apply relative;
+		margin-top: 150px;
+		.rating {
+			@apply w-full flex items-center justify-center my-8;
+		}
+
+		.banner {
+			@apply relative  mt-5 w-full  flex-center-between;
+			padding: 40px;
+			height: 600px;
+			border-radius: 25px;
+			box-shadow: 0px 1px 10px black;
+			background: linear-gradient(
+				90deg,
+				#000000 3.31%,
+				rgba(#000000, 0.99) 7.71%,
+				rgba(#000000, 0.96) 12.11%,
+				rgba(#000000, 0.93) 20.11%,
+				rgba(#000000, 0.91) 29.51%,
+				rgba(#000000, 0.85) 34.11%,
+				rgba(#000000, 0.76) 38.52%,
+				rgba(#000000, 0.67) 42.92%,
+				rgba(#000000, 0.55) 47.32%,
+				rgba(#000000, 0.44) 51.72%,
+				rgba(#000000, 0.33) 56.12%,
+				rgba(#000000, 0.23) 60.52%,
+				rgba(#000000, 0.15) 64.92%,
+				rgba(#000000, 0.08) 69.32%,
+				rgba(#000000, 0.03) 73.52%,
+				rgba(#000000, 0.01) 77.92%,
+				rgba(#000000, 0) 81.32%
+			);
+
+			&::before {
+				@apply w-full h-full absolute top-0 left-0;
+				content: '';
+				border-radius: 25px;
+				z-index: -1;
+				transition: opacity 0.5s linear;
+				opacity: 0;
+
+				background: linear-gradient(
+					90deg,
+					#000000 3.31%,
+					rgba(#000000, 0.99) 7.71%,
+					rgba(#000000, 0.96) 12.11%,
+					rgba(#000000, 0.93) 20.11%,
+					rgba(#000000, 0.91) 29.51%,
+					rgba(#000000, 0.9) 34.11%,
+					rgba(#000000, 0.88) 38.52%,
+					rgba(#000000, 0.86) 42.92%,
+					rgba(#000000, 0.84) 47.32%,
+					rgba(#000000, 0.82) 51.72%,
+					rgba(#000000, 0.8) 56.12%,
+					rgba(#000000, 0.78) 60.52%,
+					rgba(#000000, 0.76) 64.92%,
+					rgba(#000000, 0.74) 69.32%,
+					rgba(#000000, 0.72) 73.52%,
+					rgba(#000000, 0.7) 77.92%,
+					rgba(#000000, 0.72) 90.32%
+				);
+			}
+			&.active {
+				&::before {
+					opacity: 1;
+					z-index: 2;
+					backdrop-filter: blur(11px);
+					transition: opacity 0.5s linear;
+				}
+			}
+			.logo {
+				@apply absolute z-2 top-0 left-0  bg-white;
+				border-radius: 25px 0 25px 0;
+				box-shadow: 0px 1px 10px white;
+				padding: 12px;
+			}
+			.nav {
+				@apply absolute flex items-center top-0  p-3;
+				padding: 12px;
+				right: 40%;
+				z-index: 5;
+				.box {
+					@apply mr-5  p-2 rounded-xl cursor-pointer;
+					h2 {
+						font-size: 16px;
+						@apply text-white opacity-90 hover:opacity-100 font-medium;
+					}
+					&.active {
+						background-color: rgba(0, 0, 255, 0.644);
+						h2 {
+							@apply text-white;
+						}
+					}
+				}
+			}
+			.specifications {
+				@apply absolute   z-2 text-right;
+				right: 40px;
+				bottom: 40px;
+				h1 {
+					@apply text-white font-black;
+					font-size: 30px;
+				}
+				h2 {
+					@apply text-gray-300 font-normal  p-2;
+					font-size: 20px;
+					span {
+						@apply text-yellow-700 font-medium;
+						font-size: 24px;
+					}
+				}
+			}
+			.image {
+				@apply relative  z-1;
+				border-radius: 10px;
+				width: 500px;
+				height: 500px;
+				img {
+					border-radius: 10px;
+				}
+				&.big {
+					border: 2px solid rgba(0, 0, 0, 0.1);
+				}
+			}
+			.content {
+				@apply relative h-full flex items-end w-auto z-2;
+
+				.container {
+					@apply relative;
+					width: 1000px;
+
+					.info {
+						@apply relative;
+						.title {
+							h1 {
+								@apply text-white font-black;
+								font-size: 30px;
+							}
+						}
+						.description_full {
+							width: 700px;
+							h2 {
+								@apply text-white font-bold;
+								font-size: 20px;
+							}
+							p {
+								@apply font-medium text-gray-300;
+								font-size: 14px;
+							}
+						}
+					}
+
+					.title {
+						h1 {
+							@apply text-white font-black;
+							font-size: 72px;
+						}
+					}
+					.row {
+						@apply flex items-center relative mt-3;
+						h4 {
+							@apply font-bold  mr-3;
+							font-size: 24px;
+							color: green;
+						}
+						.view {
+							@apply relative flex items-center;
+							svg {
+								@apply fill-white  mr-1;
+								font-size: 24px;
+							}
+							h3 {
+								@apply text-gray-500 font-normal;
+								font-size: 24px;
+							}
+						}
+					}
+					.description_short {
+						width: 600px;
+						margin-top: 10px;
+
+						p {
+							@apply font-semibold text-white;
+							font-size: 18px;
+						}
+					}
+
+					.buttons {
+						@apply flex items-center mt-4 mb-20;
+						button {
+							margin: 0;
+						}
+						.addCart {
+							@apply relative cursor-pointer  flex items-center py-2 px-3 bg-white rounded-full;
+							span {
+								@apply text-black font-bold  mr-1;
+								font-size: 18px;
+							}
+
+							&:hover {
+								span {
+									transition: all 0.5s ease-in-out;
+									@apply text-white;
+									transform: translateX(7px);
+								}
+								transition: all 0.3s ease-in-out;
+								@apply bg-primary;
+								svg {
+									transition: all 0.2s ease-in-out;
+									transform: translateX(7px);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

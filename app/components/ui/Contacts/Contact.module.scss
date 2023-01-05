@@ -1,0 +1,129 @@
+.root {
+	@apply relative  z-1 w-full flex items-center justify-center;
+	height: 100vh;
+	padding: 0px 10%;
+	flex-direction: column;
+	img {
+		@apply absolute -z-1;
+	}
+	@keyframes animate {
+		0% {
+			opacity: 0;
+			transform: scale(1);
+		}
+		25% {
+			opacity: 1;
+		}
+		75% {
+			opacity: 1;
+		}
+		100% {
+			transform: scale(3);
+		}
+	}
+	.clouds {
+		@apply absolute bottom-0 left-0 h-full w-full overflow-hidden;
+		transform: rotate(180deg);
+		pointer-events: none;
+		.cloud {
+			--i: '1';
+			@apply absolute w-full bottom-0;
+			height: auto;
+
+			animation: animate calc(3s * var(--i)) linear infinite;
+		}
+	}
+	.wrapper {
+		@apply relative  w-full;
+		margin-top: auto;
+		height: 600px;
+		border-radius: 10px 10px 0px 0px;
+
+		.content {
+			@apply relative h-32   w-full px-5 py-2;
+			background: rgba(254, 253, 253, 0.01);
+
+			box-shadow: inset 0px 50px 40px #000000;
+			backdrop-filter: blur(3px);
+
+			.icons {
+				@apply flex-center-between w-48;
+			}
+			.info {
+				@apply text-right;
+				h2 {
+					@apply text-white font-light;
+					font-size: 14px;
+				}
+			}
+		}
+		.footer {
+			@apply absolute flex-center-between bottom-0 w-full px-5 py-2;
+			h2 {
+				@apply text-white  font-light;
+				font-size: 14px;
+			}
+			a {
+				@apply text-link text-yellow-700;
+			}
+			background: rgba(254, 253, 253, 0.01);
+
+			box-shadow: inset 0px -10px 24px #000000;
+			backdrop-filter: blur(2px);
+		}
+		.contact {
+			@apply absolute px-5 py-5 z-3;
+			top: 40%;
+			left: 10%;
+			width: 420px;
+			height: 320px;
+			background: white;
+			box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.46);
+			backdrop-filter: blur(3px);
+			border-radius: 10px;
+			h1 {
+				@apply text-black mb-5  uppercase  font-black;
+				font-size: 36px;
+			}
+			.item {
+				@apply flex mb-4 items-center;
+				svg {
+					@apply fill-primary  mr-4;
+					font-size: 20px;
+				}
+				a {
+					@apply text-link  text-black;
+					font-size: 20px;
+				}
+			}
+			h2 {
+				@apply text-black mb-3  uppercase  font-bold;
+				font-size: 20px;
+			}
+		}
+		.loadContent {
+			@apply relative w-full;
+			height: 70%;
+			border-radius: 10px;
+
+			iframe {
+				border-radius: 10px;
+			}
+			.Map {
+				@apply absolute w-full h-full top-0 left-0;
+				border-radius: 10px;
+			}
+		}
+	}
+	.MapContainer {
+		@apply absolute w-full h-full bottom-0;
+		z-index: 1;
+		.address {
+			@apply relative flex items-center;
+			svg {
+				@apply fill-primary mr-2 text-center;
+				font-size: 16px;
+			}
+		}
+	}
+}
