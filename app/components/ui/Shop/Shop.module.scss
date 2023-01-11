@@ -1,8 +1,9 @@
 .root {
 	@apply relative w-full;
+	padding-top: 50px;
+	padding-bottom: 50px;
 	.wrapper {
 		@apply relative w-full h-full;
-		padding: 50px 10%;
 		.settings {
 			@apply flex items-center mt-10;
 		}
@@ -252,6 +253,52 @@
 						h3 {
 							@apply text-black  font-medium;
 							font-size: 16px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: 1100px) {
+	.root {
+		.wrapper {
+			.container {
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-wrap: wrap;
+			}
+		}
+	}
+}
+@media (max-width: 630px) {
+	.root {
+		.wrapper {
+			.settings {
+				display: block;
+			}
+			.container {
+				.item {
+					width: 300px;
+					.content {
+						@apply px-2;
+						h2 {
+							font-size: 15px;
+						}
+						p {
+							font-size: 12px;
+							width: 200px;
+						}
+						.box {
+							h3 {
+								font-size: 13px;
+							}
+							.levelContainer {
+								width: 150px;
+								height: 10px;
+							}
 						}
 					}
 				}

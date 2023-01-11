@@ -13,15 +13,16 @@ const Portfolio: FC<IPorfolio> = ({ slides, clouds: { clouds } }) => {
   return (
     <section className={styles.Portfolio} id={'portfolio'}>
       <div className={styles.content}>
+
+        <div className={styles.title}>
+          <h1>НАШЕ ПОРТФОЛИО <br />
+            <span>ГОТОВЫХ РАБОТ</span>
+          </h1>
+        </div>
         <div className={styles.subtitle}>
           <h2>Все в лучших традициях ИНВЕСТ-ТРЕЙД.
             <br /><br /><span>Мы внесли свой вклад в остекление таких проектов как...</span>
           </h2>
-        </div>
-        <div className={styles.title}>
-          <h1>НАШЕ ПОРТФОЛИО <br /> ГОТОВЫХ РАБОТ<br />
-            <span>С ОСТЕКЛЕНИЕМ</span>
-          </h1>
         </div>
 
       </div>

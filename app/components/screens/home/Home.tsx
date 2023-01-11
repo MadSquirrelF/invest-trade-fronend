@@ -37,7 +37,7 @@ const Home: FC<IHome> = ({ slides, Adds, news }) => {
       </div>
 
 
-      <div className={styles.home} id='home' >
+      <section className={styles.home} id='home' >
         <div className={styles.content}>
           <h1>Ваш партнер<br /> <span>В оконном бизнесе</span></h1>
           <div className={styles.subTitle}>
@@ -54,7 +54,7 @@ const Home: FC<IHome> = ({ slides, Adds, news }) => {
           </div>
           <News news={news} />
         </div>
-      </div>
+      </section>
 
       <CategoryMenu />
 

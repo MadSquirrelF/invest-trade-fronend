@@ -1,6 +1,5 @@
 .selectContainer {
 	@apply relative transition-colors focus-within:border-primary;
-	width: 45%;
 	label {
 		@apply block font-extrabold text-black;
 		span {
@@ -8,6 +7,7 @@
 		}
 	}
 	.error {
-		@apply absolute -bottom-6 left-0 text-sm w-full text-primary;
+		@apply absolute -bottom-6 left-0 w-full text-primary;
+		font-size: 14px;
 	}
 }

@@ -2,21 +2,24 @@
 	@apply relative h-full w-full;
 	.content {
 		@apply relative text-right;
-		h1 {
-			@apply uppercase text-black font-black;
-			font-size: 48px;
-			line-height: 1;
-			span {
-				@apply text-primary uppercase font-black;
+		.title {
+			@apply relative text-right;
+			h1 {
+				@apply uppercase text-black font-black;
 				font-size: 48px;
 				line-height: 1;
+				span {
+					@apply uppercase text-primary font-black;
+					font-size: 48px;
+					line-height: 1;
+				}
 			}
 		}
 		.gallery {
 			@apply relative mt-14 flex flex-wrap justify-center items-center;
 			.item {
 				@apply relative  text-center rounded-xl;
-				margin-right: 40px;
+				margin: 5px;
 				padding: 12px;
 				h4 {
 					@apply font-bold;
@@ -30,13 +33,29 @@
 					width: 176px;
 					margin: 10px auto;
 				}
-				&:last-child {
-					margin-right: 0;
-				}
 				&:hover {
 					transition: all 0.2s ease-in-out;
 					transform: translateY(-3px);
 					box-shadow: 0px 5px 5px blue;
+				}
+			}
+		}
+	}
+}
+@media (max-width: 700px) {
+	.Add {
+		.content {
+			.title {
+				@apply relative text-right;
+				h1 {
+					@apply uppercase text-black font-black;
+					font-size: 28px;
+					line-height: 1;
+					span {
+						@apply uppercase text-primary font-black;
+						font-size: 28px;
+						line-height: 1;
+					}
 				}
 			}
 		}

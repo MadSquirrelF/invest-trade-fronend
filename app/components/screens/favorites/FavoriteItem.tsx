@@ -11,17 +11,18 @@ const FavoriteItem: FC<{ item: IFavoriteItem }> = ({ item }) => {
     <div className={styles.itemWrapper}>
       <FavoriteButton productId={item._id} />
       <Link href={item.url}>
-        <a className={styles.item}>
+        <div className={styles.item}>
           <Image
             alt={item.name}
             src={item.posterPath}
-            layout="fill"
+            height={30}
+            width={30}
             draggable={false}
             priority
           />
 
           <div className={styles.title}>{item.title}</div>
-        </a>
+        </div>
       </Link>
     </div>
   )

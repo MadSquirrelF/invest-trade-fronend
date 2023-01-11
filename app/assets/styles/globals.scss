@@ -26,7 +26,11 @@ body {
 }
 
 section {
-	padding: 30px 10%;
+	padding: 10px 10%;
+	transition: all 0.7s ease-in-out;
+	@media (max-width: 900px) {
+		padding: 10px 5%;
+	}
 }
 
 html::-webkit-scrollbar {

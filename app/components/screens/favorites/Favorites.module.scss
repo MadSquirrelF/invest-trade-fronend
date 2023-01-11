@@ -1,11 +1,11 @@
 @import '../../../assets/styles/variables';
 
 .favorites {
-	@apply flex flex-wrap mt-96;
+	@apply flex flex-wrap;
 }
 
 .containerLoader {
-	@apply w-full flex flex-wrap;
+	@apply w-full flex flex-wrap mt-96;
 
 	.skeletonLoader {
 		@apply relative mb-8 h-44;

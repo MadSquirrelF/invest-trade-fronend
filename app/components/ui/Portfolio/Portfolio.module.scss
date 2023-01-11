@@ -6,16 +6,17 @@
 	background-attachment: fixed;
 	height: 150vh;
 	position: relative;
-	padding: 100px 10%;
+	padding-top: 100px;
 	width: 100%;
 	margin: 0;
 	z-index: 1;
 	box-shadow: inset 0px 600px 400px black;
 	.content {
-		@apply z-3 flex justify-around;
+		@apply z-3 flex justify-between;
+		align-items: flex-end;
 		width: 100%;
 		.title {
-			@apply relative text-right;
+			@apply relative text-left;
 			h1 {
 				@apply uppercase text-white font-black;
 				font-size: 48px;
@@ -28,7 +29,7 @@
 			}
 		}
 		.subtitle {
-			@apply relative;
+			@apply relative text-right;
 			h2 {
 				@apply text-white font-bold;
 				font-size: 24px;
@@ -63,6 +64,31 @@
 			height: auto;
 
 			animation: animate calc(3s * var(--i)) linear infinite;
+		}
+	}
+}
+@media (max-width: 1300px) {
+	.Portfolio {
+		.content {
+			display: block;
+			.subtitle {
+				@apply mt-5 text-left;
+			}
+		}
+	}
+}
+@media (max-width: 600px) {
+	.Portfolio {
+		.content {
+			.title {
+				h1 {
+					font-size: 38px;
+
+					span {
+						font-size: 38px;
+					}
+				}
+			}
 		}
 	}
 }

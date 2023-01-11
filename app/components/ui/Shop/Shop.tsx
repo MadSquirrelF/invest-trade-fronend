@@ -54,7 +54,7 @@ const Shop: FC = () => {
   const skeletons = [...new Array(6)].map((_, index) => <ProductLoader key={index} />);
 
   return (
-    <div className={styles.root} id={'shop'}>
+    <section className={styles.root} id={'shop'}>
       <div className={styles.wrapper}>
         <div className={styles.top}>
           <div className={styles.title}>
@@ -278,7 +278,7 @@ const Shop: FC = () => {
             </div> </div>)}
         <Pagination currentPage={currentPage} onChangePage={onChangePage} />
       </div>
-    </div >
+    </section >
   )
 }
 

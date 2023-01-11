@@ -44,22 +44,26 @@ const SingleNew: FC<{ item: INew }> = ({ item }) => {
 
           </div>
           <div className={styles.container}>
-            <div className={styles.images}>
-              <div className={styles.banner}>
-                <Image src={item.image_1} alt={item.image_1} draggable={false} fill unoptimized />
-              </div>
-              <div className={styles.adds}>
-                {item.image_2 ? <Image src={item.image_2} alt={item.image_2} draggable={false} height={200} width={350} unoptimized /> : null}
-                {item.image_3 ? <Image src={item.image_3} alt={item.image_3} draggable={false} height={200} width={350} unoptimized /> : null}
-              </div>
 
-            </div>
 
             <div className={styles.text}>
               <p>{stripHtml(item.description_full).result}</p>
               <Link href={'/#news'}>
                 <MaterialIcon name={'MdWest'} />
                 <span>Вернуться к списку</span></Link>
+            </div>
+            <div className={styles.images}>
+              <div className={styles.banner}>
+                <Image src={item.image_1} alt={item.image_1} draggable={false} fill unoptimized />
+              </div>
+              <div className={styles.banner}>
+                {item.image_2 ? <Image src={item.image_2} alt={item.image_2} draggable={false} fill unoptimized /> : null}
+              </div>
+              <div className={styles.banner}>
+                {item.image_3 ? <Image src={item.image_3} alt={item.image_3} draggable={false} fill unoptimized /> : null}
+              </div>
+
+
             </div>
           </div>
 

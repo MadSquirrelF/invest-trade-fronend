@@ -2,7 +2,7 @@
 	position: fixed;
 	right: 80px;
 	top: 200px;
-	z-index: 3;
+	z-index: 4;
 	background: rgba(0, 0, 0, 0.521);
 	backdrop-filter: blur(11px);
 	border-radius: 15px;
@@ -109,6 +109,38 @@
 					background-color: rgb(0, 0, 180);
 					box-shadow: inset 1px 1px 10px rgba(0, 0, 0, 0.548),
 						0px 1px 5px rgb(255, 255, 255);
+				}
+			}
+		}
+	}
+}
+@media (max-width: 830px) {
+	.categories {
+		right: 30px;
+		.showButton {
+			@apply p-2;
+			.image {
+				width: 50px;
+				height: 50px;
+
+				svg {
+					font-size: 30px;
+				}
+			}
+			h3 {
+				font-size: 10px;
+			}
+		}
+		ul {
+			@apply relative p-2 text-center;
+			.li {
+				@apply relative cursor-pointer mb-3 text-center;
+				.image {
+					width: 50px;
+					height: 50px;
+				}
+				h3 {
+					font-size: 10px;
 				}
 			}
 		}

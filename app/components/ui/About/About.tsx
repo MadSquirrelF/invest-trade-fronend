@@ -12,7 +12,7 @@ import third from '../../../assets/images/About/third.png'
 
 const About: FC<{ icons: IIcon }> = ({ icons }) => {
   return (
-    <div className={styles.About} id='about'>
+    <section className={styles.About} id='about'>
       <div className={styles.content}>
         <div className={styles.title}>
           <h1>ДЕЛАЕМ ОКНА, КОТОРЫЕ <br />
@@ -37,19 +37,19 @@ const About: FC<{ icons: IIcon }> = ({ icons }) => {
       </div>
       <div className={styles.Cards}>
         <div className={styles.box}>
-          <Image src={first} alt={'first'} draggable={false} height={351} width={266} />
+          <Image src={first} alt={'first'} draggable={false} fill />
         </div>
         <div className={styles.box}>
-          <Image src={second} alt={'second'} draggable={false} height={372} width={266} />
+          <Image src={second} alt={'second'} draggable={false} fill />
         </div>
         <div className={styles.box}>
-          <Image src={third} alt={'third'} draggable={false} height={344} width={236} />
+          <Image src={third} alt={'third'} draggable={false} fill />
         </div>
         <div className={styles.box}>
-          <Image src={last} alt={'last'} draggable={false} height={227} width={229} />
+          <Image src={last} alt={'last'} draggable={false} fill />
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

@@ -8,7 +8,7 @@ const Aboutdetailed = () => {
     <section className={styles.root}>
 
       <div className={styles.container}>
-        <Image src={aboutimg} alt={'aboutimg'} draggable={false} height={500} width={540} />
+
         <div className={styles.content}>
           <div className={styles.title}>
             <h1>О компании <br />
@@ -52,6 +52,7 @@ const Aboutdetailed = () => {
             </div>
           </div>
         </div>
+        <Image src={aboutimg} alt={'aboutimg'} draggable={false} height={500} width={540} />
 
       </div>
 

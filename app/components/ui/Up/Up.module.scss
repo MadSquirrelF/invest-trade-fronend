@@ -48,3 +48,15 @@
 		transform: rotate(-46deg);
 	}
 }
+@media (max-width: 520px) {
+	.show {
+		width: 60px;
+		height: 60px;
+		bottom: 30px;
+		right: 30px;
+		span {
+			font-size: 25px;
+			transform: rotate(-46deg);
+		}
+	}
+}

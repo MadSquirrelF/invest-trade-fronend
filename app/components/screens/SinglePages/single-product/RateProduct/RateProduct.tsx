@@ -3,7 +3,7 @@ import { FC } from "react";
 import { useRateProduct } from "./useRateProduct";
 import styles from './RateProduct.module.scss'
 import AuthButton from "@/components/ui/AuthPlaceholder/AuthButton";
-
+import StarRatingComponent from 'react-star-rating-component';
 
 const RateProduct: FC<{ slug: string; _id: string }> = ({ slug, _id }) => {
   const { user } = useAuth()
@@ -21,7 +21,13 @@ const RateProduct: FC<{ slug: string; _id: string }> = ({ slug, _id }) => {
             <div className={styles.thanks}>Спасибо за отзыв!</div>
           ) : (
             <div>
-              <h5>Рейтинг в разработке</h5>
+              <StarRatingComponent
+                name="star-rating"
+                starCount={5}
+                value={rating}
+                onStarClick={handleClick}
+                emptyStarColor="#4f4f4f"
+              />
             </div>
           )}
         </>

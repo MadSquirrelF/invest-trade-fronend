@@ -23,7 +23,7 @@ const Contact: FC<IContact> = ({ clouds: { clouds } }) => {
 
   return (
 
-    <div className={styles.root} id={'footer'}>
+    <section className={styles.root} id={'footer'}>
       <Image src={footerBg} alt={'footerBg'} fill unoptimized draggable={'false'} />
       <div className={styles.clouds}>
         {clouds.map((cloud, i) => (<Image key={cloud.title}
@@ -70,7 +70,7 @@ const Contact: FC<IContact> = ({ clouds: { clouds } }) => {
 
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

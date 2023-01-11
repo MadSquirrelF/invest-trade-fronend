@@ -34,21 +34,20 @@ const RegistrationModal: FC = () => {
 
 
 
-  return (
-    <div className={styles.container}>
-      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <Heading title='Регистрация' className='mb-1 text-4xl text-primary' />
-        <h3>Для того, чтобы перейти к личным данным нужно войти или зарегестрироваться</h3>
+  return <div className={styles.containerReg} >
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+      <Heading title='Регистрация' className='mb-1 text-4xl text-primary' />
+      <h3>Для того, чтобы перейти к личным данным нужно войти или зарегестрироваться</h3>
 
-        <RegistrationFields formState={formState} control={control} register={registerInput} isPasswordRequired />
+      <RegistrationFields formState={formState} control={control} register={registerInput} isPasswordRequired />
 
-        <div className={styles.button}>
-          <Button type='submit' disabled={isLoading}>Регистрация</Button>
-        </div>
+      <div className={styles.button}>
+        <Button type='submit' disabled={isLoading}>Регистрация</Button>
+      </div>
 
-        <p >Продолжая, вы соглашаетесь <Link href='/'>со сбором и обработкой персональных данных и пользовательским соглашением</Link></p>
-      </form>
-    </div>)
+      <p >Продолжая, вы соглашаетесь <Link href='/'>со сбором и обработкой персональных данных и пользовательским соглашением</Link></p>
+    </form>
+  </div>
 }
 
 export default RegistrationModal

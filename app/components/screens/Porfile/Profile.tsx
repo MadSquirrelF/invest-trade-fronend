@@ -80,10 +80,38 @@ const Profile: FC = () => {
   return (
     <Meta title="Профиль">
       <section className={styles.root}>
-        <div className={styles.container} style={{ marginTop: 200 }}>
+        <div className={styles.container} >
 
+
+          <div className={styles.info}>
+            <div className={styles.title}>
+              <div className={styles.image}>
+                {user?.avatar ? (<Image src={user.avatar} alt={'user avatar'} fill unoptimized draggable={false} />)
+                  : (<Image src={avatar} alt={'default avatar'} fill unoptimized draggable={false} />)}
+              </div>
+              <div className={styles.name}>
+                <Heading title="Профиль" />
+                <h2>{user?.username}</h2>
+              </div>
+
+            </div>
+            <hr />
+            <div className={styles.box}>
+              <Heading title="Пол" />
+              <h2>{user?.sex}</h2>
+            </div>
+            <div className={styles.box}>
+              <Heading title="Почта" />
+              <h2>{user?.email}</h2>
+            </div>
+            <div className={styles.box}>
+              <Heading title="Номер телефона" />
+              <h2>{user?.phone_number === '' ? user?.phone_number : 'Не указан'}</h2>
+            </div>
+
+          </div>
           <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-            {isLoading ? (<SkeletonLoader count={5} />) : (<>
+            {isLoading ? (<SkeletonLoader count={5} className='h-10 w-1/2' />) : (<>
               <div className={styles.fields}>
                 <Field
                   {...register('email', {
@@ -104,6 +132,10 @@ const Profile: FC = () => {
                       value: 3,
                       message: 'Имя должно быть больше 3 сим.!',
                     },
+                    maxLength: {
+                      value: 10,
+                      message: 'Имя должно быть меньше 10 сим.!'
+                    }
                   })}
                   placeholder="Имя"
                   type="text"
@@ -173,33 +205,6 @@ const Profile: FC = () => {
             </>
             )}
           </form>
-          <div className={styles.info}>
-            <div className={styles.title}>
-              <div className={styles.image}>
-                {user?.avatar ? (<Image src={user.avatar} alt={'user avatar'} fill unoptimized draggable={false} />)
-                  : (<Image src={avatar} alt={'default avatar'} fill unoptimized draggable={false} />)}
-              </div>
-              <div className={styles.name}>
-                <Heading title="Профиль" />
-                <h2>{user?.username}</h2>
-              </div>
-
-            </div>
-            <hr />
-            <div className={styles.box}>
-              <Heading title="Пол" />
-              <h2>{user?.sex}</h2>
-            </div>
-            <div className={styles.box}>
-              <Heading title="Почта" />
-              <h2>{user?.email}</h2>
-            </div>
-            <div className={styles.box}>
-              <Heading title="Номер телефона" />
-              <h2>{user?.phone_number === '' ? user?.phone_number : 'Не указан'}</h2>
-            </div>
-
-          </div>
 
 
         </div>

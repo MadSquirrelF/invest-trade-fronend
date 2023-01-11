@@ -8,7 +8,7 @@ const Add: FC<{ adds: IAddItem[] }> = ({ adds }) => {
     <section className={styles.Add}>
       <div className={styles.content}>
         <div className={styles.title}>
-          <h1>Укомплектовываем всем НЕОБХОДИМЫМ<br />
+          <h1>оборудуем всем НЕОБХОДИМЫМ<br />
             <span>для производства окон</span>
           </h1>
         </div>

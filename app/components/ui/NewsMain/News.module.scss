@@ -1,5 +1,5 @@
 .wrapper {
-	@apply flex items-start mt-52;
+	@apply flex items-start mt-32;
 	.IconContainer {
 		@apply flex relative items-center mr-4;
 		animation: at-ripple 0.6s linear infinite;
@@ -53,13 +53,6 @@
 				font-size: 24px;
 				font-weight: 700;
 			}
-			svg {
-				@apply fill-white cursor-pointer;
-				font-size: 48px;
-				&:hover {
-					transform: scale(1.05);
-				}
-			}
 		}
 		span {
 			@apply font-thin text-white;
@@ -72,8 +65,29 @@
 		}
 	}
 }
+@media (max-width: 830px) {
+	.wrapper {
+		.content {
+			h3 {
+				font-size: 20px;
+				max-width: 348px;
+			}
+			.title {
+				h2 {
+					font-size: 15px;
+				}
+			}
+			span {
+				font-size: 15px;
+			}
+			a {
+				font-size: 15px;
+			}
+		}
+	}
+}
 .root {
-	@apply relative flex items-center justify-center h-screen w-full z-1;
+	@apply relative h-screen w-full z-1;
 	overflow: hidden;
 	.wrapper {
 		@apply block relative w-full z-1 h-full;
@@ -102,7 +116,7 @@
 				@apply mb-6 overflow-hidden relative cursor-pointer;
 				border: 1px solid gray;
 				height: 522px;
-				border-radius: 12px;
+				border-radius: 0px;
 				width: 500px;
 				background-color: #efefef;
 				transition: all 0.2s ease-in-out;
@@ -111,10 +125,12 @@
 					border: 1px solid #a0a0a0;
 					box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.46);
 					transition: all 0.2s ease-in-out;
+					border-radius: 12px;
 					.content {
 						.user {
 							transition: all 0.2s ease-in-out;
 							box-shadow: none;
+							border-radius: 12px;
 						}
 					}
 				}
@@ -124,12 +140,12 @@
 				}
 				.content {
 					.user {
-						@apply absolute flex-center-between;
+						@apply absolute flex-center-between w-auto;
 						background-color: #fbfafa;
 						box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-						border-radius: 12px;
+						border-radius: 0px;
 						top: 45%;
-						left: 11%;
+						left: 0;
 						.box {
 							@apply flex items-center;
 							padding: 16px;
@@ -150,13 +166,66 @@
 						}
 					}
 					.info {
-						@apply block  text-center mt-16;
+						@apply block text-left   mt-7 p-3;
 						h1 {
 							@apply uppercase text-black font-extrabold;
-							font-size: 24px;
+							font-size: 20px;
 						}
 						p {
 							@apply mt-7;
+							font-size: 15px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: 500px) {
+	.root {
+		.wrapper {
+			.title {
+				h1 {
+					font-size: 38px;
+
+					span {
+						font-size: 38px;
+					}
+				}
+			}
+			.swiper {
+				.slide {
+					.image {
+						height: 45%;
+					}
+					.content {
+						.user {
+							top: 41%;
+							.box {
+								padding: 10px;
+								p {
+									font-size: 10px;
+								}
+								svg {
+									margin-right: 2px;
+									font-size: 15px;
+								}
+							}
+							.eye {
+								svg {
+									font-size: 24px;
+								}
+							}
+						}
+						.info {
+							h1 {
+								@apply uppercase text-black font-extrabold;
+								font-size: 17px;
+							}
+							p {
+								@apply mt-7;
+								font-size: 13px;
+							}
 						}
 					}
 				}

@@ -38,7 +38,7 @@
 		padding: 20px;
 		border-radius: 10px;
 		background-color: white;
-		width: 30vw;
+		width: 40vw;
 		position: relative;
 		span {
 			position: absolute;
@@ -48,6 +48,43 @@
 			transition: transform 0.1s ease-in-out 0s;
 			&:hover {
 				transform: scale(1.1);
+			}
+		}
+	}
+}
+@media (max-width: 1000px) {
+	.rootActive {
+		.content {
+			width: 60vw;
+		}
+	}
+}
+@media (max-width: 700px) {
+	.rootActive {
+		.content {
+			width: 90vw;
+			height: 500px;
+			overflow-y: scroll;
+			&::-webkit-scrollbar {
+				width: 0.8rem;
+			}
+			&::-webkit-scrollbar-track {
+				background: transparent;
+			}
+
+			&::-webkit-scrollbar-thumb {
+				background: var(--primary-color);
+				border-radius: 5rem;
+			}
+			span {
+				position: absolute;
+				top: -50px;
+				right: 0px;
+				cursor: pointer;
+				transition: transform 0.1s ease-in-out 0s;
+				&:hover {
+					transform: scale(1.1);
+				}
 			}
 		}
 	}

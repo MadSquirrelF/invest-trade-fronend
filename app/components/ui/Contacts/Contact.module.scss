@@ -1,8 +1,8 @@
 .root {
 	@apply relative  z-1 w-full flex items-center justify-center;
 	height: 100vh;
-	padding: 0px 10%;
 	flex-direction: column;
+	padding: 0;
 	img {
 		@apply absolute -z-1;
 	}
@@ -36,7 +36,7 @@
 	.wrapper {
 		@apply relative  w-full;
 		margin-top: auto;
-		height: 600px;
+		height: 750px;
 		border-radius: 10px 10px 0px 0px;
 
 		.content {
@@ -73,7 +73,7 @@
 		}
 		.contact {
 			@apply absolute px-5 py-5 z-3;
-			top: 40%;
+			top: 70%;
 			left: 10%;
 			width: 420px;
 			height: 320px;
@@ -123,6 +123,132 @@
 			svg {
 				@apply fill-primary mr-2 text-center;
 				font-size: 16px;
+			}
+		}
+	}
+}
+@media (max-width: 1150px) {
+	.root {
+		.wrapper {
+			.footer {
+				@apply px-3 py-1;
+				h2 {
+					font-size: 12px;
+				}
+				a {
+					font-size: 12px;
+				}
+			}
+			.loadContent {
+				display: block;
+				.contact {
+					position: relative;
+					width: 380px;
+					height: 280px;
+
+					h1 {
+						font-size: 26px;
+					}
+					.item {
+						svg {
+							@apply fill-primary  mr-4;
+							font-size: 15px;
+						}
+						a {
+							@apply text-link  text-black;
+							font-size: 15px;
+						}
+					}
+					h2 {
+						@apply text-black mb-3  uppercase  font-bold;
+						font-size: 15px;
+					}
+					p {
+						font-size: 13px;
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: 700px) {
+	.root {
+		.wrapper {
+			.footer {
+				@apply block text-center;
+			}
+			.loadContent {
+				display: block;
+				.contact {
+					position: relative;
+					width: 380px;
+					height: 280px;
+
+					h1 {
+						font-size: 26px;
+					}
+					.item {
+						svg {
+							@apply fill-primary  mr-4;
+							font-size: 15px;
+						}
+						a {
+							@apply text-link  text-black;
+							font-size: 15px;
+						}
+					}
+					h2 {
+						@apply text-black mb-3  uppercase  font-bold;
+						font-size: 15px;
+					}
+					p {
+						font-size: 13px;
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: 600px) {
+	.root {
+		.wrapper {
+			height: 750px;
+			.loadContent {
+			}
+			.footer {
+				@apply block text-center;
+			}
+			.loadContent {
+				display: block;
+				height: 50%;
+				.contact {
+					position: relative;
+					width: 300px;
+					height: 280px;
+					top: 80%;
+					left: 5%;
+					h1 {
+						@apply text-black mb-1  uppercase  font-black;
+						font-size: 26px;
+					}
+					.item {
+						svg {
+							@apply fill-primary  mr-4;
+							font-size: 15px;
+						}
+						a {
+							@apply text-link  text-black;
+							font-size: 15px;
+						}
+					}
+					h2 {
+						@apply text-black mb-1  uppercase  font-bold;
+						font-size: 15px;
+					}
+					p {
+						font-size: 13px;
+					}
+				}
 			}
 		}
 	}

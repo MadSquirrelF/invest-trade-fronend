@@ -1,6 +1,5 @@
 .root {
 	@apply relative w-full z-1;
-
 	overflow: hidden;
 	.bgtext {
 		@apply absolute z-1 font-normal uppercase text-gray-700;
@@ -27,10 +26,10 @@
 			}
 		}
 		.wrapper {
-			@apply relative w-full;
+			@apply relative w-full h-full block;
 			.catalog {
 				@apply z-3 relative;
-				height: 70%;
+				height: 100%;
 				width: 70%;
 				button {
 					@apply absolute bg-white text-center;
@@ -80,15 +79,15 @@
 				}
 			}
 			.container {
-				@apply absolute flex-center-between bottom-0 z-3;
-				right: 160px;
+				@apply flex items-center justify-evenly bottom-0 mt-10 z-3;
+
 				h2 {
 					@apply text-left font-bold;
 					font-size: 20px;
 					margin-right: 40px;
 				}
 				.flexbox {
-					@apply flex items-center justify-evenly;
+					@apply flex items-center justify-center;
 					.box {
 						@apply block  bg-white text-center  mr-6;
 						height: 96px;
@@ -111,6 +110,144 @@
 						}
 						&.active {
 							box-shadow: 0px 6px 4px rgb(4, 0, 255);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: 1350px) {
+	.root {
+		.bgtext {
+			font-size: 264px;
+			right: -10%;
+		}
+		.content {
+			.title {
+			}
+			.wrapper {
+				.container {
+					display: block;
+					text-align: left;
+					h2 {
+						margin-bottom: 30px;
+						margin-right: 0px;
+					}
+					.flexbox {
+						@apply flex items-center justify-start;
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: 900px) {
+	.root {
+		.bgtext {
+			font-size: 264px;
+			right: -10%;
+		}
+		.content {
+			.title {
+				h1 {
+					font-size: 38px;
+
+					span {
+						font-size: 38px;
+					}
+				}
+			}
+			.wrapper {
+				.container {
+					display: block;
+					right: 0;
+					bottom: -15%;
+					h2 {
+						margin-bottom: 30px;
+						margin-right: 0px;
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: 700px) {
+	.root {
+		.bgtext {
+			font-size: 164px;
+			right: -10%;
+		}
+		.content {
+			.catalog {
+				margin: 0 auto;
+				img {
+					margin: 0 auto;
+				}
+			}
+
+			.wrapper {
+				.container {
+					display: block;
+					right: 0;
+					bottom: -15%;
+					h2 {
+						margin-bottom: 30px;
+						margin-right: 0px;
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: 500px) {
+	.root {
+		.bgtext {
+			font-size: 100px;
+			right: -10%;
+			line-height: 1;
+			top: 20%;
+		}
+		.content {
+			.title {
+				h1 {
+					font-size: 30px;
+
+					span {
+						font-size: 30px;
+					}
+				}
+			}
+			.wrapper {
+				.catalog {
+					button {
+						height: 100px;
+						width: 100px;
+						padding: 20px;
+						div {
+							h1 {
+								font-size: 26px;
+								line-height: 20px;
+								span {
+									@apply font-normal;
+									font-size: 14px;
+								}
+							}
+							svg {
+								top: 5px;
+								left: 11px;
+								font-size: 40px;
+							}
+						}
+					}
+				}
+				.container {
+					@apply mt-16;
+					.flexbox {
+						display: block;
+						z-index: 6;
+						.box {
+							@apply mr-0 mt-5;
 						}
 					}
 				}

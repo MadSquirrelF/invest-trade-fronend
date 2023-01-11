@@ -57,7 +57,7 @@ const Download: FC = () => {
         </div>
         <div className={styles.wrapper} >
           <div className={styles.catalog}>
-            <Image src={catalog} unoptimized priority draggable={false} alt={'catalog'} />
+            <Image src={catalog} unoptimized priority draggable={false} alt={'catalog'} height={700} width={1000} />
             <button onClick={() => download(data[activeIndex].fileUrl, data[activeIndex].filename)}>
               <div>
                 <h1>PDF <br /> <span>{data[activeIndex].weight}</span></h1>

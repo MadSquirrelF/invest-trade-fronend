@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import styles from './News.module.scss'
 import { INewItem } from './new.interface';
 import Image from 'next/image';
@@ -14,6 +14,22 @@ import Link from 'next/link';
 
 const NewsSection: FC<{ news: INewItem[] }> = ({ news }) => {
 
+  const [windowDimenion, detectHW] = useState(
+    2000
+  )
+
+  const detectSize = () => {
+    detectHW(
+      window.innerWidth
+    )
+  }
+  useEffect(() => {
+    window.addEventListener('resize', detectSize)
+
+    return () => {
+      window.removeEventListener('resize', detectSize)
+    }
+  }, [windowDimenion])
 
 
   return (
@@ -27,7 +43,7 @@ const NewsSection: FC<{ news: INewItem[] }> = ({ news }) => {
         <Swiper
           modules={[Pagination]}
           spaceBetween={30}
-          slidesPerView={3}
+          slidesPerView={windowDimenion >= 1500 ? 3 : windowDimenion < 1500 && windowDimenion > 1000 ? 2 : 1}
           pagination={{ clickable: true }}
           className={styles.swiper}
         >

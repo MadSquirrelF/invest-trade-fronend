@@ -9,7 +9,6 @@
 		black 72%,
 		rgba(0, 212, 255, 0) 100%
 	);
-	padding: 10px 10%;
 	width: 100%;
 	&.black {
 		background: rgba(4, 0, 255, 0.01);
@@ -42,6 +41,12 @@
 	.Topcontainer {
 		@apply flex-center-between z-2;
 		padding-bottom: 16px;
+		.logo {
+			@apply relative h-14 w-64;
+			@media (max-width: 400px) {
+				@apply relative h-10 w-52;
+			}
+		}
 	}
 	.Bottomcontainer {
 		@apply flex-center-between  z-2;
@@ -53,73 +58,88 @@
 				fill: white;
 			}
 		}
-		.headerCart {
-			.CartButton {
-				@apply bg-white text-center items-center flex cursor-pointer;
-				padding: 8px 16px;
-				transition: background-color 0.15s ease-in-out,
-					border-color 0.15s ease-in-out;
-				border: 1px solid transparent;
-				border-radius: 30px;
-				width: 160px;
-				font-weight: 600;
-				transition: all;
-				position: relative;
-				box-shadow: 1px 1px 10px white;
-
-				span {
-					color: black;
-					font-weight: 600;
-					font-size: 16px;
-				}
-				.delimeter {
-					width: 1px;
-					height: 25px;
-					background-color: black;
-					margin-left: 10px;
-					margin-right: 1px;
-				}
-				&:active {
-					background-color: darken(white, 5%);
-					transform: translateY(1px);
-				}
-				&:hover {
-					.arrow {
-						opacity: 1;
-						transform: translateX(0px);
-					}
-					.TotalCount {
-						opacity: 0;
-					}
-				}
-				.arrow {
-					position: absolute;
-					top: 50;
-					right: 20px;
-					transition: transform 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
-					opacity: 0;
-					transform: translateX(-5px);
-				}
-				.TotalCount {
-					position: absolute;
-					top: 25%;
-					right: 16px;
-					display: flex;
-					transition: transform 0.5s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
-					opacity: 1;
-
-					transform: translateX(0px);
+		.ButtonContainer {
+			@apply flex-center-between;
+			.headerFavorites {
+				margin-right: 20px;
+				a {
 					svg {
-						margin-right: 8px;
-						margin-bottom: 1px;
+						fill: white;
+						font-size: 36px;
 					}
+				}
+			}
+			.headerCart {
+				.CartButton {
+					@apply bg-white text-center items-center flex cursor-pointer;
+					padding: 8px 16px;
+					transition: background-color 0.15s ease-in-out,
+						border-color 0.15s ease-in-out;
+					border: 1px solid transparent;
+					border-radius: 30px;
+					width: 160px;
+					font-weight: 600;
+					transition: all;
+					position: relative;
+					box-shadow: 1px 1px 10px white;
+
 					span {
+						color: black;
 						font-weight: 600;
 						font-size: 16px;
+					}
+					.delimeter {
+						width: 1px;
+						height: 25px;
+						background-color: black;
+						margin-left: 10px;
+						margin-right: 1px;
+					}
+					&:active {
+						background-color: darken(white, 5%);
+						transform: translateY(1px);
+					}
+					&:hover {
+						.arrow {
+							opacity: 1;
+							transform: translateX(0px);
+						}
+						.TotalCount {
+							opacity: 0;
+						}
+					}
+					.arrow {
+						position: absolute;
+						top: 50;
+						right: 20px;
+						transition: transform 0.2s ease-in-out 0s,
+							opacity 0.2s ease-in-out 0s;
+						opacity: 0;
+						transform: translateX(-5px);
+					}
+					.TotalCount {
+						position: absolute;
+						top: 25%;
+						right: 16px;
+						display: flex;
+						transition: transform 0.5s ease-in-out 0s,
+							opacity 0.2s ease-in-out 0s;
+						opacity: 1;
+
+						transform: translateX(0px);
+						svg {
+							margin-right: 8px;
+							margin-bottom: 1px;
+						}
+						span {
+							font-weight: 600;
+							font-size: 16px;
+						}
 					}
 				}
 			}
 		}
+
 		@media (max-width: 1450px) {
 			.menutoogle {
 				display: inline-block;

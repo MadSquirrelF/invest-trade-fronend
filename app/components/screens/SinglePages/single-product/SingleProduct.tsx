@@ -31,7 +31,7 @@ const SingleProduct: FC<{ product: IProduct; similarProducts: IGalleryItem[] }> 
     <Meta title={product.title} description={`Товар ${product.title}`}>
       <section className={styles.root}>
         <div className={styles.wrapper}>
-          <Heading title={product.title} />
+          <h5 >{product.title}</h5>
           <div className={cn(styles.banner, { [styles.active]: activeMenu === false })}>
             <div className={styles.logo}>
               <Image src={product.logo_image} alt={"product single logo"} height={70} width={150} draggable={false} unoptimized />
@@ -75,6 +75,7 @@ const SingleProduct: FC<{ product: IProduct; similarProducts: IGalleryItem[] }> 
                     <div className={styles.description_short}>
                       <p>{stripHtml(product.description_short).result}</p>
                     </div>
+                    <DynamicRateProduct slug={product.slug} _id={product._id} />
                     <div className={styles.buttons}>
                       <div className={styles.addCart}>
                         <span>Заказать</span>
@@ -137,7 +138,7 @@ const SingleProduct: FC<{ product: IProduct; similarProducts: IGalleryItem[] }> 
             </div>
           </div>
           <div className={styles.rating}>
-            <DynamicRateProduct slug={product.slug} _id={product._id} />
+
           </div>
         </div>
       </section>

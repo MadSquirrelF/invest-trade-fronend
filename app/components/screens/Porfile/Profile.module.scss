@@ -2,6 +2,7 @@
 	@apply relative h-screen w-full flex items-center justify-center;
 	.container {
 		@apply relative w-full flex items-stretch justify-between;
+		margin-top: 250px;
 		.info {
 			@apply relative;
 			hr {
@@ -34,12 +35,47 @@
 		}
 
 		.form {
-			@apply relative w-full;
+			@apply relative w-1/2;
 
 			.fields {
-				@apply relative w-1/2;
+				@apply w-1/2;
 				button {
 					@apply mt-5;
+				}
+			}
+		}
+	}
+}
+@media (max-width: 1500px) {
+	.root {
+		.container {
+			display: block;
+			margin-top: 600px;
+			.form {
+				width: 100%;
+				margin: 50px 0;
+				.fields {
+					width: 60%;
+				}
+			}
+		}
+	}
+}
+@media (max-width: 600px) {
+	.root {
+		.container {
+			.info {
+				.box {
+					@apply relative mt-5;
+					h2 {
+						@apply text-primary font-black;
+						font-size: 20px;
+					}
+				}
+			}
+			.form {
+				.fields {
+					width: 100%;
 				}
 			}
 		}

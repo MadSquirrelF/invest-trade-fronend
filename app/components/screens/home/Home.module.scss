@@ -6,13 +6,12 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	height: 100vh;
-	padding: 0 10%;
 	width: 100%;
 	z-index: 1;
 	box-shadow: inset 0px -60px 60px black;
 
 	.content {
-		@apply inline-block mt-28 z-3;
+		@apply inline-block mt-32 z-3;
 		h1 {
 			@apply uppercase font-medium;
 			line-height: 1;
@@ -122,5 +121,79 @@
 			animation: downUp 0.7s cubic-bezier(0.1, 0.25, 0.1, 1) 0s infinite
 				alternate both;
 		}
+	}
+}
+@media (max-width: 830px) {
+	.home {
+		.content {
+			h1 {
+				font-size: 52px;
+				span {
+					font-size: 52px;
+				}
+			}
+			.Mainbtn {
+				@apply mt-10;
+				.button {
+					font-size: 15px;
+					padding: 20px 30px;
+				}
+			}
+			.subTitle {
+				@apply block  mt-4;
+				max-width: 500px;
+				svg {
+					margin-right: 20px;
+				}
+				h2 {
+					font-size: 20px;
+					margin-top: 10px;
+					line-height: 21px;
+					color: white;
+					font-weight: 300;
+				}
+			}
+		}
+	}
+	.MouseScroll {
+		display: none;
+	}
+}
+
+@media (max-width: 400px) {
+	.home {
+		.content {
+			@apply inline-block mt-14 z-3;
+			h1 {
+				font-size: 42px;
+				span {
+					font-size: 42px;
+				}
+			}
+			.Mainbtn {
+				@apply mt-10;
+				.button {
+					font-size: 15px;
+					padding: 20px 30px;
+				}
+			}
+			.subTitle {
+				@apply block  mt-4;
+				max-width: 350px;
+				svg {
+					margin-right: 20px;
+				}
+				h2 {
+					font-size: 15px;
+					margin-top: 10px;
+					line-height: 21px;
+					color: white;
+					font-weight: 300;
+				}
+			}
+		}
+	}
+	.MouseScroll {
+		display: none;
 	}
 }

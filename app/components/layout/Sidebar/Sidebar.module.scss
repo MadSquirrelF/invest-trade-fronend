@@ -2,7 +2,7 @@
 	@apply fixed bottom-6  w-full;
 	z-index: 3;
 
-	padding: 0px 10%;
+	padding: 0px 1%;
 	.container {
 		@apply w-full bg-white h-full flex items-center justify-evenly px-4 py-1;
 		box-shadow: 1px 1px 10px blue;
@@ -14,7 +14,7 @@
 		}
 		.text {
 			@apply relative;
-			width: 900px;
+			max-width: 900px;
 			h1 {
 				@apply font-black text-primary;
 				font-size: 20px;
@@ -25,6 +25,30 @@
 			}
 			a {
 				@apply text-link text-primary;
+			}
+		}
+	}
+}
+@media (max-width: 1200px) {
+	.sidebar {
+		.container {
+			@apply px-5 py-2;
+			.image {
+				display: none;
+			}
+			.text {
+				margin-right: 10px;
+			}
+		}
+	}
+}
+@media (max-width: 600px) {
+	.sidebar {
+		.container {
+			@apply px-5 py-2;
+			display: block;
+			.text {
+				margin-bottom: 20px;
 			}
 		}
 	}
