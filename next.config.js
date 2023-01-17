@@ -11,11 +11,11 @@ const nextConfig = {
 		return [
 			{
 				source: '/api/:path*',
-				destination: `http://nest.invest-trade.biz/api/:path*`,
+				destination: `${process.env.REACT_APP_SERVER_URL}/api/:path*`,
 			},
 			{
 				source: '/uploads/:path*',
-				destination: `http://nest.invest-trade.biz/uploads/:path*`,
+				destination: `${process.env.REACT_APP_SERVER_URL}/uploads/:path*`,
 			},
 		]
 	},
