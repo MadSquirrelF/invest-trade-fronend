@@ -24,7 +24,7 @@ const Contact: FC<IContact> = ({ clouds: { clouds } }) => {
   return (
 
     <section className={styles.root} id={'footer'}>
-      <Image src={footerBg} alt={'footerBg'} fill unoptimized draggable={'false'} />
+      <Image src={footerBg} alt={'footerBg'} fill priority draggable={'false'} />
       <div className={styles.clouds}>
         {clouds.map((cloud, i) => (<Image key={cloud.title}
           src={cloud.image}
@@ -32,9 +32,9 @@ const Contact: FC<IContact> = ({ clouds: { clouds } }) => {
           style={{ '--i': String(cloud.ind) }}
           alt={cloud.title}
           draggable={false}
-          unoptimized
+          priority
           className={styles.cloud}
-          priority />))}
+        />))}
       </div>
       <div className={styles.wrapper}>
         <div className={styles.loadContent}>

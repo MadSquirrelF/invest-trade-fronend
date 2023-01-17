@@ -54,13 +54,13 @@ const SingleNew: FC<{ item: INew }> = ({ item }) => {
             </div>
             <div className={styles.images}>
               <div className={styles.banner}>
-                <Image src={item.image_1} alt={item.image_1} draggable={false} fill unoptimized />
+                <Image src={item.image_1} alt={item.image_1} draggable={false} fill priority />
               </div>
               <div className={styles.banner}>
-                {item.image_2 ? <Image src={item.image_2} alt={item.image_2} draggable={false} fill unoptimized /> : null}
+                {item.image_2 ? <Image src={item.image_2} alt={item.image_2} draggable={false} fill priority /> : null}
               </div>
               <div className={styles.banner}>
-                {item.image_3 ? <Image src={item.image_3} alt={item.image_3} draggable={false} fill unoptimized /> : null}
+                {item.image_3 ? <Image src={item.image_3} alt={item.image_3} draggable={false} fill priority /> : null}
               </div>
 
 

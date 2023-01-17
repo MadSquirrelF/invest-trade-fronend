@@ -20,7 +20,7 @@ const UploadField: FC<IUploadField> = ({ error, onChange, image, folder, placeho
         {error && <div className={styles.error}>{error.message}</div>}
       </div>
       {!isNoImage && (<div className={styles.uploadImageContainer}>
-        {isLoading ? <SkeletonLoader count={1} className='w-full h-full' /> : image && <Image alt='' src={image} fill unoptimized />}
+        {isLoading ? <SkeletonLoader count={1} className='w-full h-full' /> : image && <Image alt='' src={image} fill priority />}
       </div>)}
     </div>
 

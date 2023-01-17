@@ -57,7 +57,7 @@ const Download: FC = () => {
         </div>
         <div className={styles.wrapper} >
           <div className={styles.catalog}>
-            <Image src={catalog} unoptimized priority draggable={false} alt={'catalog'} height={700} width={1000} />
+            <Image src={catalog} priority draggable={false} alt={'catalog'} height={700} width={1000} />
             <button onClick={() => download(data[activeIndex].fileUrl, data[activeIndex].filename)}>
               <div>
                 <h1>PDF <br /> <span>{data[activeIndex].weight}</span></h1>
@@ -69,15 +69,15 @@ const Download: FC = () => {
             <h2>Выберите каталог, который хотите скачать <br /> и нажмите на кнопку</h2>
             <div className={styles.flexbox}>
               <div className={cn(styles.box, { [styles.active]: activeIndex === 0 })} onClick={() => setActiveIndex(0)}>
-                <Image src={data[0].image} alt={data[0].name} height={50} width={100} draggable={false} unoptimized priority />
+                <Image src={data[0].image} alt={data[0].name} height={50} width={100} draggable={false} priority />
                 <h3>{data[0].weight}</h3>
               </div>
               <div className={cn(styles.box, { [styles.active]: activeIndex === 1 })} onClick={() => setActiveIndex(1)}>
-                <Image src={data[1].image} alt={data[0].name} height={50} width={100} draggable={false} unoptimized priority />
+                <Image src={data[1].image} alt={data[0].name} height={50} width={100} draggable={false} priority />
                 <h3>{data[1].weight}</h3>
               </div>
               <div className={cn(styles.box, { [styles.active]: activeIndex === 2 })} onClick={() => setActiveIndex(2)}>
-                <Image src={data[2].image} alt={data[0].name} height={50} width={50} draggable={false} unoptimized priority />
+                <Image src={data[2].image} alt={data[0].name} height={50} width={50} draggable={false} priority />
                 <h3>{data[2].weight}</h3>
               </div>
             </div>

@@ -18,7 +18,7 @@ const PopularProducts: FC = () => {
     <div>
       {isLoading ? (<SkeletonLoader className='h-48' />) : (products && <>
         <Link href={getProductUrl(products.slug)}>
-          <Image width={200} height={200} src={products.image} alt={products.title} className={styles.image} unoptimized />
+          <Image width={200} height={200} src={products.image} alt={products.title} className={styles.image} priority />
         </Link>
         <h2>{products.title}</h2>
         <div className={styles.view}>

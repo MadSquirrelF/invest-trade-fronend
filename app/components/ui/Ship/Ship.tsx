@@ -14,7 +14,7 @@ const Ship: FC<{ items: IGalleryShip }> = ({ items }) => {
       <div className={styles.container}>
         {items.items.map((item) => (
           <div key={item.id} className={styles.box}>
-            <Image src={item.image} unoptimized priority fill draggable={false} alt={item.text} />
+            <Image src={item.image} priority fill draggable={false} alt={item.text} />
             <span>{item.id}</span>
             <p>{item.text}</p>
           </div>

@@ -12,7 +12,6 @@ const Logo: FC = () => {
         alt="InvestTrade app"
         draggable={false}
         priority
-        unoptimized
       />
     </Link>
   )

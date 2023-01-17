@@ -14,7 +14,7 @@ const SlideItem: FC<ISlideItem> = ({ slide, buttonTitle = 'Смотреть' }) 
   return (
     <div className={styles.slide}>
 
-      {slide.poster && <Image fill className={styles.image} src={slide.poster} alt={slide.title} draggable={false} unoptimized priority />}
+      {slide.poster && <Image fill className={styles.image} src={slide.poster} alt={slide.title} draggable={false} priority />}
       <h1>ИНВЕСТ-ТРЕЙД</h1>
       <div className={styles.content}>
 

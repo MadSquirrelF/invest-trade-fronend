@@ -77,7 +77,7 @@ const Shop: FC = () => {
               <br />
               Попробуйте повторить попытку!
             </p>
-            <Image src={errorImage} alt={'errorImage'} draggable={false} height={400} width={400} unoptimized />
+            <Image src={errorImage} alt={'errorImage'} draggable={false} height={400} width={400} />
           </div></div>
         ) : status === 'loading' ? (<div className={styles.container}>
           {skeletons}</div>)
@@ -85,7 +85,7 @@ const Shop: FC = () => {
             {items.map((item, index) =>
             (<div key={item.slug} className={styles.item}>
               <div className={styles.brand}>
-                <Image src={item.logo_image} alt={item.slug} draggable={false} unoptimized width={90} height={50} />
+                <Image src={item.logo_image} alt={item.slug} draggable={false} width={90} height={50} />
               </div>
               <div className={styles.horizontal}>
                 <div className={styles.box}>
@@ -158,7 +158,7 @@ const Shop: FC = () => {
               </div>
               <div className={styles.topFlex}>
                 <div className={styles.image}>
-                  <Image src={item.image} alt={item.title} unoptimized fill draggable={false} />
+                  <Image src={item.image} alt={item.title} fill draggable={false} />
                 </div>
               </div>
               <div className={styles.content}>
@@ -204,7 +204,7 @@ const Shop: FC = () => {
                 {items.map((item, index) => (
                   <div key={item.slug} className={cn(styles.item, styles.short)}>
                     <div className={cn(styles.brand, styles.big)}>
-                      <Image src={item.logo_image} alt={item.slug} draggable={false} unoptimized width={50} height={50} />
+                      <Image src={item.logo_image} alt={item.slug} draggable={false} width={50} height={50} priority />
                     </div>
 
                     <div className={styles.rating}>

@@ -27,7 +27,7 @@ const MenuItem: FC<{ item: ICategoryItem }> = ({ item }) => {
     <li className={cn(styles.li, { [styles.active]: item._id === categoryIds })}
       onClick={() => dispatchCategory()}>
       <div className={styles.image}>
-        <Image src={item.image} alt={'CategoryImage'} height={40} width={40} draggable={false} unoptimized />
+        <Image src={item.image} alt={'CategoryImage'} height={40} width={40} draggable={false} priority />
       </div>
       <h3>{item.name}</h3>
       <hr />

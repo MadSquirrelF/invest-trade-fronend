@@ -39,14 +39,14 @@ const LoginButton: FC = () => {
     <a className={styles.menu} onClick={() => setActiveDrop(!activedrop)}>
       {user ? (<>
         <div className={styles.image}>
-          {user.avatar ? (<Image src={user.avatar} alt={'user avatar'} fill unoptimized draggable={false} />)
-            : (<Image src={avatar} alt={'default avatar'} fill unoptimized draggable={false} />)}
+          {user.avatar ? (<Image src={user.avatar} alt={'user avatar'} fill priority draggable={false} />)
+            : (<Image src={avatar} alt={'default avatar'} fill priority draggable={false} />)}
         </div>
         <h2>{user.username}</h2>
         <MaterialIcon name='MdKeyboardArrowDown' />
       </>) : (<>
         <div className={styles.image}>
-          <Image src={avatar} alt={'default avatar'} fill unoptimized draggable={false} />
+          <Image src={avatar} alt={'default avatar'} fill priority draggable={false} />
         </div>
         <MaterialIcon name='MdKeyboardArrowDown' />
       </>)}

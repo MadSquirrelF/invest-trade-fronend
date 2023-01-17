@@ -34,7 +34,7 @@ const SingleProduct: FC<{ product: IProduct; similarProducts: IGalleryItem[] }> 
           <h5 >{product.title}</h5>
           <div className={cn(styles.banner, { [styles.active]: activeMenu === false })}>
             <div className={styles.logo}>
-              <Image src={product.logo_image} alt={"product single logo"} height={70} width={150} draggable={false} unoptimized />
+              <Image src={product.logo_image} alt={"product single logo"} height={70} width={150} draggable={false} priority />
             </div>
             <div className={styles.nav}>
               <div onClick={() => setActiveMenu(true)} className={cn(styles.box, { [styles.active]: activeMenu === true })}>
@@ -134,7 +134,7 @@ const SingleProduct: FC<{ product: IProduct; similarProducts: IGalleryItem[] }> 
 
             </div>
             <div className={cn(styles.image, { [styles.big]: product.category[0].name !== 'ПВХ профиль' })}>
-              <Image src={product.image} alt={"product single image"} fill draggable={false} unoptimized />
+              <Image src={product.image} alt={"product single image"} fill draggable={false} priority />
             </div>
           </div>
           <div className={styles.rating}>
