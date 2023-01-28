@@ -1,12 +1,13 @@
 .sidebar {
-	@apply fixed bottom-6  w-full;
+	@apply fixed bottom-0  w-full;
+
 	z-index: 3;
 
-	padding: 0px 1%;
+	padding: 0px 10%;
 	.container {
 		@apply w-full bg-white h-full flex items-center justify-evenly px-4 py-1;
 		box-shadow: 1px 1px 10px blue;
-		border-radius: 10px 10px 10px 10px;
+		border-radius: 10px 10px 0px 0px;
 		.image {
 			@apply relative;
 			width: 96px;
@@ -44,6 +45,7 @@
 }
 @media (max-width: 600px) {
 	.sidebar {
+		padding: 0px 0%;
 		.container {
 			@apply px-5 py-2;
 			display: block;

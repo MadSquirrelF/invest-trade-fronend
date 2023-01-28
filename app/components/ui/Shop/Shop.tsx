@@ -203,7 +203,7 @@ const Shop: FC = () => {
               <div className={styles.container}>
                 {items.map((item, index) => (
                   <div key={item.slug} className={cn(styles.item, styles.short)}>
-                    <div className={cn(styles.brand, styles.big)}>
+                    <div className={styles.brand}>
                       <Image src={item.logo_image} alt={item.slug} draggable={false} width={50} height={50} priority />
                     </div>
 

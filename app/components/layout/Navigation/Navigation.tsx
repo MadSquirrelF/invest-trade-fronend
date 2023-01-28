@@ -13,6 +13,8 @@ import styles from './Navigation.module.scss'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 import { setScroll } from '@/store/scroll/slice'
+import { useAuth } from '@/hooks/useAuth'
+import { useFavorites } from '@/components/screens/favorites/useFavorites'
 
 
 
@@ -25,11 +27,12 @@ const Navigation: FC = () => {
   const { pathname } = useRouter()
   const { type } = useSelector(selectModal);
   const { scrollPosition } = useSelector(setScroll);
-
+  const { user } = useAuth()
   const showNavigation = () => {
     setActiveNav(!activeNav)
     dispatch(setNav(!activeNav))
   }
+  const { favoritesProducts } = useFavorites()
   return (
     <section className={cn(styles.header, { [styles.black]: scrollPosition > 50, [styles.blue]: scrollPosition > 700, [styles.blueGradientHome]: pathname !== '/', [styles.blueGradient]: scrollPosition > 3000 })}>
       <div className={styles.Topcontainer}>
@@ -47,8 +50,12 @@ const Navigation: FC = () => {
         <div className={styles.ButtonContainer}>
           <div className={styles.headerFavorites}>
             <Link href="/favorites">
-              <MaterialIcon name='MdSave' />
+              <MaterialIcon name='MdFavorite' />
+              <div className={styles.CountMessage}>
+                <span>{favoritesProducts ? favoritesProducts.length : 0}</span>
+              </div>
             </Link>
+
           </div>
           <div className={styles.headerCart}>
             <Link href="/cart" className={styles.CartButton}>

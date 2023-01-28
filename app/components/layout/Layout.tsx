@@ -1,11 +1,12 @@
 import { setScrollPositon } from '@/store/scroll/slice';
-import { useRouter } from 'next/router';
+
 import React from 'react';
 import { FC } from 'react'
 import { useDispatch } from 'react-redux';
 import Up from '../ui/Up';
 import styles from './Layout.module.scss'
 import Navigation from './Navigation/Navigation'
+
 import Sidebar from './Sidebar/Sidebar';
 
 type Props = {

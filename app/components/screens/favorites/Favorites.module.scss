@@ -1,49 +1,102 @@
-@import '../../../assets/styles/variables';
-
-.favorites {
-	@apply flex flex-wrap;
-}
-
-.containerLoader {
-	@apply w-full flex flex-wrap mt-96;
-
-	.skeletonLoader {
-		@apply relative mb-8 h-44;
-		width: 31%;
-
-		&:nth-child(1),
-		&:nth-child(3) {
-			@apply mr-8;
-		}
-	}
-}
-
-.itemWrapper {
-	@apply relative mb-8 h-44 mr-8 animate-fade transition-transform hover:-translate-y-3;
-	width: 31%;
-
-	&:nth-child(3n) {
-		@apply mr-0;
-	}
-
-	.item {
-		@apply relative z-1 w-full h-full flex items-end shadow-lg rounded-layout overflow-hidden;
-
-		@include fade-bg-gradient(0deg);
-		&::before {
-			@apply z-2;
-		}
-
-		img {
-			@apply image-like-bg;
-		}
-
+.root {
+	@apply relative h-screen   w-full;
+	.container {
+		@apply relative;
+		margin-top: 200px;
 		.title {
-			@apply relative z-3 text-center m-4 w-full font-semibold text-black text-shadow;
+			@apply relative text-left;
+			h1 {
+				@apply uppercase text-black font-black;
+				font-size: 48px;
+				line-height: 1;
+				span {
+					@apply uppercase text-primary font-black;
+					font-size: 48px;
+					line-height: 1;
+				}
+			}
 		}
-	}
+		p {
+			font-size: 20px;
+			font-weight: 500;
+			margin-top: 10px;
+		}
+		.wrapper {
+			@apply relative flex flex-wrap mt-12;
+			.itemWrapper {
+				@apply relative mr-8 mb-8 border-gray-300 border;
+				transition: all 0.2s ease-in-out;
+				border-radius: 10px;
+				width: 300px;
+				height: 360px;
+				background-color: rgb(252, 252, 252);
+				box-shadow: -3px 5px 0px #0000ff;
+				&:hover {
+					transform: scale(1.01);
+					box-shadow: -4px 7px 0px #0000ff;
+				}
+				h2 {
+					font-size: 16px;
+					color: black;
+					font-weight: 900;
+					margin-top: 9px;
+					padding: 0 5px;
+				}
+				.cart {
+					@apply absolute block  z-2;
+					bottom: 10px;
+					right: 20px;
 
-	> button {
-		@apply z-3 block -left-3 -top-1 right-auto;
+					.productFunctions {
+						@apply flex items-center w-full justify-between;
+						.button {
+							@apply bg-gray-300 cursor-pointer;
+							padding: 8px;
+							border-radius: 50%;
+							transition: all 0.2s ease-in-out;
+							margin: 0 10px;
+							svg {
+								@apply fill-primary;
+								height: 24px;
+								width: 24px;
+							}
+							&:hover {
+								@apply bg-primary;
+								transition: all 0.2s ease-in-out;
+								svg {
+									@apply fill-white;
+								}
+							}
+							&:active {
+								transition: all 0.2s ease-in-out;
+								transform: translateY(3px);
+								background-color: rgb(4, 14, 163);
+							}
+						}
+					}
+				}
+				a {
+					.image {
+						@apply relative w-full;
+						height: 65%;
+						img {
+							border-radius: 10px;
+						}
+					}
+				}
+
+				.brand {
+					@apply absolute z-2 flex items-center justify-center  top-0 left-0 bg-white;
+					padding: 8px;
+					width: 100px;
+					height: 40px;
+					border-radius: 10px 0px 10px 0px;
+					box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.56);
+					&.big {
+						height: 70px;
+					}
+				}
+			}
+		}
 	}
 }
