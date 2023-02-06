@@ -2,17 +2,45 @@
 
 .root {
 	@apply relative h-screen   w-full;
+	p {
+		font-size: 18px;
+	}
+	.title {
+		@apply relative text-left;
+		padding: 0 5%;
+		h1 {
+			@apply uppercase text-black font-bold;
+			font-size: 48px;
+			line-height: 1;
+			span {
+				@apply uppercase text-primary font-black;
+				font-size: 48px;
+				line-height: 1;
+			}
+		}
+	}
 
 	.wrapper {
-		@apply relative;
+		@apply relative h-full;
 		margin-top: 200px;
-		h5 {
-			font-size: 40px;
-		}
+
 		.rating {
 			@apply w-full flex items-center justify-center my-8;
 		}
-
+		.head {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+		}
+		.roundBtn {
+			border-radius: 50%;
+			margin-right: 30px;
+			padding: 10px;
+			svg {
+				font-size: 30px;
+				fill: white;
+			}
+		}
 		.banner {
 			@apply relative  mt-5 w-full  flex-center-between;
 			padding: 40px;
@@ -95,7 +123,7 @@
 						@apply text-white opacity-90 hover:opacity-100 font-medium;
 					}
 					&.active {
-						background-color: rgb(90, 90, 90);
+						background-color: rgba(0, 0, 255, 0.61);
 						h2 {
 							@apply text-white;
 						}
@@ -104,19 +132,25 @@
 			}
 			.specifications {
 				@apply absolute   z-2 text-right;
-				right: 40px;
+				right: 30px;
 				bottom: 40px;
+				.stats {
+					@apply relative;
+					.stat {
+						@apply relative flex-center-between;
+						h2 {
+							@apply text-gray-300 font-normal  p-2;
+							font-size: 16px;
+						}
+						span {
+							@apply text-yellow-700 font-medium capitalize;
+							font-size: 18px;
+						}
+					}
+				}
 				h1 {
 					@apply text-white font-black;
-					font-size: 30px;
-				}
-				h2 {
-					@apply text-gray-300 font-normal  p-2;
-					font-size: 20px;
-					span {
-						@apply text-yellow-700 font-medium;
-						font-size: 24px;
-					}
+					font-size: 25px;
 				}
 			}
 			.image {
@@ -142,18 +176,18 @@
 						.title {
 							h1 {
 								@apply text-white font-black;
-								font-size: 30px;
+								font-size: 35px;
 							}
 						}
 						.description_full {
 							max-width: 700px;
 							h2 {
 								@apply text-white font-bold;
-								font-size: 20px;
+								font-size: 25px;
 							}
 							p {
 								@apply font-medium text-gray-300;
-								font-size: 14px;
+								font-size: 16px;
 							}
 						}
 					}
@@ -172,7 +206,7 @@
 							color: green;
 						}
 						.view {
-							@apply relative flex items-center;
+							@apply relative flex items-center mr-3;
 							svg {
 								@apply fill-white  mr-1;
 								font-size: 24px;
@@ -182,11 +216,37 @@
 								font-size: 24px;
 							}
 						}
+						.available {
+							@apply relative flex items-center;
+							h6 {
+								font-size: 16px;
+								font-weight: 500;
+								color: white;
+							}
+							svg {
+								font-size: 24px;
+							}
+							&.red {
+								svg {
+									fill: red;
+								}
+								h6 {
+									color: red;
+								}
+							}
+							&.green {
+								svg {
+									fill: green;
+								}
+								h6 {
+									color: green;
+								}
+							}
+						}
 					}
 					.description_short {
 						max-width: 600px;
 						margin-top: 10px;
-
 						p {
 							@apply font-semibold text-white;
 							font-size: 18px;
@@ -204,6 +264,13 @@
 								@apply text-black font-bold  mr-1;
 								font-size: 18px;
 							}
+							&:disabled {
+								@apply bg-gray-300;
+								&:hover {
+									background-color: red;
+									cursor: not-allowed;
+								}
+							}
 
 							&:hover {
 								span {
@@ -212,9 +279,10 @@
 									transform: translateX(7px);
 								}
 								transition: all 0.3s ease-in-out;
-								@apply bg-primary;
+								background-color: green;
 								svg {
 									transition: all 0.2s ease-in-out;
+									opacity: 0;
 									transform: translateX(7px);
 								}
 							}
@@ -223,13 +291,86 @@
 				}
 			}
 		}
+		.adds {
+			@apply pt-10;
+			.gallery {
+				@apply relative mt-14 flex flex-wrap justify-start items-center;
+				.item {
+					@apply relative  text-center rounded-xl;
+					margin: 5px;
+					padding: 12px;
+					h4 {
+						@apply font-bold;
+						font-size: 16px;
+						width: 112px;
+						margin: 0 auto;
+					}
+					.image {
+						@apply relative;
+						height: 176px;
+						width: 176px;
+						margin: 10px auto;
+					}
+					&:hover {
+						transition: all 0.2s ease-in-out;
+						transform: translateY(-3px);
+						box-shadow: 0px 5px 5px blue;
+					}
+				}
+			}
+		}
 	}
 }
-@media (max-width: 1400px) {
+@media (max-width: 1550px) {
 	.root {
 		padding: 10px 0;
 		background-color: black;
+		transition: all 0.5s ease-in-out;
+		.title {
+			h1 {
+				@apply uppercase text-white font-bold;
+
+				span {
+					@apply uppercase text-primary font-black;
+				}
+			}
+		}
 		.wrapper {
+			background-color: #000000;
+			.head {
+				padding: 0 2%;
+			}
+			.adds {
+				@apply pt-10;
+				background-color: #000000;
+				.gallery {
+					@apply relative mt-14 flex flex-wrap justify-center items-center;
+					.item {
+						@apply relative  text-center rounded-xl;
+						margin: 5px;
+						padding: 12px;
+						box-shadow: 0px 5px 5px blue;
+						background: white;
+						h4 {
+							@apply font-bold text-black;
+							font-size: 16px;
+							width: 112px;
+							margin: 0 auto;
+						}
+						.image {
+							@apply relative;
+							height: 176px;
+							width: 176px;
+							margin: 10px auto;
+						}
+						&:hover {
+							transition: all 0.2s ease-in-out;
+							transform: translateY(-3px);
+							box-shadow: 0px 5px 5px blue;
+						}
+					}
+				}
+			}
 			h5 {
 				display: none;
 			}
@@ -250,7 +391,7 @@
 		}
 	}
 }
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
 	.root {
 		padding: 10px 0;
 		height: auto;
@@ -311,14 +452,26 @@
 		}
 	}
 }
-@media (max-width: 520px) {
+@media (max-width: 560px) {
 	.root {
 		.wrapper {
-			margin-top: 280px;
+			.title {
+				h1 {
+					font-size: 30px;
+					span {
+						font-size: 30px;
+					}
+				}
+				p {
+					font-size: 10px;
+				}
+			}
+
 			.banner {
+				padding: 10px;
 				.nav {
 					right: 0;
-					top: -8%;
+					top: 10%;
 					.box {
 						&.active {
 							background-color: blue;
@@ -326,27 +479,46 @@
 					}
 				}
 				.logo {
-					left: 10%;
+					left: 0%;
 
 					img {
 						margin: 0 auto;
 					}
 				}
+				.content {
+					margin-top: 200px;
+					margin-bottom: 50px;
+					.container {
+						.row {
+							.available {
+								h5 {
+									display: none;
+								}
+							}
+						}
+					}
+				}
 				.specifications {
 					@apply absolute   z-2 text-right;
-					right: 40px;
+					right: 10px;
 					bottom: 40px;
+					.stats {
+						@apply relative;
+						.stat {
+							@apply relative flex items-center justify-between;
+							h2 {
+								@apply text-gray-300 font-normal  p-2;
+								font-size: 13px;
+							}
+							span {
+								@apply text-yellow-700 font-medium capitalize;
+								font-size: 14px;
+							}
+						}
+					}
 					h1 {
 						@apply text-white font-black;
-						font-size: 20px;
-					}
-					h2 {
-						@apply text-gray-300 font-normal  p-2;
-						font-size: 15px;
-						span {
-							@apply text-yellow-700 font-medium;
-							font-size: 20px;
-						}
+						font-size: 25px;
 					}
 				}
 				.image {

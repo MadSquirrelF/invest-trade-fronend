@@ -21,6 +21,8 @@ import { useAdminCategory } from './useAdminCategory'
 import { useAdminAdd } from './useAdminAdd'
 
 import styles from '../AdminTables.module.scss'
+import Button from '@/components/ui/form-elements/Button'
+import { useAdminBrand } from './useAdminBrand'
 
 
 const DynamicTextEditor = dynamic(() => import('@/components/ui/form-elements/TextEditor'), {
@@ -34,13 +36,21 @@ const DynamicSelect = dynamic(() => import('@/components/ui/select/Select'), {
 const ProductEdit: FC = () => {
 
   const { handleSubmit, register, formState: { errors }, setValue, getValues, control } = useForm<IProductEditInput>({
-    mode: 'onChange'
+    mode: 'onChange',
+    defaultValues: {
+      details: [{ name: 'Название характеристики', value: 'Значение в текст' }]
+    }
   })
+  const { fields, append, prepend, remove } = useFieldArray({
+    name: "details",
+    control
+  });
 
   const { isLoading, onSubmit } = useProductEdit(setValue)
 
   const { isLoading: isCategoryLoading, data: categories } = useAdminCategory()
   const { isLoading: isAddLoading, data: adds } = useAdminAdd()
+  const { isLoading: isBrandLoading, data: brands } = useAdminBrand()
 
   return (
     <Meta title='Редактирование товара'>
@@ -66,68 +76,22 @@ const ProductEdit: FC = () => {
                     <SlugField register={register} error={errors.slug} generate={() => setValue('slug', generateSlug(getValues('title')))} />
                   </div>
 
-                  <h1>ПВХ ПРОФИЛЬ</h1>
 
-                  <Field
-                    {...register('parameters.accessories')}
-                    placeholder="Фурнитура"
-                    error={errors.parameters?.accessories}
-                    style={{ width: '31%' }}
-                  />
-                  <Field
-                    {...register('parameters.number_of_sealing_contours')}
-                    placeholder="Количество контуров уплотнения"
-                    error={errors.parameters?.number_of_sealing_contours}
-                    style={{ width: '31%' }}
-                  />
-                  <Field
-                    {...register('parameters.rang')}
-                    placeholder="Ранг"
-                    error={errors.parameters?.rang}
-                    style={{ width: '31%' }}
-                  />
-                  <Field
-                    {...register('parameters.count_cell')}
-                    placeholder="Количество воздушных камер"
-                    error={errors.parameters?.count_cell}
-                    style={{ width: '31%' }}
-                  />
-                  <Field
-                    {...register('parameters.basic_profile_width')}
-                    placeholder="Базовая ширина профиля "
-                    error={errors.parameters?.basic_profile_width}
-                    style={{ width: '31%' }}
-                  />
-                  <Field
-                    {...register('parameters.color')}
-                    placeholder="Цвет контура уплотнения"
-                    error={errors.parameters?.color}
-                    style={{ width: '31%' }}
-                  />
-                  <Field
-                    {...register('parameters.double_glazed_window')}
-                    placeholder="Двухкамерный стеклопакет"
-                    error={errors.parameters?.double_glazed_window}
-                    style={{ width: '31%' }}
-                  />
-                  <Field
-                    {...register('levelSetting.lightInsulation')}
-                    placeholder="Светопропускаемость"
-                    error={errors.levelSetting?.lightInsulation}
-                    style={{ width: '31%' }}
-                  />
-                  <Field
-                    {...register('levelSetting.soundInsulation')}
-                    placeholder="Звукоизоляция"
-                    error={errors.levelSetting?.soundInsulation}
-                    style={{ width: '31%' }}
-                  />
-                  <Field
-                    {...register('levelSetting.warmInsulation')}
-                    placeholder="Теплоизоляция"
-                    error={errors.levelSetting?.warmInsulation}
-                    style={{ width: '31%' }}
-                  />
+
+
+                  <Field type="number" {...register('count_on_store', {
+                    required: 'Введите количество товара на складе',
+                    valueAsNumber: true,
+                  })} placeholder="Количество товара на складе"
+                    error={errors.count_on_store}
+
+                    style={{ width: '20%' }} />
+
+
+
+
+
+
 
                   <Controller
                     name="category"
@@ -169,6 +133,26 @@ const ProductEdit: FC = () => {
                       required: 'Укажите хотя бы одну добавку',
                     }}
                   />
+                  <Controller
+                    name="brand"
+                    control={control}
+                    render={({
+                      field,
+                      fieldState: { error },
+                    }) => (
+                      <DynamicSelect
+                        field={field}
+                        placeholder="Бренд"
+                        error={error}
+                        isLoading={isBrandLoading}
+                        isMulti
+                        options={brands || []}
+                      />
+                    )}
+                    rules={{
+                      required: 'Укажите хотя бы один бренд',
+                    }}
+                  />
 
 
                   <Controller
@@ -190,25 +174,61 @@ const ProductEdit: FC = () => {
                       required: 'Image is required!',
                     }}
                   />
-                  <Controller
-                    name="logo_image"
-                    control={control}
-                    defaultValue=""
-                    render={({
-                      field: { value, onChange },
-                      fieldState: { error },
-                    }) => (
-                      <UploadField
-                        placeholder="Логотип изготовителя"
-                        error={error}
-                        folder="products"
-                        image={value}
-                        onChange={onChange} isNoImage={false} />
-                    )}
-                    rules={{
-                      required: 'Logo is required!',
+                  <div ><p>Если хотите сделать товар доступным для покупки, оставьте кнопку <b> Товар на складе</b>.</p>
+
+                    <Controller control={control}
+                      name='is_available'
+                      render={({ field }) =>
+                        <button onClick={(e) => {
+                          e.preventDefault()
+                          field.onChange(!field.value)
+                        }} className='btn-primary px-4 p-2 block mb-7'>
+                          {field.value ? 'Товар на складе' : 'Товар недоступен'}
+                        </button>} /></div>
+                </div>
+                <div className={formStyles.details}>
+                  <h1 >Характеристики</h1>
+                  {fields.map((field, index) => {
+                    return (
+                      <section key={field.id}>
+                        <Field {...register(`details.${index}.name`, {
+                        })} placeholder="Название характеристики"
+                          error={errors.title}
+                          style={{ width: '20%', marginRight: '20px' }} />
+                        <Field {...register(`details.${index}.value`, {
+                        })} placeholder="Значение характеристики"
+                          error={errors.title}
+                          style={{ width: '20%', marginRight: '20px' }} />
+                        <Button type="button" onClick={() => remove(index)}>
+                          Удалить
+                        </Button>
+                      </section>
+                    );
+                  })}
+                  <Button
+                    type="button"
+                    style={{ marginRight: '10px' }}
+                    onClick={() => {
+                      append({
+                        name: "Новая характеристика",
+                        value: "в начале"
+                      });
                     }}
-                  />
+                  >
+                    Добавить в начало
+                  </Button>
+                  <Button
+                    type="button"
+                    style={{ marginRight: '10px' }}
+                    onClick={() => {
+                      prepend({
+                        name: "Новая характеристика",
+                        value: "в конце"
+                      });
+                    }}
+                  >
+                    Добавить в конец
+                  </Button>
                 </div>
 
 
@@ -240,6 +260,7 @@ const ProductEdit: FC = () => {
                     }
                   }}
                 />
+
 
                 <Buttons>Обновить</Buttons>
 

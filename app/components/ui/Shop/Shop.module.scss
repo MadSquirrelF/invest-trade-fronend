@@ -4,13 +4,15 @@
 	padding-bottom: 50px;
 	.wrapper {
 		@apply relative w-full h-full;
+
 		.settings {
-			@apply flex items-center mt-10;
+			@apply flex items-center justify-between  mt-10;
 		}
 		.top {
-			@apply flex-center-between;
+			@apply flex items-center justify-start;
+
 			.title {
-				@apply relative text-left;
+				@apply relative text-left  mr-10;
 				h1 {
 					@apply uppercase text-black font-bold;
 					font-size: 48px;
@@ -27,7 +29,7 @@
 			@apply w-full flex items-center justify-center mt-5;
 		}
 		.error {
-			@apply block text-center;
+			@apply block text-center mt-8;
 			h1 {
 				@apply font-bold;
 				font-size: 30px;
@@ -50,52 +52,91 @@
 				@apply relative border-gray-300 border  cursor-pointer text-center mb-7;
 				transition: all 0.2s ease-in-out;
 				border-radius: 10px;
-				width: 400px;
-				height: 550px;
+				width: 350px;
+				height: 490px;
 				background-color: rgb(252, 252, 252);
 				box-shadow: -3px 5px 0px #0000ff;
 				&:hover {
 					transform: scale(1.01);
 					box-shadow: -4px 7px 0px #0000ff;
 				}
-				.content {
-					@apply relative w-full px-5 pb-7 z-1 text-left;
-					h2 {
-						@apply text-black  font-black my-2;
-						font-size: 20px;
-					}
-					p {
-						@apply text-gray-600 font-normal;
-						font-size: 14px;
-						width: 280px;
-					}
-					.box {
-						@apply mt-3;
-
-						h3 {
-							@apply text-gray-700  font-bold;
-							font-size: 16px;
+				.cart {
+					@apply absolute flex items-center justify-start z-2;
+					padding: 5px 20px;
+					bottom: 0;
+					.button {
+						@apply bg-gray-300;
+						padding: 8px;
+						border-radius: 50%;
+						transition: all 0.2s ease-in-out;
+						svg {
+							@apply fill-primary;
+							height: 24px;
+							width: 24px;
 						}
-						.levelContainer {
-							@apply relative bg-gray-300 rounded-2xl;
-							width: 208px;
-							height: 16px;
-							.level {
-								@apply h-full w-0  rounded-2xl bg-primary;
-								&.one {
-									@apply w-1/4;
+
+						&:hover {
+							background-color: blue;
+							transition: all 0.2s ease-in-out;
+							svg {
+								@apply fill-white;
+							}
+						}
+						&:active {
+							transition: all 0.2s ease-in-out;
+							transform: translateY(3px);
+							background-color: rgb(4, 14, 163);
+						}
+					}
+
+					.cartAdd {
+						@apply relative flex justify-end mt-2;
+						.btn {
+							@apply relative  flex items-center  bg-gray-100 rounded-full;
+							padding: 8px 12px;
+							span {
+								@apply text-black font-bold mr-1;
+								font-size: 14px;
+							}
+
+							&:disabled {
+								@apply bg-gray-300;
+								&:hover {
+									background-color: red;
+									cursor: not-allowed;
 								}
-								&.two {
-									@apply w-1/3;
+							}
+							&:hover {
+								span {
+									transition: all 0.3s ease-in-out;
+									@apply text-white;
+									transform: translateX(7px);
 								}
-								&.three {
-									@apply w-1/2;
-								}
-								&.four {
-									width: 98%;
+								transition: all 0.3s ease-in-out;
+								background-color: green;
+								svg {
+									transition: all 0.2s ease-in-out;
+									transform: translateX(7px);
+									opacity: 0;
 								}
 							}
 						}
+					}
+				}
+				.content {
+					@apply relative w-full px-5 pb-7 z-1 text-left;
+					h2 {
+						@apply text-black  font-black mt-1;
+						font-size: 20px;
+						max-width: 250px;
+					}
+					h4 {
+						@apply text-gray-500  font-bold;
+					}
+					p {
+						@apply text-gray-700 font-normal mt-7;
+						font-size: 14px;
+						width: 280px;
 					}
 				}
 				.topFlex {
@@ -127,9 +168,6 @@
 					height: 40px;
 					border-radius: 10px 0px 10px 0px;
 					box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.56);
-					&.big {
-						height: 70px;
-					}
 				}
 				.rating {
 					@apply absolute  z-2 flex items-center mb-2;
@@ -145,68 +183,17 @@
 						font-size: 16px;
 					}
 				}
-				.cart {
-					@apply absolute block  z-2;
-					bottom: 20px;
-					right: 20px;
-					.productFunctions {
-						@apply flex items-center;
-						.button {
-							@apply bg-gray-300;
-							padding: 8px;
-							border-radius: 50%;
-							transition: all 0.2s ease-in-out;
-							svg {
-								@apply fill-primary;
-								height: 24px;
-								width: 24px;
-							}
-							&:hover {
-								@apply bg-primary;
-								transition: all 0.2s ease-in-out;
-								svg {
-									@apply fill-white;
-								}
-							}
-							&:active {
-								transition: all 0.2s ease-in-out;
-								transform: translateY(3px);
-								background-color: rgb(4, 14, 163);
-							}
-						}
-					}
-					.cartAdd {
-						@apply relative flex justify-end mt-2;
-						.btn {
-							@apply relative  flex items-center  bg-gray-100 rounded-full;
-							padding: 8px 12px;
-							span {
-								@apply text-black font-bold mr-1;
-								font-size: 14px;
-							}
 
-							&:hover {
-								span {
-									transition: all 0.3s ease-in-out;
-									@apply text-white;
-									transform: translateX(7px);
-								}
-								transition: all 0.3s ease-in-out;
-								@apply bg-primary;
-								svg {
-									transition: all 0.2s ease-in-out;
-									transform: translateX(7px);
-								}
-							}
-						}
-					}
-				}
 				.horizontal {
 					@apply absolute top-14 right-3 z-2 text-center;
-					top: 56px;
+					top: 45px;
 					right: 12px;
 					.box {
 						@apply relative text-center mb-3;
+						h3 {
+							@apply uppercase text-black  font-bold mt-1;
+							font-size: 10px;
+						}
 						.circle {
 							@apply flex items-center justify-center;
 							padding: 8px;
@@ -214,26 +201,32 @@
 							border-radius: 50%;
 							height: 60px;
 							margin: 0 auto;
+							svg {
+								fill: white;
+								font-size: 35px;
+							}
 
 							h5 {
 								@apply uppercase text-white font-black;
-								font-size: 36px;
+								font-size: 26px;
 							}
-							.blockText {
-								@apply flex;
-								height: 28px;
-								h6 {
-									@apply text-white  text-center  font-black;
-									font-size: 20px;
-								}
-								span {
-									@apply text-white font-semibold;
-									font-size: 12px;
-								}
+							h6 {
+								@apply text-white  text-center  font-black;
+								font-size: 26px;
 							}
-
 							&.blue {
-								background: linear-gradient(180deg, #0000ff 0%, #0303b4 100%);
+								background: linear-gradient(
+									180deg,
+									blue 0%,
+									rgb(1, 1, 192) 100%
+								);
+							}
+							&.red {
+								background: linear-gradient(
+									180deg,
+									red 0%,
+									rgb(151, 0, 0) 100%
+								);
 							}
 							&.blueGradient {
 								background: linear-gradient(
@@ -249,10 +242,6 @@
 									#2e2e2e 82.36%
 								);
 							}
-						}
-						h3 {
-							@apply text-black  font-medium;
-							font-size: 16px;
 						}
 					}
 				}

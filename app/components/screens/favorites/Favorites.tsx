@@ -1,14 +1,10 @@
 import { FC } from 'react'
-
-
-
 import FavoriteItem from './FavoriteItem'
 import styles from './Favorites.module.scss'
 import { useFavorites } from './useFavorites'
 import Meta from '@/utils/meta/Meta'
 import SkeletonLoader from '@/components/ui/heading/SkeletonLoader'
 import { getProductUrl } from 'config/url.config'
-import dynamic from 'next/dynamic'
 
 const Favorites: FC = () => {
   const { favoritesProducts, isLoading } = useFavorites()
@@ -43,7 +39,7 @@ const Favorites: FC = () => {
                     url: getProductUrl(product.slug),
                     title: product.title,
                     _id: product._id,
-                    logoPath: product.logo_image
+                    logoPath: product.brand[0].logo_image
                   }}
                 />
               ))

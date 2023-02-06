@@ -1,7 +1,6 @@
 import React from 'react';
-
 import styles from './NotFoundBlock.module.scss';
-import MissPageSticker from '../../../assets/images/misspage.png';
+import error404 from '@/assets/images/commons/404.png'
 import Image from 'next/image';
 import Heading from '../heading/Heading';
 import Button from '../form-elements/Button';
@@ -21,7 +20,7 @@ export const NotFoundBlock: React.FC = () => {
         </div>
 
         <div className={styles.image}>
-          <Image src={MissPageSticker} alt="MissPageSticker" />
+          <Image src={error404} alt="MissPageSticker" />
         </div>
 
 

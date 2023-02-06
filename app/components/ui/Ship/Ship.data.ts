@@ -2,7 +2,7 @@ import { IGalleryShip } from "./Ship.interface";
 import image_1 from '../../../assets/images/ship/4.png';
 import image_2 from '../../../assets/images/ship/2.png'
 import image_3 from '../../../assets/images/ship/3.png'
-import image_4 from '../../../assets/images/image_1.png';
+import image_4 from '../../../assets/images/commons/image_1.png';
 export const GalleryShipList: IGalleryShip = {
   items: [{
     id: '01',

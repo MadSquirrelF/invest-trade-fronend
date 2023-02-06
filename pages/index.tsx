@@ -1,11 +1,12 @@
 import Home from '@/components/screens/home/Home'
 import { IHome } from '@/components/screens/home/Home.interface'
-import { IAddItem } from '@/components/ui/Adds/addsContainer/add.interface'
+
 import { INewItem } from '@/components/ui/NewsMain/new.interface'
 import { ISlide } from '@/components/ui/slider/slider.interface'
 import { AddService } from '@/services/add.service'
 import { NewService } from '@/services/new.service'
 import { WorkService } from '@/services/work.service'
+import { IAdds } from '@/shared/types/product.types'
 import { getAddUrl, getNewUrl, getWorkUrl } from 'config/url.config'
 
 
@@ -48,11 +49,12 @@ export const getStaticProps: GetStaticProps = async () => {
 
     const { data: dataAdds } = await AddService.getAll()
 
-    const Adds: IAddItem[] = dataAdds.map((a) => ({
-      title: a.name,
-      link: getAddUrl(a.slug),
+    const Adds: IAdds[] = dataAdds.map((a) => ({
+      _id: a._id,
+      name: a.name,
+      slug: getAddUrl(a.slug),
       price: a.price,
-      imagePath: a.photo
+      photo: a.photo
     }))
 
 

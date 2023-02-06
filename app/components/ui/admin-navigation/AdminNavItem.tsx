@@ -4,6 +4,7 @@ import { FC } from 'react'
 import { INavItem } from './admin-navigation.interface'
 import styles from './AdminNavigation.module.scss'
 import cn from 'classnames'
+
 const AdminNavItem: FC<{ item: INavItem }> = ({ item: { link, title } }) => {
 
   const { asPath } = useRouter()

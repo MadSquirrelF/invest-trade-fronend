@@ -114,23 +114,19 @@
 
 			.slide {
 				@apply mb-6 overflow-hidden relative cursor-pointer;
-				border: 1px solid gray;
+				border: 1px solid #a0a0a0;
 				height: 522px;
-				border-radius: 0px;
 				width: 500px;
-				background-color: #efefef;
+				background-color: #fbfafa;
+				border-radius: 12px;
+				box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.46);
 				transition: all 0.2s ease-in-out;
 				&:hover {
-					background-color: #fbfafa;
-					border: 1px solid #a0a0a0;
-					box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.46);
-					transition: all 0.2s ease-in-out;
-					border-radius: 12px;
+					box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.637);
 					.content {
 						.user {
 							transition: all 0.2s ease-in-out;
 							box-shadow: none;
-							border-radius: 12px;
 						}
 					}
 				}
@@ -143,7 +139,7 @@
 						@apply absolute flex-center-between w-auto;
 						background-color: #fbfafa;
 						box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-						border-radius: 0px;
+						border-radius: 12px;
 						top: 45%;
 						left: 0;
 						.box {

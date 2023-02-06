@@ -6,7 +6,7 @@ import { IClouds } from '../Portfolio/cloud.interface'
 
 import Link from 'next/link'
 
-import footerBg from '@/assets/images/footerBg.jpg'
+import footerBg from '@/assets/images/Backgrounds/footerBg.jpg'
 
 import MaterialIcon from '../MaterialIcon'
 

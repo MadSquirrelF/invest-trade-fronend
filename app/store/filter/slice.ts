@@ -4,7 +4,8 @@ import { FilterSliceState, Sort, SortPropertyEnum, SortPropertyOrderEnum } from 
 const initialState: FilterSliceState = {
   searchValue: '',
   currentPage: 1,
-  categoryIds: '63a570091103121336665284',
+  categoryIds: '',
+  brandIds: '',
   sort: {
     name: 'Название',
     sortProperty: SortPropertyEnum.TITLE,
@@ -18,6 +19,9 @@ const filterSlice = createSlice({
   reducers: {
     setCategoryId(state, action: PayloadAction<string>) {
       state.categoryIds = action.payload;
+    },
+    setBrandId(state, action: PayloadAction<string>) {
+      state.brandIds = action.payload;
     },
     setSearchValue(state, action: PayloadAction<string>) {
       state.searchValue = action.payload;
@@ -33,11 +37,12 @@ const filterSlice = createSlice({
         state.currentPage = action.payload.currentPage;
         state.sort = action.payload.sort;
         state.categoryIds = action.payload.categoryIds;
+        state.brandIds = action.payload.brandIds;
       } else {
         state.currentPage = 1;
         state.categoryIds = '';
         state.sort = {
-          name: 'Название',
+          name: 'выбрать',
           sortProperty: SortPropertyEnum.TITLE,
           sortOrder: SortPropertyOrderEnum.DESC,
         };
@@ -47,7 +52,7 @@ const filterSlice = createSlice({
 
 })
 
-export const { setSort, setCurrentPage, setFilters, setSearchValue, setCategoryId } =
+export const { setSort, setCurrentPage, setFilters, setSearchValue, setCategoryId, setBrandId } =
   filterSlice.actions;
 
 export const { reducer } = filterSlice

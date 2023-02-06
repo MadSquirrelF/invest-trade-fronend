@@ -1,13 +1,13 @@
 import { axiosClassic } from "../api/interceptors"
-import { IProduct } from "@/shared/types/product.types"
+import { IGetProducts, IProduct } from "@/shared/types/product.types"
 import { getProductsUrl } from "../config/api.config"
 import axios from "../api/interceptors"
 import { IProductEditInput } from "@/components/screens/admin/product/product-edit.interface"
 
 export const ProductService = {
-  async getAll(searchTerm?: string, page?: string, orderBy?: string, sortBy?: string, categoryIds?: string) {
-    return axiosClassic.get<IProduct[]>(getProductsUrl(``), {
-      params: { searchTerm, page, orderBy, sortBy, categoryIds },
+  async getAll(searchTerm?: string, page?: string, orderBy?: string, sortBy?: string, categoryIds?: string, brandIds?: string) {
+    return axiosClassic.get<IGetProducts>(getProductsUrl(``), {
+      params: { searchTerm, page, orderBy, sortBy, categoryIds, brandIds },
     })
   },
   async getMostPopularProducts() {

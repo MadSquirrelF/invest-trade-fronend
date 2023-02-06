@@ -1,13 +1,13 @@
 import { FC } from 'react'
-import { IAddItem } from './add.interface'
-import styles from '../Add.module.scss'
+import styles from '@/components/ui/Adds/Add.module.scss'
 import AddItem from './AddItem'
+import { IAdds } from '@/shared/types/product.types'
 
 
-const AddContainer: FC<{ items: IAddItem[] }> = ({ items }) => {
+const AddContainer: FC<{ items: IAdds[] }> = ({ items }) => {
   return (
     <div className={styles.gallery}>
-      {items.map(item => (<AddItem item={item} key={item.link} />))}
+      {items.map((item) => (<AddItem item={item} key={item._id} />))}
     </div>
   )
 }

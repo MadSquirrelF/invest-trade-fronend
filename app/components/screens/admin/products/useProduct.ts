@@ -15,15 +15,15 @@ export const useProduct = () => {
 
   const [searchTerm, setSearchTerm] = useState('')
   const debouncedSearch = useDebounce(searchTerm, 500)
-  const { currentPage, sort } = useSelector(selectFilter)
+  const { currentPage } = useSelector(selectFilter)
 
 
-  const queryData = useQuery(['product list', debouncedSearch, currentPage, sort.sortOrder], () =>
-    ProductService.getAll(debouncedSearch, String(currentPage), sort.sortOrder), {
-    select: ({ data }) => data.map((product): ITableItem => ({
+  const queryData = useQuery(['product list', debouncedSearch, currentPage], () =>
+    ProductService.getAll(debouncedSearch, String(currentPage)), {
+    select: ({ data }) => data.data.map((product): ITableItem => ({
       _id: product._id,
       editUrl: getAdminUrl(`product/edit/${product._id}`),
-      items: [product.title, getCategoriesList(product.category), String(product.rating)]
+      items: [product.title, getCategoriesList(product.category), String(product.count_on_store), String(product.rating), String(product.is_available)]
     })),
     onError: (error) => {
       toastError(error, 'Список товара')

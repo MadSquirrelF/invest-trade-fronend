@@ -33,7 +33,7 @@ const CategoryItems: FC<{ items: ICategoryItem[] }> = ({ items }) => {
           <div className={styles.image}>
             <MaterialIcon name='MdDehaze' />
           </div>
-          <h3>Катагории</h3>
+          <h3>Категории</h3>
         </div>
       )}
 

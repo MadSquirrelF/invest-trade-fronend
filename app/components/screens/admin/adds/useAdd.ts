@@ -21,7 +21,7 @@ export const useAdd = () => {
       items: [add.name, String(add.price)]
     })),
     onError: (error) => {
-      toastError(error, 'Список пользователей')
+      toastError(error, 'Список брендов')
     }
   })
 
@@ -44,10 +44,10 @@ export const useAdd = () => {
   const { mutateAsync: deleteAsync } = useMutation('delete add', (AddId: string) =>
     AddService.deleteAdd(AddId), {
     onError: (error) => {
-      toastError(error, 'Удаление пользователя')
+      toastError(error, 'Удаление добавки')
     },
     onSuccess: () => {
-      toastr.success('Удаление пользователя', 'Пользователь успешно удален')
+      toastr.success('Удаление добавки', 'Добавки успешно удален')
       queryData.refetch()
     }
   })

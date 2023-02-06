@@ -4,7 +4,7 @@ import Head from 'next/head'
 
 import { ISeo } from './meta.interface'
 
-import logoImage from '@/assets/images/test_logo_invest.svg'
+import logoImage from '@/assets/images/icons/test_logo_invest.svg'
 
 import { useRouter } from 'next/router'
 import { siteName, titleMerge } from '../../config/seo.config'

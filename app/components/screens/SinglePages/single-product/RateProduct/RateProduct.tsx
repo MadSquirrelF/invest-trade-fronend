@@ -4,7 +4,7 @@ import { useRateProduct } from "./useRateProduct";
 import styles from './RateProduct.module.scss'
 import AuthButton from "@/components/ui/AuthPlaceholder/AuthButton";
 import { StarRating } from 'star-rating-react-ts'
-import { colors } from "react-select/dist/declarations/src/theme";
+
 
 const RateProduct: FC<{ slug: string; _id: string }> = ({ slug, _id }) => {
   const { user } = useAuth()

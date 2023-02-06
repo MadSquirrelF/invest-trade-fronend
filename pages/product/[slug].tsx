@@ -21,10 +21,9 @@ const SingleProductPage: NextPage<{
 export const getStaticPaths: GetStaticPaths = async () => {
   try {
     const { data: products } = await ProductService.getAll()
-    const paths = products.map((product) => ({
+    const paths = products.data.map((product) => ({
       params: { slug: product.slug },
     }))
-
     return { paths, fallback: 'blocking' }
   } catch {
     return {

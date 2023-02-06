@@ -23,6 +23,10 @@ export const navItems: INavItem[] = [
     link: getAdminUrl('categories')
   },
   {
+    title: 'Бренд',
+    link: getAdminUrl('brands')
+  },
+  {
     title: 'Новости',
     link: getAdminUrl('news')
   },

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import styles from './About.module.scss'
-import aboutimg from '@/assets/images/aboutdetail2.png'
+import aboutimg from '@/assets/images/commons/aboutdetail2.png'
 import CountUp from 'react-countup'
 
 const Aboutdetailed = () => {

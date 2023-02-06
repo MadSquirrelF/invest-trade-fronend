@@ -1,9 +1,9 @@
+import { IAdds } from '@/shared/types/product.types'
 import { FC } from 'react'
 import styles from './Add.module.scss'
-import { IAddItem } from './addsContainer/add.interface'
 import AddContainer from './addsContainer/AddContainer'
 
-const Add: FC<{ adds: IAddItem[] }> = ({ adds }) => {
+const Add: FC<{ adds: IAdds[] }> = ({ adds }) => {
   return (
     <section className={styles.Add}>
       <div className={styles.content}>

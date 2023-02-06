@@ -4,17 +4,23 @@ import Meta from "@/utils/meta/Meta";
 import { FC, useState } from "react";
 import { useUpdateCountOpened } from "./useUpdateCountOpened";
 import styles from './SingleProduct.module.scss'
-import Image from "next/image";
-import Heading from "@/components/ui/heading/Heading";
 import { stripHtml } from "string-strip-html";
 import FavoriteButton from "@/components/ui/Shop/FavoriteButton/FavoriteButton";
 import MaterialIcon from "@/components/ui/MaterialIcon";
 import dynamic from "next/dynamic";
 import cn from 'classnames'
 import { CSSTransition } from 'react-transition-group'
-import Gallery from "@/components/ui/gallery/Gallery";
+import Image from 'next/image'
+import Button from "@/components/ui/form-elements/Button";
+import { useRouter } from "next/router";
+import AddItem from "@/components/ui/Adds/addsContainer/AddItem";
+import Link from "next/link";
+
 
 const DynamicRateProduct = dynamic(() => import('./RateProduct/RateProduct'), {
+  ssr: false,
+})
+const DynamicAdds = dynamic(() => import('@/components/ui/Adds/addsContainer/AddContainer'), {
   ssr: false,
 })
 
@@ -24,17 +30,29 @@ const SingleProduct: FC<{ product: IProduct; similarProducts: IGalleryItem[] }> 
 }) => {
   useUpdateCountOpened(product.slug)
 
+  const { query, push } = useRouter()
+
+  const redirect = query.redirect ? String(query.redirect) : '/'
+
   const [activeMenu, setActiveMenu] = useState(true)
 
   const [activeInfo, setActiveInfo] = useState(false)
+
   return (
     <Meta title={product.title} description={`Товар ${product.title}`}>
       <section className={styles.root}>
         <div className={styles.wrapper}>
-          <h5 >{product.title}</h5>
+          <div className={styles.head}>
+            <Button onClick={() => push(redirect)} className={styles.roundBtn}><MaterialIcon name='MdKeyboardArrowLeft' /></Button>
+            <div className={styles.title} style={{ padding: 0 }}>
+              <h1>{product.category[0].name}</h1>
+              <p>{stripHtml(product.category[0].description).result}</p>
+            </div>
+          </div>
+
           <div className={cn(styles.banner, { [styles.active]: activeMenu === false })}>
             <div className={styles.logo}>
-              <Image src={product.logo_image} alt={"product single logo"} height={70} width={150} draggable={false} priority />
+              <Image src={product.brand[0].logo_image} alt={"product single image"} height={50} width={200} draggable={false} priority />
             </div>
             <div className={styles.nav}>
               <div onClick={() => setActiveMenu(true)} className={cn(styles.box, { [styles.active]: activeMenu === true })}>
@@ -44,16 +62,14 @@ const SingleProduct: FC<{ product: IProduct; similarProducts: IGalleryItem[] }> 
                 <h2>Характеристики</h2>
               </div>
             </div>
-            {activeInfo && product.category[0].name === 'ПВХ профиль' && (<div className={styles.
+            {activeInfo && (<div className={styles.
               specifications}>
-              <h1>Характеристика</h1>
+              <h1>Характеристики</h1>
               <div className={styles.stats}>
-                <h2><span>  {product.parameters.basic_profile_width} мм - </span> Базовая ширина профиля </h2>
-                <h2><span>  {product.parameters.count_cell} - </span>Количество воздушных камер </h2>
-                <h2><span>  {product.parameters.number_of_sealing_contours} - </span>Количество контуров уплотнения </h2>
-                <h2><span>  {product.parameters.double_glazed_window} мм - </span>Двухкамерный стеклопакет </h2>
-                <h2><span>  {product.parameters.color} - </span>Цвет контура уплотнения </h2>
-                <h2> <span>  {product.parameters.accessories} - </span>Фурнитура</h2>
+                {product.details.map((item, i) => (<div key={i} className={styles.stat}>
+                  <h2>{item.name} : </h2>
+                  <span>{item.value}</span>
+                </div>))}
               </div>
             </div>)}
             <div className={styles.content}>
@@ -62,7 +78,7 @@ const SingleProduct: FC<{ product: IProduct; similarProducts: IGalleryItem[] }> 
               <div className={styles.container}>
                 <CSSTransition in={activeMenu} onEnter={() => setActiveInfo(false)} onExited={() => setActiveInfo(true)} classNames='slide-animation' timeout={300} unmountOnExit>
                   <>
-                    <div className={styles.title}>
+                    <div className={styles.title} style={{ padding: 0 }}>
                       <h1>{product.title}</h1>
                     </div>
                     <div className={styles.row}>
@@ -71,13 +87,22 @@ const SingleProduct: FC<{ product: IProduct; similarProducts: IGalleryItem[] }> 
                         <MaterialIcon name='MdVisibility' />
                         <h3>{product.countOpened}</h3>
                       </div>
+                      <div className={styles.view}>
+                        <MaterialIcon name='MdStore' />
+                        <h3>{product.count_on_store}</h3>
+                      </div>
+                      <div className={cn(styles.available, { [styles.red]: product.is_available === false, [styles.green]: product.is_available === true })}>
+                        {product.is_available === true ? <MaterialIcon name='MdAssignmentTurnedIn' /> : <MaterialIcon name='MdAssignmentLate' />}
+                        <h6> : {product.is_available === true ? 'В Наличии' : 'Распродан'} </h6>
+                      </div>
+
                     </div>
                     <div className={styles.description_short}>
                       <p>{stripHtml(product.description_short).result}</p>
                     </div>
                     <DynamicRateProduct slug={product.slug} _id={product._id} />
                     <div className={styles.buttons}>
-                      <div className={styles.addCart}>
+                      <button disabled={product.is_available === false} className={styles.addCart}>
                         <span>Заказать</span>
                         <svg
                           width="18"
@@ -107,24 +132,18 @@ const SingleProduct: FC<{ product: IProduct; similarProducts: IGalleryItem[] }> 
                             strokeLinejoin="round"
                           />
                         </svg>
-                      </div>
+                      </button>
                       <FavoriteButton productId={product._id} />
                     </div>
                   </>
                 </CSSTransition>
                 {activeInfo && (<div className={styles.info}>
-                  <div className={styles.title}>
+                  <div className={styles.title} style={{ padding: 0 }}>
                     <h1>{product.title}</h1>
                   </div>
-                  <div className={styles.row}>
-                    <h4>{product.rating.toFixed(1)}</h4>
-                    <div className={styles.view}>
-                      <MaterialIcon name='MdVisibility' />
-                      <h3>{product.countOpened}</h3>
-                    </div>
-                  </div>
+
                   <div className={styles.description_full}>
-                    <h2>Описание товара:</h2>
+                    <h2>Полное описание:</h2>
                     <p>{stripHtml(product.description_full).result}</p>
                   </div>
 
@@ -133,14 +152,47 @@ const SingleProduct: FC<{ product: IProduct; similarProducts: IGalleryItem[] }> 
               </div>
 
             </div>
-            <div className={cn(styles.image, { [styles.big]: product.category[0].name !== 'ПВХ профиль' })}>
+            <div className={cn(styles.image)}>
               <Image src={product.image} alt={"product single image"} fill draggable={false} priority />
             </div>
           </div>
-          <div className={styles.rating}>
-
+          <div className={styles.adds}>
+            <div className={styles.title} style={{ textAlign: 'right' }}>
+              <h1>Доступное
+                <span> Оснащение</span>
+              </h1>
+            </div>
+            {product.add.length === 0 ? (<div className={styles.center}>
+              <p>Дополнения отсутствуют</p>
+            </div>) : (<div className={styles.gallery} >
+              {product.add.map((item) => (<div className={styles.item} key={item._id}>
+                <h4>{item.name}</h4>
+                <div className={styles.image}>
+                  <Image src={item.photo} alt={item.name} fill draggable={false} priority />
+                </div>
+              </div>))}
+            </div>)}
+          </div>
+          <div className={styles.adds}>
+            <div className={styles.title}  >
+              <h1>Похожие
+                <span> товары</span>
+              </h1>
+            </div>
+            {similarProducts.length === 0 ? (<div className={styles.center}>
+              <p>Дополнения отсутствуют</p>
+            </div>) : (<div className={styles.gallery} >
+              {similarProducts.map((item, i) => (<Link href={item.url} className={styles.item} key={i}>
+                <div className={styles.image}>
+                  <Image src={item.posterPath} alt={item.name} fill draggable={false} />
+                </div>
+                <h4>{item.name}</h4>
+              </Link>))}
+            </div>)}
           </div>
         </div>
+
+
       </section>
     </Meta>
   )

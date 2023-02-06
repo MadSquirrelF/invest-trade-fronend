@@ -1,8 +1,6 @@
 import Image from 'next/image'
 import React, { FC } from 'react'
-
-import Lichinus from '@/assets/images/NotFound.png'
-import Link from 'next/link'
+import errorNotFound from '@/assets/images/commons/NotFound.png'
 import Heading from '../heading/Heading'
 import Button from '../form-elements/Button'
 import { useRouter } from 'next/router'
@@ -21,7 +19,7 @@ const CartEmpty: FC = () => {
         </div>
 
         <div className={styles.image}>
-          <Image src={Lichinus} alt="MissPageSticker" />
+          <Image src={errorNotFound} alt={'errorImage'} height={400} width={400} />
         </div>
 
 

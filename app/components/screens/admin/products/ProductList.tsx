@@ -25,8 +25,8 @@ const ProductList: FC = () => {
         <AdminNavigation />
         <Heading title='Все товары' />
         <AdminHeader handleSearch={handleSearch} searchTerm={searchTerm} onClick={createAsync} />
-        <AdminTable isLoading={isLoading} removeHandler={deleteAsync} headerItems={['Название', 'Категории', 'Рейтинг']} tableItems={data || []} />
-        <Pagination currentPage={currentPage} onChangePage={onChangePage} />
+        <AdminTable isLoading={isLoading} removeHandler={deleteAsync} headerItems={['Название', 'Категории', 'Количество', 'Рейтинг', 'В наличии?']} tableItems={data || []} />
+        <Pagination currentPage={currentPage} onChangePage={onChangePage} totalPages={10} />
       </div>
     </section>
   </Meta>

@@ -16,6 +16,14 @@ export interface INew {
   isSendTelegram?: boolean
 }
 
+export interface IBrand {
+  _id: string
+  name: string
+  slug: string
+  description: string
+  logo_image: string
+}
+
 export interface IWork {
   _id: string
   title: string
@@ -27,20 +35,9 @@ export interface IWork {
 }
 
 
-export interface IParametersProf {
-  rang: number
-  basic_profile_width: number
-  count_cell: number
-  accessories: string
-  color: string
-  double_glazed_window: number
-  number_of_sealing_contours: number
-}
-
-export interface ILevelParams {
-  warmInsulation: number
-  soundInsulation: number
-  lightInsulation: number
+export interface Settings {
+  name: string
+  value: string
 }
 
 export interface IAdds {
@@ -59,19 +56,27 @@ export interface ICategory {
   image: string
 }
 
+export interface IGetProducts {
+  data: IProduct[]
+  total: number
+  pageOf: number
+  last_page: number
+}
+
 export interface IProduct {
   category: ICategory[]
   add: IAdds[]
   _id: string
+  is_available: boolean
+  count_on_store: number
   image: string
-  logo_image: string
+  brand: IBrand[]
+  details: Settings[]
   title: string
-  levelSetting: ILevelParams
   rating: number
   countOpened: number
   slug: string
   description_short: string
   description_full: string
-  parameters: IParametersProf
   isSendTelegram?: boolean
 }

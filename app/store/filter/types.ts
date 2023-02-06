@@ -17,5 +17,6 @@ export interface FilterSliceState {
   searchValue: string
   currentPage: number
   sort: Sort
-  categoryIds: string;
+  categoryIds: string
+  brandIds: string
 }

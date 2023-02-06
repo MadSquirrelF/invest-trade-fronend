@@ -1,15 +1,16 @@
 import { FC } from 'react'
-import { IAddItemProps } from './add.interface'
-import styles from '../Add.module.scss'
+
+import styles from '@/components/ui/Adds/Add.module.scss'
 import Image from 'next/image'
+import { IAdds } from '@/shared/types/product.types'
 
 
-const AddItem: FC<IAddItemProps> = ({ item }) => {
+const AddItem: FC<{ item: IAdds }> = ({ item }) => {
   return (
     <div className={styles.item}>
-      <h4>{item.title}</h4>
+      <h4>{item.name}</h4>
       <div className={styles.image}>
-        <Image src={item.imagePath} alt={item.title} fill draggable={false} priority />
+        <Image src={item.photo} alt={item.name} fill draggable={false} priority />
       </div>
 
     </div>
