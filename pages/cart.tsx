@@ -1,13 +1,11 @@
 import Cart from '@/components/ui/Cart/Cart'
-import { NextPageAuth } from '@/shared/types/auth.types'
+import { NextPage } from 'next'
 
 
-const CartPage: NextPageAuth = () => {
+const CartPage: NextPage = () => {
   return (
     <Cart />
   )
 }
-
-CartPage.isOnlyUser = true
 
 export default CartPage

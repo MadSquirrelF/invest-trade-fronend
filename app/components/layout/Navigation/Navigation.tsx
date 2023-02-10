@@ -15,6 +15,8 @@ import dynamic from 'next/dynamic'
 import { setScroll } from '@/store/scroll/slice'
 import { useAuth } from '@/hooks/useAuth'
 import { useFavorites } from '@/components/screens/favorites/useFavorites'
+import SocialBox from './SocialBox/SocialBox'
+import ContactBox from './ContactBox/ContactBox'
 
 
 
@@ -37,6 +39,9 @@ const Navigation: FC = () => {
     <section className={cn(styles.header, { [styles.black]: scrollPosition > 50, [styles.blue]: scrollPosition > 700, [styles.blueGradientHome]: pathname !== '/', [styles.blueGradient]: scrollPosition > 3000 })}>
       <div className={styles.Topcontainer}>
         <Logo />
+
+        <SocialBox />
+        <ContactBox />
         <DynamicLogin />
         <Modal>{type === 'login' ? (<LoginModal />) : (<RegistrationModal />)}</Modal>
       </div>

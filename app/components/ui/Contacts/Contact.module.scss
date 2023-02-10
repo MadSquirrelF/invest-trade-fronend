@@ -1,8 +1,8 @@
 .root {
 	@apply relative  z-1 w-full flex items-center justify-center;
-	height: 100vh;
+	height: 130vh;
 	flex-direction: column;
-	padding: 0;
+	padding: 0 10%;
 	img {
 		@apply absolute -z-1;
 	}
@@ -39,26 +39,10 @@
 		height: 750px;
 		border-radius: 10px 10px 0px 0px;
 
-		.content {
-			@apply relative h-32   w-full px-5 py-2;
-			background: rgba(254, 253, 253, 0.01);
-
-			box-shadow: inset 0px 50px 40px #000000;
-			backdrop-filter: blur(3px);
-
-			.icons {
-				@apply flex-center-between w-48;
-			}
-			.info {
-				@apply text-right;
-				h2 {
-					@apply text-white font-light;
-					font-size: 14px;
-				}
-			}
-		}
 		.footer {
-			@apply absolute flex-center-between bottom-0 w-full px-5 py-2;
+			@apply absolute flex justify-between items-center bottom-0 w-full px-5 py-2;
+			border-radius: 10px 10px 0 0;
+
 			h2 {
 				@apply text-white  font-light;
 				font-size: 14px;
@@ -69,11 +53,11 @@
 			background: rgba(254, 253, 253, 0.01);
 
 			box-shadow: inset 0px -10px 24px #000000;
-			backdrop-filter: blur(2px);
+			backdrop-filter: blur(15px);
 		}
 		.contact {
 			@apply absolute px-5 py-5 z-3;
-			top: 70%;
+			top: 60%;
 			left: 10%;
 			width: 420px;
 			height: 320px;
@@ -105,13 +89,14 @@
 			@apply relative w-full;
 			height: 70%;
 			border-radius: 10px;
+			background: rgba(254, 253, 253, 0.01);
+
+			box-shadow: inset 0px -10px 24px #000000;
+			backdrop-filter: blur(15px);
 
 			iframe {
 				border-radius: 10px;
-			}
-			.Map {
-				@apply absolute w-full h-full top-0 left-0;
-				border-radius: 10px;
+				padding: 20px;
 			}
 		}
 	}

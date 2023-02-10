@@ -2,9 +2,11 @@ import LoginFields from '@/components/layout/Navigation/MenuContainer/auth/Login
 import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'
 import { useAuthRedirect } from '@/hooks/useAuthRedirect'
+import { hideModal } from '@/store/modal/modal.slice'
 import Link from 'next/link'
 import { FC, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
 import Button from '../form-elements/Button'
 import Heading from '../heading/Heading'
 import { ILoginInput } from './auth.interface'
@@ -25,7 +27,7 @@ const LoginModal: FC = () => {
   })
 
   const { login } = useActions()
-
+  const dispatch = useDispatch()
 
   const onSubmit: SubmitHandler<ILoginInput> = (data) => {
     login(data)
@@ -46,7 +48,7 @@ const LoginModal: FC = () => {
       </div>
 
 
-      <p >Продолжая, вы соглашаетесь <Link href='/'>со сбором и обработкой персональных данных и пользовательским соглашением</Link> </p>
+      <p >Продолжая, вы соглашаетесь <Link href='/privacy' onClick={() => dispatch(hideModal())}>со сбором и обработкой персональных данных и пользовательским соглашением</Link> </p>
     </form>
   </div>
 }

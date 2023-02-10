@@ -129,9 +129,6 @@ const ProductEdit: FC = () => {
                         options={adds || []}
                       />
                     )}
-                    rules={{
-                      required: 'Укажите хотя бы одну добавку',
-                    }}
                   />
                   <Controller
                     name="brand"

@@ -1,0 +1,46 @@
+.container {
+	@apply relative flex items-center;
+	.text {
+		@apply text-left relative mr-6;
+		h1 {
+			@apply text-white;
+			font-size: 15px;
+			font-weight: 700;
+		}
+		.onlineContainer {
+			display: flex;
+			align-items: center;
+			p {
+				@apply text-gray-300;
+				font-size: 13px;
+				font-weight: 300;
+				margin-right: 5px;
+			}
+			svg {
+				fill: rgb(0, 182, 0);
+				font-size: 16px;
+			}
+		}
+	}
+	.links {
+		a {
+			@apply font-bold text-link block;
+			font-size: 13px;
+		}
+	}
+
+	.onlineContainer {
+		display: flex;
+		align-items: center;
+		p {
+			@apply text-gray-500;
+			font-size: 13px;
+			font-weight: 300;
+		}
+		svg {
+			fill: rgb(0, 182, 0);
+			font-size: 16px;
+			margin-right: 5px;
+		}
+	}
+}

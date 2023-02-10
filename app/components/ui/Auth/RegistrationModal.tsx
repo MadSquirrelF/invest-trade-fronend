@@ -2,9 +2,11 @@ import RegistrationFields from '@/components/layout/Navigation/MenuContainer/aut
 import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'
 import { useAuthRedirect } from '@/hooks/useAuthRedirect'
+import { hideModal } from '@/store/modal/modal.slice'
 import Link from 'next/link'
 import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
 import Button from '../form-elements/Button'
 import Heading from '../heading/Heading'
 import { IRegistrationInput } from './auth.interface'
@@ -16,6 +18,7 @@ import styles from './auth.module.scss'
 const RegistrationModal: FC = () => {
 
   useAuthRedirect()
+  const dispatch = useDispatch()
 
   const { isLoading } = useAuth()
 
@@ -45,7 +48,7 @@ const RegistrationModal: FC = () => {
         <Button type='submit' disabled={isLoading}>Регистрация</Button>
       </div>
 
-      <p >Продолжая, вы соглашаетесь <Link href='/'>со сбором и обработкой персональных данных и пользовательским соглашением</Link></p>
+      <p >Продолжая, вы соглашаетесь <Link href='/privacy' onClick={() => dispatch(hideModal())}>со сбором и обработкой персональных данных и пользовательским соглашением</Link></p>
     </form>
   </div>
 }

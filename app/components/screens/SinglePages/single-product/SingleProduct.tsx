@@ -179,10 +179,11 @@ const SingleProduct: FC<{ product: IProduct; similarProducts: IGalleryItem[] }> 
                 <span> товары</span>
               </h1>
             </div>
-            {similarProducts.length === 0 ? (<div className={styles.center}>
+            {similarProducts.length === 0 ? (<div className={styles.center} style={{ textAlign: 'right', }}>
               <p>Дополнения отсутствуют</p>
+              <Image src={""} alt={""} />
             </div>) : (<div className={styles.gallery} >
-              {similarProducts.map((item, i) => (<Link href={item.url} className={styles.item} key={i}>
+              {similarProducts.slice(0, 7).map((item, i) => (<Link href={item.url} className={styles.item} key={i}>
                 <div className={styles.image}>
                   <Image src={item.posterPath} alt={item.name} fill draggable={false} />
                 </div>

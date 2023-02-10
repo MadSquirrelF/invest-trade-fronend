@@ -38,9 +38,9 @@ const Contact: FC<IContact> = ({ clouds: { clouds } }) => {
       </div>
       <div className={styles.wrapper}>
         <div className={styles.loadContent}>
-          <div className={styles.Map}>
-            <iframe src="https://yandex.ru/map-widget/v1/-/CCUjm4VnkD" width="100%" height="100%" allowFullScreen={true} ></iframe>
-          </div>
+
+          <iframe src="https://yandex.ru/map-widget/v1/-/CCUjm4VnkD" width="100%" height="100%" allowFullScreen={true} ></iframe>
+
           <div className={styles.contact}>
             <h1>КОНТАКТЫ</h1>
             <div className={styles.item}>
@@ -62,11 +62,16 @@ const Contact: FC<IContact> = ({ clouds: { clouds } }) => {
 
         </div>
         <div className={styles.footer}>
-          <h2>© 2022. Все права защищены</h2>
-          <Link href='/'>
+          <h2>© 2023. Все права защищены</h2>
+          <Link href='/privacy'>
             Политика конфиденциальности
           </Link>
-          <h2>Создан при поддержке - <a href='https://vk.com/bel044ka'>Шабанов А.А.</a> </h2>
+          <div className={styles.links}>
+            <h2>Создан при поддержке - <a href='https://vk.com/bel044ka'>Шабанов А.А.</a> </h2>
+            <h2>Freepik - <a href="https://ru.freepik.com/author/stories">Изображения от storyset</a> </h2>
+          </div>
+
+
 
         </div>
       </div>

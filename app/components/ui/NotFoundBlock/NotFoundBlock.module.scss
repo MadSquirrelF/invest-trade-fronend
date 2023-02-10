@@ -1,18 +1,20 @@
 .root {
 	@apply relative h-screen w-full;
 	.container {
-		@apply relative flex  items-center  p-10 bg-white rounded-xl;
+		@apply relative block text-center p-10 bg-white rounded-xl;
 		box-shadow: 1px 1px 5px blue;
-		margin-top: 300px;
-		.image {
-			@apply relative h-96 w-96;
-		}
+		margin-top: 200px;
+
 		.text {
 			p {
 				@apply text-lg my-4;
 			}
+			img {
+				margin: 0 auto;
+			}
 			button {
 				@apply relative;
+				margin-top: 30px;
 				a {
 					@apply relative w-full h-full;
 				}

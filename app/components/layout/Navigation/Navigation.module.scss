@@ -14,12 +14,12 @@
 		background: rgba(4, 0, 255, 0.01);
 		box-shadow: inset 0px -29px 90px #000000;
 		border-radius: 0px 0px 30px 30px;
-		backdrop-filter: blur(10px);
+		backdrop-filter: blur(15px);
 	}
 	&.blue {
 		background: rgba(4, 0, 255, 0.01);
 		box-shadow: inset 0px -35px 40px #0400ff42;
-		backdrop-filter: blur(10px);
+		backdrop-filter: blur(30px);
 		border-radius: 0px 0px 30px 30px;
 	}
 	&.blueGradient {

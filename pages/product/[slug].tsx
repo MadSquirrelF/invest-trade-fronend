@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const { data: product } = await ProductService.getBySlug(String(params?.slug))
 
     const responseSimilarProducts = await ProductService.getByCategory(
-      product.category.slice(0, 5).map((product) => product._id)
+      product.category.map((product) => product._id)
     )
 
     const similarProducts: IGalleryItem[] = responseSimilarProducts.data

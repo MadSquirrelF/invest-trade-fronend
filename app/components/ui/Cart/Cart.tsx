@@ -4,7 +4,7 @@ import { CartItem } from '@/store/cart/types'
 import React, { FC } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './Cart.module.scss'
-import CartEmpty from './CartEmpty'
+import CartEmpty from './CartEmpty/CartEmpty'
 
 const Cart: FC = () => {
 

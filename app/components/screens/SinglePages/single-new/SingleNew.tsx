@@ -44,14 +44,6 @@ const SingleNew: FC<{ item: INew }> = ({ item }) => {
 
           </div>
           <div className={styles.container}>
-
-
-            <div className={styles.text}>
-              <p>{stripHtml(item.description_full).result}</p>
-              <Link href={'/#news'}>
-                <MaterialIcon name={'MdWest'} />
-                <span>Вернуться к списку</span></Link>
-            </div>
             <div className={styles.images}>
               <div className={styles.banner}>
                 <Image src={item.image_1} alt={item.image_1} draggable={false} fill priority />
@@ -65,6 +57,15 @@ const SingleNew: FC<{ item: INew }> = ({ item }) => {
 
 
             </div>
+
+
+            <div className={styles.text}>
+              <p>{stripHtml(item.description_full).result}</p>
+              <Link href={'/#news'}>
+                <MaterialIcon name={'MdWest'} />
+                <span>Вернуться к списку</span></Link>
+            </div>
+
           </div>
 
 
