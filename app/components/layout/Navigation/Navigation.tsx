@@ -25,21 +25,17 @@ const DynamicLogin = dynamic(() => import('./MenuContainer/Login/LoginButton'), 
 
 const Navigation: FC = () => {
   const dispatch = useDispatch()
-  const [activeNav, setActiveNav] = useState(false)
   const { pathname } = useRouter()
   const { type } = useSelector(selectModal);
   const { scrollPosition } = useSelector(setScroll);
-  const { user } = useAuth()
-  const showNavigation = () => {
-    setActiveNav(!activeNav)
-    dispatch(setNav(!activeNav))
-  }
+
   const { favoritesProducts } = useFavorites()
+
+
   return (
     <section className={cn(styles.header, { [styles.black]: scrollPosition > 50, [styles.blue]: scrollPosition > 700, [styles.blueGradientHome]: pathname !== '/', [styles.blueGradient]: scrollPosition > 3000 })}>
       <div className={styles.Topcontainer}>
         <Logo />
-
         <SocialBox />
         <ContactBox />
         <DynamicLogin />
@@ -48,8 +44,7 @@ const Navigation: FC = () => {
       <hr />
       <div className={styles.Bottomcontainer}>
         <MenuContainer />
-
-        <div className={styles.menutoogle} onClick={() => showNavigation()}  >
+        <div className={styles.menutoogle} onClick={() => dispatch(setNav(true))}  >
           <MaterialIcon name='MdOutlineMenu' />
         </div>
         <div className={styles.ButtonContainer}>

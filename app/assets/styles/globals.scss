@@ -34,7 +34,7 @@ section {
 }
 
 html::-webkit-scrollbar {
-	width: 0.8rem;
+	width: 5px;
 }
 
 html::-webkit-scrollbar-track {
@@ -44,6 +44,7 @@ html::-webkit-scrollbar-track {
 html::-webkit-scrollbar-thumb {
 	background: var(--primary-color);
 	border-radius: 5rem;
+	cursor: pointer;
 }
 
 html {

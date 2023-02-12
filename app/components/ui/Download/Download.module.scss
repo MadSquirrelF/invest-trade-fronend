@@ -31,7 +31,7 @@
 				@apply z-3 relative;
 				height: 100%;
 				width: 70%;
-				button {
+				.download {
 					@apply absolute bg-white text-center;
 					height: 176px;
 					width: 176px;
@@ -77,6 +77,18 @@
 						}
 					}
 				}
+				.downloadInfo {
+					@apply absolute  w-64 h-auto bg-white;
+					bottom: 0;
+					left: 0;
+					padding: 20px;
+					border-radius: 10px;
+					box-shadow: 0px 10px 10px black;
+					progress {
+						border-radius: 50%;
+						color: blue;
+					}
+				}
 			}
 			.container {
 				@apply flex items-center justify-evenly bottom-0 mt-10 z-3;
@@ -88,28 +100,34 @@
 				}
 				.flexbox {
 					@apply flex items-center justify-center;
-					.box {
-						@apply block  bg-white text-center  mr-6;
-						height: 96px;
-						padding: 12px;
-						box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.459);
-						&:last-child {
-							@apply mr-0;
-						}
-						cursor: pointer;
+					ul {
+						display: flex;
+						li {
+							background-color: rgb(255, 255, 255);
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							width: auto;
+							box-shadow: -4px 3px 2px rgb(212, 212, 212);
+							height: auto;
+							padding: 7px 15px;
+							border-radius: 30px 0px 30px 0px;
+							position: relative;
+							margin-right: 10px;
+							cursor: pointer;
+							transition: all 0.2s ease-in-out;
 
-						border-radius: 10px;
+							&:hover {
+								box-shadow: -4px 3px 2px rgb(139, 139, 139);
+							}
 
-						h3 {
-							@apply text-center font-bold mt-2;
-							font-size: 16px;
-						}
-						img {
-							@apply block text-center;
-							margin: 0 auto;
-						}
-						&.active {
-							box-shadow: 0px 6px 4px rgb(4, 0, 255);
+							&:active {
+								box-shadow: -4px 3px 2px rgba(0, 0, 255, 0.637);
+							}
+
+							&.active {
+								box-shadow: -4px 3px 2px rgb(0, 0, 255);
+							}
 						}
 					}
 				}
@@ -220,7 +238,7 @@
 			}
 			.wrapper {
 				.catalog {
-					button {
+					.download {
 						height: 100px;
 						width: 100px;
 						padding: 20px;

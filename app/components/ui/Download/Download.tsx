@@ -9,6 +9,7 @@ import MaterialIcon from '../MaterialIcon'
 import cn from 'classnames'
 
 import useDownloader from "react-use-downloader";
+import Button from '../form-elements/Button'
 
 interface ICatalog {
   filename: string
@@ -44,7 +45,7 @@ const data: ICatalog[] = [{
 
 const Download: FC = () => {
   const [activeIndex, setActiveIndex] = useState(0)
-  const { download } = useDownloader()
+  const { size, elapsed, percentage, download, cancel, error } = useDownloader()
   return (
     <section className={styles.root} id={'catalog'}>
 
@@ -57,28 +58,35 @@ const Download: FC = () => {
         <div className={styles.wrapper} >
           <div className={styles.catalog}>
             <Image src={catalog} priority draggable={false} alt={'catalog'} height={700} width={1000} />
-            <button onClick={() => download(data[activeIndex].fileUrl, data[activeIndex].filename)}>
+            <button className={styles.download} onClick={() => download(data[activeIndex].fileUrl, data[activeIndex].filename)}>
               <div>
                 <h1>PDF <br /> <span>{data[activeIndex].weight}</span></h1>
                 <MaterialIcon name='MdDownload' />
               </div>
             </button>
+            <div className={styles.downloadInfo}>
+              <label htmlFor="file">Прогресс загрузки:</label>
+              <progress id="file" value={percentage} max="100" />
+              <p>Размер загрузки {size} байт</p>
+              <p>Осталось ждать: {elapsed} сек</p>
+              <Button style={{ backgroundColor: 'red', marginTop: 10 }} onClick={() => cancel()}>Отменить</Button>
+              {error && <p>possible error {JSON.stringify(error)}</p>}
+            </div>
           </div>
           <div className={styles.container}>
             <h2>Выберите каталог, который хотите скачать <br /> и нажмите на кнопку</h2>
             <div className={styles.flexbox}>
-              <div className={cn(styles.box, { [styles.active]: activeIndex === 0 })} onClick={() => setActiveIndex(0)}>
-                <Image src={data[0].image} alt={data[0].name} height={50} width={100} draggable={false} priority />
-                <h3>{data[0].weight}</h3>
-              </div>
-              <div className={cn(styles.box, { [styles.active]: activeIndex === 1 })} onClick={() => setActiveIndex(1)}>
-                <Image src={data[1].image} alt={data[0].name} height={50} width={100} draggable={false} priority />
-                <h3>{data[1].weight}</h3>
-              </div>
-              <div className={cn(styles.box, { [styles.active]: activeIndex === 2 })} onClick={() => setActiveIndex(2)}>
-                <Image src={data[2].image} alt={data[0].name} height={50} width={50} draggable={false} priority />
-                <h3>{data[2].weight}</h3>
-              </div>
+              <ul>
+                <li className={cn(styles.box, { [styles.active]: activeIndex === 0 })} onClick={() => setActiveIndex(0)}>
+                  <Image src={data[0].image} alt={data[0].name} priority draggable={false} width={90} height={40} />
+                </li>
+                <li className={cn(styles.box, { [styles.active]: activeIndex === 1 })} onClick={() => setActiveIndex(1)}>
+                  <Image src={data[1].image} alt={data[1].name} priority draggable={false} width={90} height={40} />
+                </li>
+                <li className={cn(styles.box, { [styles.active]: activeIndex === 2 })} onClick={() => setActiveIndex(2)}>
+                  <Image src={data[2].image} alt={data[2].name} priority draggable={false} width={90} height={40} />
+                </li>
+              </ul>
             </div>
           </div>
 
