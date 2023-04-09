@@ -4,6 +4,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './Sort.module.scss'
 import cn from 'classnames'
+import { useOnClickOutside } from '@/hooks/useOnClickOutside';
 type SortItem = {
   name: string;
   sortProperty: SortPropertyEnum;
@@ -34,26 +35,11 @@ export const Sort: React.FC<SortPopupProps> = React.memo(function Sort({ value }
 
   const sortRef = React.useRef<HTMLDivElement>(null);
 
+  useOnClickOutside(sortRef,() => setVisiblePopup(false))
   const changeSort = (obj: SortItem) => {
     dispatch(setSort(obj));
     setVisiblePopup(false);
   };
-
-  React.useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const _event = event as PopupClick;
-
-      if (sortRef.current && _event.path.includes(sortRef.current, 0) === false) {
-
-        setVisiblePopup(false);
-      }
-
-    };
-    document.body.addEventListener('click', handleClickOutside);
-    return () => {
-      document.body.removeEventListener('click', handleClickOutside);
-    };
-  }, []);
 
   return (
     <div ref={sortRef} className={styles.sort}>

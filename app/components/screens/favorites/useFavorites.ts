@@ -1,6 +1,8 @@
 import { useAuth } from '@/hooks/useAuth'
 import { UserService } from '@/services/user.service'
-import { useQuery } from 'react-query'
+import { toastError } from '@/utils/toastError'
+import { useMutation, useQuery } from 'react-query'
+import { toastr } from 'react-redux-toastr'
 
 
 export const useFavorites = () => {
@@ -16,5 +18,16 @@ export const useFavorites = () => {
     enabled: !!user
   })
 
-  return { isLoading, favoritesProducts, refetch }
+  const { mutateAsync: deleteAsync } = useMutation('delete favorites', () =>
+  UserService.removeFavorite(), {
+    onError: (error) => {
+      toastError(error, 'Удаление избранного')
+    },
+    onSuccess: () => {
+      toastr.success('Удаление избранного', 'Избранное успешно удалено')
+      refetch()
+    }
+  })
+
+  return { isLoading, favoritesProducts, refetch, deleteAsync }
 }

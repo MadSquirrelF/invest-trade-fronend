@@ -22,6 +22,9 @@ export const UserService = {
   async toggleFavorite(productId: string) {
     return axios.put(getUsersUrl('/profile/favorites'), { productId })
   },
+  async removeFavorite() {
+    return axios.put(getUsersUrl('/profile/favorites/remove'))
+  },
   async getProfile() {
     return axios.get<IUser>(getUsersUrl('/profile'))
   },

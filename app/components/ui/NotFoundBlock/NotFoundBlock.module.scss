@@ -2,7 +2,6 @@
 	@apply relative h-screen w-full;
 	.container {
 		@apply relative block text-center p-10 bg-white rounded-xl;
-		box-shadow: 1px 1px 5px blue;
 		margin-top: 200px;
 
 		.text {
