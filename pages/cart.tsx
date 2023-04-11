@@ -1,4 +1,4 @@
-import Cart from '@/components/ui/Cart/Cart'
+import Cart from '@/components/screens/cart/Cart'
 import { NextPage } from 'next'
 
 

@@ -1,8 +1,11 @@
 export type CartItem = {
-  id: string;
-  title: string;
-  count: number;
-  imageUrl: string;
+  id: string
+  name: string
+  image: string
+  brand: string
+  category:string
+  url: string
+  count: number
 };
 
 export interface CartSliceState {

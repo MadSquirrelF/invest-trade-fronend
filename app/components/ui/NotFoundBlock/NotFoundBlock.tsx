@@ -15,17 +15,8 @@ export const NotFoundBlock: React.FC = () => {
         <div className={styles.text}>
           <Heading title='Ошибка 404 - Страница не найдена или находится в разработке...'></Heading>
           <Image src={error404} alt="MissPageSticker" draggable={false} height={300} width={500} />
-          {/* <p>В настоящий момент сайт находится в бета версии и будет дорабатываться. Некоторые страницы могут находится в разработке или же вы перешли по несуществующему URL.</p> */}
           <Button onClick={() => push('/')}> Вернуться на главную страницу</Button>
-
         </div>
-
-
-
-
-
-
-
       </div>
     </section>
   );

@@ -2,9 +2,12 @@ import Image from 'next/image'
 import styles from './About.module.scss'
 import aboutimg from '@/assets/images/commons/aboutdetail2.png'
 import CountUp from 'react-countup'
+import Meta from '@/utils/meta/Meta'
 
 const Aboutdetailed = () => {
   return (
+    <Meta title={'О компании'} >
+   
     <section className={styles.root}>
 
       <div className={styles.container}>
@@ -58,6 +61,7 @@ const Aboutdetailed = () => {
 
 
     </section>
+    </Meta>
   )
 }
 

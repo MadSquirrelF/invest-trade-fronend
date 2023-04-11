@@ -4,7 +4,7 @@ import MaterialIcon from '@/components/ui/MaterialIcon'
 import Modal from '@/components/ui/Modal/Modal'
 import { selectModal, setNav } from '@/store/modal/modal.slice'
 import Link from 'next/link'
-import { FC, useState } from 'react'
+import { FC, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Logo from './Logo'
 import MenuContainer from './MenuContainer/MenuContainer'
@@ -13,10 +13,11 @@ import styles from './Navigation.module.scss'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 import { setScroll } from '@/store/scroll/slice'
-import { useAuth } from '@/hooks/useAuth'
 import { useFavorites } from '@/components/screens/favorites/useFavorites'
 import SocialBox from './SocialBox/SocialBox'
 import ContactBox from './ContactBox/ContactBox'
+import { selectCart } from '@/store/cart/selectors'
+import { CartItem } from '@/store/cart/types'
 
 
 
@@ -28,10 +29,20 @@ const Navigation: FC = () => {
   const { pathname } = useRouter()
   const { type } = useSelector(selectModal);
   const { scrollPosition } = useSelector(setScroll);
-
+  const isMounted = useRef(false);
   const { favoritesProducts } = useFavorites()
 
+  const { items } = useSelector(selectCart);
 
+  useEffect(() => {
+    if (isMounted.current) {
+      const json = JSON.stringify(items);
+      localStorage.setItem('cart', json);
+    }
+    isMounted.current = true;
+  }, [items]);
+
+  const totalCount = items.reduce((sum: number, item: CartItem) => sum + item.count, 0);
   return (
     <section className={cn(styles.header, { [styles.black]: scrollPosition > 50, [styles.blue]: scrollPosition > 700, [styles.blueGradientHome]: pathname !== '/', [styles.blueGradient]: scrollPosition > 3000 })}>
       <div className={styles.Topcontainer}>
@@ -93,7 +104,7 @@ const Navigation: FC = () => {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span>0</span>
+                <span>{totalCount}</span>
               </div>
             </Link>
           </div>

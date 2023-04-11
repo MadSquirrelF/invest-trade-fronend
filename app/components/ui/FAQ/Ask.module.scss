@@ -34,7 +34,7 @@
 			max-width: 70rem;
 			margin: 0 auto;
 			.item {
-				@apply bg-white mb-12;
+				@apply mb-12;
 				border-radius: 5px;
 				box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 				&.active {
@@ -55,8 +55,8 @@
 				}
 				.question {
 					@apply flex p-6 items-center gap-4 justify-between cursor-pointer;
-					background-color: #302f2f;
 					border-radius: 5px;
+					background:#302f2f;
 					.content {
 						@apply flex items-center;
 						.count {
@@ -73,7 +73,8 @@
 						}
 					}
 					svg {
-						@apply fill-white text-2xl;
+						@apply fill-white;
+						font-size: 20px;
 						transition: all 0.5s ease-in-out;
 					}
 				}

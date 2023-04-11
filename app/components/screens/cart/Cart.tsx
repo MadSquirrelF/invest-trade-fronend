@@ -1,42 +1,49 @@
 import { FC } from 'react'
-import FavoriteItem from './FavoriteItem'
-import styles from './Favorites.module.scss'
-import { useFavorites } from './useFavorites'
+import styles from './Cart.module.scss'
 import Meta from '@/utils/meta/Meta'
-import SkeletonLoader from '@/components/ui/heading/SkeletonLoader'
-import { getProductUrl } from 'config/url.config'
-import Image from 'next/image'
-import emptyWishlist from '@/assets/images/commons/emptyWishlist.jpg'
 import MaterialIcon from '@/components/ui/MaterialIcon'
 import Link from 'next/link'
 import Button from '@/components/ui/form-elements/Button'
-import FavoritesEmpty from './FavoritesEmpty/FavoritesEmpty'
+import CartEmpty from './CartEmpty/CartEmpty'
+import { clearItems } from '@/store/cart/slice'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectCart } from '@/store/cart/selectors'
+import CartItem, { CartItemProps } from './CartItem'
+import { useAuth } from '@/hooks/useAuth'
 
-const Favorites: FC = () => {
+const Cart: FC = () => {
 
-  const { favoritesProducts, isLoading, deleteAsync } = useFavorites()
+  const dispatch = useDispatch();
 
-  if (favoritesProducts?.length === 0) {
-    return <FavoritesEmpty/>
+  const { user } = useAuth();
+
+  const { items } = useSelector(selectCart);
+  
+  const totalCount = items.reduce((sum: number, item: any) => sum + item.count, 0);
+
+  const onClickClear = () => {
+    dispatch(clearItems());
+  };
+
+  if (items.length === 0) {
+    return <CartEmpty />;
   }
-
   return (
     <Meta title="Избранное">
-      <section className={styles.favorites}>
+      <section className={styles.cart}>
         <div className={styles.container}>
         <div className={styles.head}>
             <h1>Ваши  <br />
-              <span>избранные товары</span>
+              <span>выбранные товары</span>
             </h1>
           </div>
-          <p>Здесь собраны ваши сохранненые товары,
-            которые вы сможете заказать в один клик!</p>
+          <p>Это ваша корзина. Укажите количество товара и скорее заказывайте!</p>
           <div className={styles.top}>
             <h2 className={styles.title}>
-              <MaterialIcon name='MdFavorite'/>
-              Избранное
+              <MaterialIcon name='MdShoppingBasket'/>
+              Корзина
             </h2>
-            <div className={styles.clearPage} onClick={() => deleteAsync()}>
+            <div className={styles.clearPage} onClick={onClickClear}>
             <svg
               width="20"
               height="20"
@@ -74,39 +81,20 @@ const Favorites: FC = () => {
           </div>
           <div className={styles.items}>
             {
-              isLoading ? (
-                <SkeletonLoader
-                count={3}
-                className={styles.skeletonLoader}
-                containerClassName={styles.containerLoader}
-              />
-              ) : favoritesProducts?.length ? (favoritesProducts.map((product) => (
-                <FavoriteItem
-                key={product._id}
-                item={{
-                  name: product.title,
-                  image: product.image,
-                  url: getProductUrl(product.slug),
-                  _id: product._id,
-                  brand: product.brand[0].name,
-                  category: product.category[0].name
-                }}
-              />
-              ))) : (<div className={styles.emptyWishlist}>
-                <Image src={emptyWishlist} alt={'emptyWishlist'} draggable={false} height={300} width={500} />
-              </div>)
+              items.map((item:CartItemProps) => (
+                <CartItem key={item.id + item.name} {...item}/>
+              ))
             }
           </div>
           <div className={styles.bottom}>
             <div className={styles.details}>
               <span>
          
-              Всего товара: <b>{favoritesProducts?.length} шт.</b>
+              Всего товара: <b>{totalCount} шт.</b>
               </span>
-              <span>
-              {' '}
-              Добавить весь список в корзину? {' '}
-            </span>
+             {
+              user ? <span>Стоимость по смете</span> : <span>Войдите в аккаунти, чтобы оформить заказ!</span>
+             }
             </div>
             <div className={styles.actions}>
               <Link href={'/'} className={styles.return}>
@@ -126,23 +114,17 @@ const Favorites: FC = () => {
 
               <span>Вернуться назад</span>
               </Link>
-              <Button>
-                Перенести в корзину
+              <Button disabled={!user}>
+                Оформить заказ
               </Button>
+              
             </div>
           </div>
-          
-          
-
-
         </div>
-
-
-
       </section>
     </Meta>
   )
 }
 
-export default Favorites
+export default Cart
 
