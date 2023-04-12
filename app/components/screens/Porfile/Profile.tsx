@@ -23,7 +23,8 @@ import makeAnimated from 'react-select/animated'
 import styled from '../../ui/select/select.module.scss'
 import UploadField from '@/components/ui/form-elements/UploadField/UploadField'
 import { useRouter } from 'next/router'
-
+import InputMask from "react-input-mask";
+import React from 'react'
 
 
 
@@ -76,7 +77,8 @@ const Profile: FC = () => {
   }
 
   const { user } = useAuth()
-
+  console.log(user?.phone_number)
+  console.log(user?.username)
   return (
     <Meta title="Профиль">
       <section className={styles.root}>
@@ -106,8 +108,15 @@ const Profile: FC = () => {
             </div>
             <div className={styles.box}>
               <Heading title="Номер телефона" />
-              <h2>{user?.phone_number === '' ? user?.phone_number : 'Не указан'}</h2>
+              <h2>{user?.phone_number ? user?.phone_number : 'Не указан'}</h2>
+              
             </div>
+            {
+              user?.isAdmin ? (<div className={styles.box}>
+                <Heading title="ВЫ АДМИНИСТРАТОР" />
+              </div>) : null
+              
+            }
 
           </div>
           <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
@@ -115,7 +124,6 @@ const Profile: FC = () => {
               <div className={styles.fields}>
                 <Field
                   {...register('email', {
-                    required: 'Введите почту',
                     pattern: {
                       value: validEmail,
                       message: 'Неправильная введена почта!',
@@ -127,7 +135,6 @@ const Profile: FC = () => {
                 />
                 <Field
                   {...register('username', {
-                    required: 'Введите имя',
                     minLength: {
                       value: 3,
                       message: 'Имя должно быть больше 3 сим.!',
@@ -141,6 +148,24 @@ const Profile: FC = () => {
                   type="text"
                   error={errors.username}
                 />
+                <Controller
+                control={control}
+                name='phone_number'
+                defaultValue=''
+                render={({
+                  field: {onChange, value},
+                  fieldState: { error }
+                }) => (
+                  <InputMask
+                   mask="+7 (999) 999-99-99"
+                    alwaysShowMask
+                    value={value}
+                    onChange={onChange} >
+                      <Field type='text' placeholder='Номер телефона' error={error}/>
+                  </InputMask>
+                )}
+                />
+                
                 <Field
                   {...register(
                     'password',
@@ -162,9 +187,6 @@ const Profile: FC = () => {
                 <Controller
                   control={control}
                   name='sex'
-                  rules={{
-                    required: 'Укажите пол!'
-                  }}
                   render={({
                     field: { onChange, value },
                     fieldState: { error },
