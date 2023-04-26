@@ -66,7 +66,7 @@ const ShopItem: FC<{item:IProduct }> = ({item}) => {
               <div className={styles.topFlex}>
                 <div className={styles.image}>
                   <Link href={getProductUrl(item.slug)} >
-                    <Image src={item.image} alt={item.title} fill priority draggable={false} />
+                    <Image src={item.image} alt={item.title} fill draggable={false} />
                   </Link>
                 </div>
               </div>

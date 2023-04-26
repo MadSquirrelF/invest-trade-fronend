@@ -9,14 +9,15 @@ import { setCurrentPage } from '@/store/filter/slice'
 import { selectProductData } from '@/store/product/selectors'
 import { fetchProducts } from '@/store/product/asyncActions'
 import { useAppDispatch } from '@/store/store'
-import ProductLoader from './Skeleton'
 import error404 from '@/assets/images/commons/404.png'
 import errorNotFound from '@/assets/images/commons/NotFound.png'
 import Image from 'next/image'
 import { setScroll } from '@/store/scroll/slice'
 import BrandMenu from './Brands/BrandMenu'
 import ShopItem from './ShopItem'
+import dynamic from 'next/dynamic'
 
+const DynamicProductLoader = dynamic(() => import(`./Skeleton`), { ssr: false });
 
 const Shop: FC = () => {
 
@@ -45,7 +46,7 @@ const Shop: FC = () => {
     dispatch(setCurrentPage(page));
   };
 
-  const skeletons = [...new Array(6)].map((_, index) => <ProductLoader key={index} />);
+  const skeletons = [...new Array(6)].map((_, index) => <DynamicProductLoader key={index} />);
 
   return (
     <section className={styles.root} id={'shop'}>
@@ -83,7 +84,7 @@ const Shop: FC = () => {
           {skeletons}</div>)
           : items.data.length > 0 ? (<div className={styles.container}>
             {items.data.map((item) =>
-            (<ShopItem item={item}/>))}</div>)
+            (<ShopItem item={item} key={item._id}/>))}</div>)
             : (<div className={styles.center}><div className={styles.error}>
               <h1>Не удалось найти товар</h1>
               <p>

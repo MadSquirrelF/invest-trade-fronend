@@ -37,16 +37,16 @@ const About: FC<{ icons: IIcon }> = ({ icons }) => {
       </div>
       <div className={styles.Cards}>
         <div className={styles.box}>
-          <Image src={first} alt={'first'} draggable={false} fill />
+          <Image src={first} alt={'first'} draggable={false}  />
         </div>
         <div className={styles.box}>
-          <Image src={second} alt={'second'} draggable={false} fill />
+          <Image src={second} alt={'second'} draggable={false}  />
         </div>
         <div className={styles.box}>
-          <Image src={third} alt={'third'} draggable={false} fill />
+          <Image src={third} alt={'third'} draggable={false}  />
         </div>
         <div className={styles.box}>
-          <Image src={last} alt={'last'} draggable={false} fill />
+          <Image src={last} alt={'last'} draggable={false}  />
         </div>
       </div>
     </section>

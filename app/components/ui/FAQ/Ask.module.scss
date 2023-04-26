@@ -47,6 +47,8 @@
 
 					.answer {
 						@apply max-h-96 h-auto p-6 text-left;
+						background-color: white;
+						border-radius: 5px;
 						transition: all 0.5s cubic-bezier(1, 0, 1, 0);
 					}
 				}

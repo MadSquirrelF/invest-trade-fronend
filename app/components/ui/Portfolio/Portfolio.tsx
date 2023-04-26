@@ -34,9 +34,9 @@ const Portfolio: FC<IPorfolio> = ({ slides, clouds: { clouds } }) => {
           style={{ '--i': String(cloud.ind) }}
           alt={cloud.title}
           draggable={false}
-
+          quality={100}
           className={styles.cloud}
-          priority />))}
+         />))}
       </div>
     </section>
 

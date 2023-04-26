@@ -11,7 +11,7 @@ const Brands: FC<{ items: IBrandItem[] }> = ({ items }) => {
     <div className={styles.brands}>
       <ul>
         {items.map((item) => (
-          <BrandItem item={item} />
+          <BrandItem item={item} key={item._id} />
         ))}
       </ul>
     </div>
