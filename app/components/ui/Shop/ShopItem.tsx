@@ -61,6 +61,9 @@ const ShopItem: FC<{item:IProduct }> = ({item}) => {
               <div className={styles.rating}>
                 <MaterialIcon name="MdStarRate" />
                 <span>{item.rating.toFixed(1)}</span>
+
+
+                
               </div>
 
               <div className={styles.topFlex}>

@@ -3,7 +3,6 @@
     "@typescript-eslint",
     "react"
   ],
-  "root": true,
   "env": {
     "browser": true,
     "es2021": true
@@ -13,7 +12,7 @@
       "airbnb",
       "airbnb-typescript"
   ],
-  "import/extensions": false,
+
   "parserOptions": {
     "project": ["./tsconfig.json"],
     "ecmaFeatures": {
@@ -40,6 +39,10 @@
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "linebreak-style": 0,
     "import/no-cycle": 0,
+    "import/extensions": 0,
+    "react/no-array-index-key": 0,
+    "import/no-named-as-default": 0,
+    "no-nested-ternary": 0,
     // start. new rules after review Alex
     "@typescript-eslint/member-delimiter-style": "warn", 
     "@typescript-eslint/type-annotation-spacing": "warn",

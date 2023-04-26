@@ -37,6 +37,7 @@ const About: FC<{ icons: IIcon }> = ({ icons }) => {
       </div>
       <div className={styles.Cards}>
         <div className={styles.box}>
+
           <Image src={first} alt={'first'} draggable={false}  />
         </div>
         <div className={styles.box}>
