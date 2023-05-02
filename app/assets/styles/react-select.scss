@@ -1,103 +1,105 @@
 /* React Select */
 .custom-select {
-	&__control {
-		width: 300px !important;
-		margin-bottom: 25px !important;
-		box-shadow: none !important;
-		border: 0 !important;
-		border-bottom: 3px solid var(--primary-color) !important ;
-		&--menu-is-open {
-			border-color: var(--primary-color) !important;
-		}
-	}
+  &__control {
+    margin-bottom: 25px !important;
+    border: 0 !important;
+    border-bottom: 3px solid var(--primary-color) !important ;
+    width: 300px !important;
+    box-shadow: none !important;
 
-	&__value-container {
-		padding: 5 !important;
-		cursor: text !important;
-		color: black !important;
-	}
+    &--menu-is-open {
+      border-color: var(--primary-color) !important;
+    }
+  }
 
-	&__input-container {
-		color: black !important;
-	}
+  &__value-container {
+    padding: 5 !important;
+    color: black !important;
+    cursor: text !important;
+  }
 
-	&__indicator-separator {
-		display: none !important;
-	}
+  &__input-container {
+    color: black !important;
+  }
 
-	&__indicators {
-		cursor: pointer !important;
-	}
+  &__indicator-separator {
+    display: none !important;
+  }
 
-	&__indicator {
-		color: black !important;
+  &__indicators {
+    cursor: pointer !important;
+  }
 
-		&:hover {
-			color: var(--primary-color) !important;
-		}
-	}
+  &__indicator {
+    color: black !important;
 
-	&__multi-value {
-		background-color: var(--primary-color) !important;
-		border-radius: 0.5rem !important;
-		padding: 3px !important;
-		max-width: 100px;
-	}
+    &:hover {
+      color: var(--primary-color) !important;
+    }
+  }
 
-	&__multi-value__label {
-		font-size: 70% !important;
-		color: white !important;
-	}
+  &__multi-value {
+    border-radius: 0.5rem !important;
+    padding: 3px !important;
+    max-width: 100px;
+    background-color: var(--primary-color) !important;
+  }
 
-	&__multi-value__remove {
-		color: white !important;
+  &__multi-value__label {
+    font-size: 70% !important;
+    color: white !important;
+  }
 
-		&:hover {
-			background-color: transparent !important;
-			color: red !important;
-		}
-	}
+  &__multi-value__remove {
+    color: white !important;
 
-	&__menu {
-		background-color: white !important;
-		color: black !important;
-		border: 0 !important;
-		box-shadow: 1px 5px 7px rgba(0, 0, 0, 0.247) !important;
-	}
+    &:hover {
+      color: red !important;
+      background-color: transparent !important;
+    }
+  }
 
-	&__option {
-		cursor: pointer !important;
-		&--is-focused {
-			background-color: var(--primary-color) !important;
-			color: white !important;
-		}
-	}
+  &__menu {
+    border: 0 !important;
+    box-shadow: 1px 5px 7px rgb(0 0 0 / 24.7%) !important;
+    color: black !important;
+    background-color: white !important;
+  }
 
-	&-container {
-		div {
-			outline: none !important;
-			box-shadow: none !important;
-		}
+  &__option {
+    cursor: pointer !important;
 
-		.form-control__control {
-			transition-property: all !important;
-			transition-timing-function: ease-in-out !important;
-			transition-duration: 200ms !important;
-			border-color: var(--primary-color) !important;
-			box-shadow: none !important;
-		}
+    &--is-focused {
+      color: white !important;
+      background-color: var(--primary-color) !important;
+    }
+  }
 
-		&:hover,
-		&--menu-is-open {
-			border-color: var(--primary-color) !important;
-		}
+  &__menu {
+    @apply animate-scaleIn;
+  }
 
-		.form-control__indicators {
-			@apply cursor-pointer;
-		}
-	}
+  &-container {
+    div {
+      outline: none !important;
+      box-shadow: none !important;
+    }
 
-	&__menu {
-		@apply animate-scaleIn;
-	}
+    .form-control__control {
+      border-color: var(--primary-color) !important;
+      box-shadow: none !important;
+      transition-property: all !important;
+      transition-duration: 200ms !important;
+      transition-timing-function: ease-in-out !important;
+    }
+
+    .form-control__indicators {
+      @apply cursor-pointer;
+    }
+
+    &:hover,
+    &--menu-is-open {
+      border-color: var(--primary-color) !important;
+    }
+  }
 }

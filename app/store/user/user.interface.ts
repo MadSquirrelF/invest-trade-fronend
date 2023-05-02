@@ -32,6 +32,6 @@ export interface IRegistration {
 
 export interface IAuthResponse extends ITokens {
   user: IUser & {
-    isAdmin: boolean
-  }
+    isAdmin: boolean;
+  };
 }

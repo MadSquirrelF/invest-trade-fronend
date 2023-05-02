@@ -1,9 +1,12 @@
 import Link from 'next/link';
-import { FC, useEffect, useRef } from 'react';
+import {
+  FC, useEffect, useRef, useState,
+} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
+import { CSSTransition } from 'react-transition-group';
 import LoginModal from '@/components/ui/Auth/LoginModal';
 import RegistrationModal from '@/components/ui/Auth/RegistrationModal';
 import MaterialIcon from '@/components/ui/MaterialIcon';
@@ -17,7 +20,7 @@ import { useFavorites } from '@/components/screens/favorites/useFavorites';
 import SocialBox from './SocialBox/SocialBox';
 import ContactBox from './ContactBox/ContactBox';
 import { selectCart } from '@/store/cart/selectors';
-import { CartItem } from '@/store/cart/types';
+import { CartItemType } from '@/store/cart/types';
 
 const DynamicLogin = dynamic(() => import(`./MenuContainer/Login/LoginButton`), { ssr: false });
 
@@ -31,6 +34,10 @@ const Navigation: FC = () => {
 
   const { items } = useSelector(selectCart);
 
+  const [isInfoOpen, setIsInfoOpen] = useState(true);
+
+  const nodeRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (isMounted.current) {
       const json = JSON.stringify(items);
@@ -39,7 +46,7 @@ const Navigation: FC = () => {
     isMounted.current = true;
   }, [items]);
 
-  const totalCount = items.reduce((sum: number, item: CartItem) => sum + item.count, 0);
+  const totalCount = items.reduce((sum: number, item: CartItemType) => sum + item.count, 0);
 
   return (
     <section className={cn(styles.header, {
@@ -49,15 +56,35 @@ const Navigation: FC = () => {
       [styles.blueGradient]: scrollPosition > 3000,
     })}
     >
-      <div className={styles.Topcontainer}>
+      <div
+        className={styles.Topcontainer}
+
+      >
         <Logo />
-        <SocialBox />
-        <ContactBox />
+
+        <CSSTransition
+          in={isInfoOpen}
+          nodeRef={nodeRef}
+          timeout={300}
+          classNames="popup-animation"
+          unmountOnExit
+        >
+          <div
+            className={styles.ContactContainer}
+            ref={nodeRef}
+          >
+            <SocialBox />
+            <ContactBox />
+          </div>
+        </CSSTransition>
+
         <DynamicLogin />
         <Modal>{type === `login` ? (<LoginModal />) : (<RegistrationModal />)}</Modal>
       </div>
       <hr />
-      <div className={styles.Bottomcontainer}>
+      <div
+        className={styles.Bottomcontainer}
+      >
         <MenuContainer />
         <button
           type="button"
@@ -67,6 +94,13 @@ const Navigation: FC = () => {
           <MaterialIcon name="MdOutlineMenu" />
         </button>
         <div className={styles.ButtonContainer}>
+          <button
+            type="button"
+            className={styles.infotoogle}
+            onClick={() => setIsInfoOpen(!isInfoOpen)}
+          >
+            <MaterialIcon name="MdContactSupport" />
+          </button>
           <div className={styles.headerFavorites}>
             <Link href="/favorites">
               <MaterialIcon name="MdFavorite" />

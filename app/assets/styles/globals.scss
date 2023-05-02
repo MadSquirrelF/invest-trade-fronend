@@ -1,55 +1,56 @@
+@import "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;900&display=swap";
+@import "./react-select.scss";
+@import "react-redux-toastr/src/styles/index";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;900&display=swap');
-
-@import './react-select.scss';
-@import 'react-redux-toastr/src/styles/index';
-
 html {
-	font-size: 80.5%;
-	overflow-x: hidden;
-	scroll-padding-top: 9rem;
-	scroll-behavior: smooth;
-	padding: 0;
-	margin: 0;
-	font-family: 'Montserrat', sans-serif;
-	background: white;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat, sans-serif;
+  font-size: 80.5%;
+  background: white;
+  scroll-behavior: smooth;
+  scroll-padding-top: 9rem;
 }
+
 body {
-	padding: 0;
-	margin: 0;
-	font-family: 'Montserrat', sans-serif;
-	background: white;
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat, sans-serif;
+  background: white;
 }
 
 section {
-	padding: 10px 10%;
-	transition: all 0.7s ease-in-out;
-	@media (max-width: 900px) {
-		padding: 10px 5%;
-	}
+  padding: 0 10%;
+  transition: all 0.7s ease-in-out;
+
+  @media (width <= 900px) {
+    padding: 0 5%;
+  }
 }
 
 html::-webkit-scrollbar {
-	width: 5px;
+  width: 5px;
 }
 
 html::-webkit-scrollbar-track {
-	background: transparent;
+  background: transparent;
 }
 
 html::-webkit-scrollbar-thumb {
-	background: var(--primary-color);
-	border-radius: 5rem;
-	cursor: pointer;
+  border-radius: 5rem;
+  background: var(--primary-color);
+  cursor: pointer;
 }
 
 html {
-	-ms-text-size-adjust: 100%;
-	-webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 a,
@@ -60,88 +61,113 @@ h2,
 h3,
 h4,
 h5 {
-	color: black;
+  color: black;
 }
+
 p {
-	color: gray;
+  color: gray;
 }
 
 h1 {
-	font-size: 48px;
+  font-size: 48px;
 }
 
 h2 {
-	font-weight: 600;
-	font-size: 28px;
-	line-height: 30px;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 30px;
 }
 
 a {
-	color: inherit;
-	text-decoration: none;
+  text-decoration: none;
+  color: inherit;
 }
 
 :root {
-	--primary-color: #0000ff;
-	$black: #000000;
-	$gray-line: #c9c9c9;
-	$yellow: #effe1e;
-	$light-gray: #f3f3f7;
-	$text-gray: #5c6370;
+  --primary-color: #00f;
 
-	$container-width: 90%;
-
-	$duration: 0.15s;
+  $black: #000;
+  $gray-line: #c9c9c9;
+  $yellow: #effe1e;
+  $light-gray: #f3f3f7;
+  $text-gray: #5c6370;
+  $container-width: 90%;
+  $duration: 0.15s;
 }
 
-input[type='file'],
-input[type='file']::-webkit-file-upload-button {
-	@apply cursor-pointer focus:outline-none;
+input[type="file"],
+input[type="file"]::-webkit-file-upload-button {
+  @apply cursor-pointer focus:outline-none;
 }
 
 .admin-form {
-	@apply w-1/2;
-	margin-top: 48px;
+  margin-top: 48px;
+
+  @apply w-1/2;
 }
 
 input:focus {
-	box-shadow: none !important;
+  box-shadow: none !important;
 }
 
 * {
-	padding: 0;
-	margin: 0;
-	list-style: none;
-	outline: none;
-	font-family: 'Montserrat', sans-serif;
-	box-sizing: border-box;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Montserrat, sans-serif;
 }
 
 @mixin noselect {
-	-webkit-touch-callout: none; /* iOS Safari */
-	-webkit-user-select: none; /* Safari */
-	-khtml-user-select: none; /* Konqueror HTML */
-	-moz-user-select: none; /* Old versions of Firefox */
-	-ms-user-select: none; /* Internet Explorer/Edge */
-	user-select: none; /* Non-prefixed version, currently
+  user-select: none; /* Safari */
+  user-select: none; /* Konqueror HTML */
+  user-select: none; /* Old versions of Firefox */
+  user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Opera and Firefox */
+  -webkit-touch-callout: none; /* iOS Safari */
 }
 
 /* Slide animation */
 .slide-animation-enter {
-	opacity: 0;
-	transform: scale(0.9);
+  opacity: 0;
+  transform: scale(0.9);
 }
+
 .slide-animation-enter-active {
-	opacity: 1;
-	transform: translateX(0);
-	transition: opacity 300ms, transform 300ms;
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
 }
+
 .slide-animation-exit {
-	opacity: 1;
+  opacity: 1;
 }
+
 .slide-animation-exit-active {
-	opacity: 0;
-	transform: scale(0.9);
-	transition: opacity 300ms, transform 300ms;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.popup-animation-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.popup-animation-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.popup-animation-exit {
+  opacity: 1;
+}
+
+.popup-animation-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
 }

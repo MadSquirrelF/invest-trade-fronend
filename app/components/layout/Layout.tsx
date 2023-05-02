@@ -1,16 +1,18 @@
 import React, { FC } from 'react';
 
 import { useDispatch } from 'react-redux';
+import dynamic from 'next/dynamic';
 import { setScrollPositon } from '@/store/scroll/slice';
 import Up from '../ui/Up';
 import styles from './Layout.module.scss';
-import Navigation from './Navigation/Navigation';
 
 import Sidebar from './Sidebar/Sidebar';
 
 type Props = {
   children: React.ReactNode;
 };
+
+const DynamicHeader = dynamic(() => import(`./Navigation/Navigation`), { ssr: false });
 
 const Layout: FC<Props> = ({ children }) => {
   const dispatch = useDispatch();
@@ -30,12 +32,11 @@ const Layout: FC<Props> = ({ children }) => {
     window.addEventListener(`scroll`, handleScroll);
 
     return () => window.removeEventListener(`scroll`, handleScroll);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div className={styles.layout}>
-      <Navigation />
+      <DynamicHeader />
 
       <div className={styles.center}>
         {children}

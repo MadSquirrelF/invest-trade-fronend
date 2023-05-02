@@ -1,73 +1,99 @@
 .login {
-	@apply animate-fade relative;
-	.menu {
-		@apply relative flex items-center cursor-pointer;
-		svg {
-			@apply fill-white;
-			font-size: 24px;
-		}
-		h2 {
-			@apply text-white ml-2 mr-1;
-			font-size: 16px;
-		}
-		.image {
-			@apply relative w-11 h-11 mr-1 rounded-full;
-			width: 44px;
-			height: 44px;
-			img {
-				@apply rounded-full;
-			}
-		}
-		&:hover {
-			svg {
-				@apply fill-yellow-700;
-			}
-			.image {
-				border: 2px solid #f5c521;
-			}
-		}
-		&:active {
-			svg {
-				transition: all 0.1s ease-in-out;
-				transform: translateY(3px);
-			}
-		}
-	}
-	.drop {
-		@apply absolute  bg-white animate-fade z-10;
-		padding: 8px;
-		box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.514);
-		top: calc(100% + 10px);
-		right: 0;
-		display: none;
-		border-radius: 10px;
-		-webkit-touch-callout: none; /* iOS Safari */
-		-webkit-user-select: none; /* Safari */
-		-khtml-user-select: none; /* Konqueror HTML */
-		-moz-user-select: none; /* Old versions of Firefox */
-		-ms-user-select: none; /* Internet Explorer/Edge */
-		user-select: none; /* Non-prefixed version, currently
+  .menu {
+    svg {
+      font-size: 24px;
+
+      @apply fill-white;
+    }
+
+    h2 {
+      font-size: 16px;
+
+      @media (width <= 500px) {
+        display: none;
+      }
+
+      @apply text-white ml-2 mr-1;
+    }
+
+    .image {
+      width: 44px;
+      height: 44px;
+
+      img {
+        @apply rounded-full;
+      }
+
+      @apply relative w-11 h-11 mr-1 rounded-full;
+    }
+
+    &:hover {
+      svg {
+        @apply fill-yellow-700;
+      }
+
+      .image {
+        border: 2px solid #f5c521;
+      }
+    }
+
+    &:active {
+      svg {
+        transform: translateY(3px);
+        transition: all 0.1s ease-in-out;
+      }
+    }
+
+    @apply relative flex items-center cursor-pointer;
+  }
+
+  .drop {
+    right: 0;
+    top: calc(100% + 10px);
+    display: none;
+    border-radius: 10px;
+    padding: 8px;
+    box-shadow: 1px 1px 10px rgb(0 0 0 / 51.4%);
+    user-select: none; /* Safari */
+    user-select: none; /* Konqueror HTML */
+    user-select: none; /* Old versions of Firefox */
+    user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
-		.box {
-			@apply flex items-center cursor-pointer px-2 py-1 rounded-lg;
-			padding: 4px 8px;
-			&:hover {
-				background-color: #f5c42169;
-			}
-			div {
-				@apply mr-1;
-				svg {
-					@apply text-black;
-					font-size: 22px;
-				}
-			}
-			span {
-				@apply font-medium;
-				font-size: 14px;
-			}
-		}
-		&.active {
-			display: block;
-		}
-	}
+    -webkit-touch-callout: none; /* iOS Safari */
+    .box {
+      padding: 4px 8px;
+      width: 100%;
+
+      div {
+        svg {
+          font-size: 22px;
+
+          @apply text-black;
+        }
+
+        @apply mr-1;
+      }
+
+      span {
+        font-size: 14px;
+
+        @apply font-medium;
+      }
+
+      &:hover {
+        background-color: #f5c42169;
+      }
+
+      @apply flex items-center cursor-pointer px-2 py-1 rounded-lg;
+    }
+
+    &.active {
+      display: block;
+    }
+
+    @apply absolute  bg-white animate-fade z-10;
+  }
+
+  @apply animate-fade relative;
 }

@@ -12,7 +12,7 @@
 	"rules": { 
 		"keyframes-name-pattern": null,
 		"selector-class-pattern": null,
-		
+		"no-descending-specificity": null,
 		"declaration-block-no-duplicate-properties": [
 			true,
 			{
@@ -84,6 +84,7 @@
 				]
 			}
 		],
+		
 		"scss/double-slash-comment-whitespace-inside": "always",
 		"scss/declaration-nested-properties": "never",
 		"function-no-unknown": null,

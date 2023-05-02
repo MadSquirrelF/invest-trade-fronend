@@ -1,5 +1,6 @@
 .header {
   position: fixed;
+  top: 0;
   z-index: 10;
   width: 100%;
   background: linear-gradient(
@@ -16,7 +17,30 @@
   }
 
   .Topcontainer {
-    padding-bottom: 16px;
+    padding: 16px;
+
+    .ContactContainer {
+      display: flex;
+      align-items: center;
+
+      @media (width <= 1400px) {
+        position: absolute;
+        right: 25%;
+        bottom: -127px;
+        z-index: 11;
+        display: block;
+        border-radius: 15px;
+        padding: 8px 16px;
+        text-align: left;
+        background: rgb(0 0 0 / 78.8%);
+        backdrop-filter: blur(11px);
+      }
+
+      @media (width <= 500px) {
+        right: 25%;
+        bottom: -200px;
+      }
+    }
 
     .logo {
       @apply relative h-14 w-64;
@@ -26,11 +50,13 @@
       }
     }
 
+    
+
     @apply flex-center-between z-2;
   }
 
   .Bottomcontainer {
-    padding-bottom: 16px;
+    padding-bottom: 10px;
 
     .menutoogle {
       display: none;
@@ -42,6 +68,21 @@
     }
 
     .ButtonContainer {
+      .infotoogle {
+        margin-right: 10px;
+
+        svg {
+          font-size: 40px;
+          fill: #F5C521;
+          transition: all 0.2s ease-in-out;
+  
+          &:hover {
+            fill: #c29b1c;
+            transform: translateY(2px);
+          }
+        }
+      }
+
       .headerFavorites {
         position: relative;
         margin-right: 20px;
@@ -55,6 +96,10 @@
             &:hover {
               fill: #f00;
               transform: translateY(2px);
+            }
+
+            @media (width <= 450px) {
+              font-size: 30px;
             }
           }
         }
@@ -72,7 +117,21 @@
             @apply text-white;
           }
 
+          @media (width <= 450px) {
+            width: 15px;
+            height: 15px;
+
+            span {
+              font-weight: 700;
+              font-size: 10px;
+            }
+          }
+
           @apply absolute top-0 flex items-center justify-center right-0;
+        }
+
+        @media (width <= 450px) {
+          margin-right: 10px;
         }
       }
 
@@ -153,21 +212,39 @@
           @apply bg-white text-center items-center flex cursor-pointer;
         }
       }
+  
+      @media (width <= 1400px) {
+        .infotoogle {
+          display: block;
+        }
+      }
+
+      @media (width <= 450px) {
+        .infotoogle {
+          svg {
+            font-size: 30px;
+          }
+        }
+      }
 
       @apply flex-center-between;
     }
 
     @apply flex-center-between  z-2;
 
-    @media (width <= 1450px) {
+
+    @media (width <= 450px) {
+      .menutoogle {
+        svg {
+          font-size: 30px;
+        }
+      }
+    }
+
+    @media (width <= 1500px) {
       .menutoogle {
         display: inline-block;
         cursor: pointer;
-
-        svg {
-          font-size: 40px;
-          fill: white;
-        }
 
         &:hover {
           svg {

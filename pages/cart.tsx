@@ -1,11 +1,10 @@
-import Cart from '@/components/screens/cart/Cart'
-import { NextPage } from 'next'
+import { NextPage } from 'next';
+import dynamic from 'next/dynamic';
 
+const DynamicCart = dynamic(() => import(`../app/components/screens/cart/Cart`), { ssr: false });
 
-const CartPage: NextPage = () => {
-  return (
-    <Cart />
-  )
-}
+const CartPage: NextPage = () => (
+  <DynamicCart />
+);
 
-export default CartPage
+export default CartPage;

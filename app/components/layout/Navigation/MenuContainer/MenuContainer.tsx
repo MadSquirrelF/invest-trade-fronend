@@ -1,15 +1,9 @@
-import { FC } from 'react'
-import Menu from './Menu'
-import { firstMenu } from './menu.data'
+import { FC } from 'react';
+import Menu from './Menu';
+import { firstMenu } from './menu.data';
 
+const MenuContainer: FC = () => (
+  <Menu menu={firstMenu} />
+);
 
-
-const MenuContainer: FC = () => {
-  return (
-    <>
-      <Menu menu={firstMenu} />
-    </>
-  )
-}
-
-export default MenuContainer
+export default MenuContainer;

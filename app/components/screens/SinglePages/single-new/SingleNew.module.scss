@@ -1,158 +1,206 @@
 .root {
-	@apply relative h-screen w-full;
+  .wrapper {
+    margin-top: 200px;
 
-	.wrapper {
-		@apply relative;
-		margin-top: 200px;
-		.title {
-			@apply relative mb-2;
-			h1 {
-				@apply text-black font-black;
-				font-size: 30px;
-			}
-		}
-		hr {
-			@apply text-gray-500;
-		}
-		.container {
-			@apply py-10;
-			.images {
-				@apply relative pb-7 flex-center-between;
-				.banner {
-					@apply relative  rounded-xl;
-					height: 300px;
-					width: 450px;
-					margin-right: 10px;
-					box-shadow: 0px 1px 5px black;
-					&:last-child {
-						margin-right: 0px;
-					}
-					img {
-						@apply rounded-xl;
-					}
-				}
-				.adds {
-					@apply relative mt-6 flex items-center justify-evenly;
-					img {
-						@apply rounded-xl;
-						padding: 8px;
-					}
-				}
-			}
+    .title {
+      h1 {
+        font-size: 30px;
 
-			.text {
-				margin-top: 20px;
-				p {
-					@apply text-gray-900 text-left font-semibold;
-					font-size: 24px;
-					line-height: 1.625;
-				}
-				a {
-					@apply text-link mt-7 text-primary flex items-center;
-					span {
-						@apply text-black font-medium;
-					}
-					svg {
-						margin-right: 10px;
-						transition: all 0.2s ease-in-out;
-					}
-					&:hover {
-						svg {
-							transform: translateX(-2px);
-						}
-					}
-				}
-			}
-		}
+        @apply text-black font-black;
+      }
 
-		.info {
-			@apply flex items-center mt-2;
-			.box {
-				@apply flex items-center mr-4;
-				svg {
-					margin-right: 10px;
-					font-size: 24px;
-				}
+      @apply relative mb-2;
+    }
 
-				h2,
-				span,
-				p {
-					@apply text-black font-normal;
-					font-size: 20px;
-				}
-			}
-			.eye {
-				svg {
-					fill: blue;
-				}
-			}
-		}
-	}
+    hr {
+      @apply text-gray-500;
+    }
+
+    .container {
+      .images {
+        .banner {
+          position: relative;
+          overflow: hidden;
+          margin-right: 10px;
+          border-radius: 6px;
+          width: 450px;
+          height: 300px;
+          box-shadow: 0 1px 5px black;
+          aspect-ratio: 1;
+
+          img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+
+          @apply relative  rounded-xl;
+        }
+
+        .adds {
+          img {
+            padding: 8px;
+
+            @apply rounded-xl;
+          }
+
+          @apply relative mt-6 flex items-center justify-evenly;
+        }
+
+        @apply relative pb-7 flex-center-between;
+      }
+
+      .text {
+        margin-top: 20px;
+
+        p {
+          font-size: 24px;
+          line-height: 1.625;
+
+          @apply text-gray-900 text-left font-semibold;
+        }
+
+        a {
+          span {
+            @apply text-black font-medium;
+          }
+
+          svg {
+            margin-right: 10px;
+            transition: all 0.2s ease-in-out;
+          }
+
+          &:hover {
+            svg {
+              transform: translateX(-2px);
+            }
+          }
+
+          @apply text-link mt-7 text-primary flex items-center;
+        }
+      }
+
+      @apply py-10;
+    }
+
+    .info {
+      .box {
+        svg {
+          margin-right: 10px;
+          font-size: 24px;
+        }
+
+        h2,
+        span,
+        p {
+          font-size: 20px;
+
+          @apply text-black font-normal;
+        }
+
+        @apply flex items-center mr-4;
+      }
+
+      .eye {
+        svg {
+          fill: blue;
+        }
+      }
+
+      @apply flex items-center mt-2;
+    }
+
+    @apply relative;
+  }
+
+  @apply relative h-screen w-full;
 }
-@media (max-width: 1000px) {
-	.root {
-		.wrapper {
-			.container {
-				.images {
-					@apply flex-wrap justify-center;
-					.banner {
-						height: 200px;
-						width: 300px;
-						margin-bottom: 20px;
-					}
-				}
-			}
-		}
-	}
-}
-@media (max-width: 600px) {
-	.root {
-		.wrapper {
-			margin-top: 200px;
-			.title {
-				@apply relative mb-2;
-				h1 {
-					@apply text-black font-black;
-					font-size: 25px;
-				}
-			}
-			.info {
-				@apply flex items-center mt-2;
-				.box {
-					@apply flex items-center mr-4;
-					svg {
-						margin-right: 10px;
-						font-size: 20px;
-					}
 
-					h2,
-					span,
-					p {
-						@apply text-black font-normal;
-						font-size: 17px;
-					}
-				}
-				.eye {
-					svg {
-						fill: blue;
-					}
-				}
-			}
-			.container {
-				display: block;
-				text-align: left;
-				.images {
-					.banner {
-						height: 250px;
-					}
-				}
-				.text {
-					margin-bottom: 40px;
-					p {
-						font-size: 18px;
-					}
-				}
-			}
-		}
-	}
+@media (width <= 1000px) {
+  .root {
+    .wrapper {
+      .container {
+        .images {
+          .banner {
+            margin-bottom: 20px;
+            width: 300px;
+            height: 200px;
+          }
+
+          @apply flex-wrap justify-center;
+        }
+      }
+    }
+  }
+}
+
+@media (width <= 600px) {
+  .root {
+    .wrapper {
+      margin-top: 200px;
+
+      .title {
+        h1 {
+          font-size: 25px;
+
+          @apply text-black font-black;
+        }
+
+        @apply relative mb-2;
+      }
+
+      .info {
+        .box {
+          svg {
+            margin-right: 10px;
+            font-size: 20px;
+          }
+
+          h2,
+          span,
+          p {
+            font-size: 17px;
+
+            @apply text-black font-normal;
+          }
+
+          @apply flex items-center mr-4;
+        }
+
+        .eye {
+          svg {
+            fill: blue;
+          }
+        }
+
+        @apply flex items-center mt-2;
+      }
+
+      .container {
+        display: block;
+        text-align: left;
+
+        .images {
+          .banner {
+            height: 250px;
+          }
+        }
+
+        .text {
+          margin-bottom: 40px;
+
+          p {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
 }
