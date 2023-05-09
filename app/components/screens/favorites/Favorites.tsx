@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { getProductUrl } from 'config/url.config';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
 import FavoriteItem from './FavoriteItem';
 import styles from './Favorites.module.scss';
 import { useFavorites } from './useFavorites';
@@ -10,12 +11,34 @@ import SkeletonLoader from '@/components/ui/heading/SkeletonLoader';
 import emptyWishlist from '@/assets/images/commons/emptyWishlist.jpg';
 import MaterialIcon from '@/components/ui/MaterialIcon';
 import Button from '@/components/ui/form-elements/Button';
+import { addFavorites } from '@/store/cart/slice';
+import { CartItemType } from '@/store/cart/types';
 
 const Favorites: FC = () => {
   const { favoritesProducts, isLoading, deleteAsync } = useFavorites();
 
+  const dispatch = useDispatch();
+
+  const onClickAddArray = () => {
+    const product: CartItemType[] | undefined = favoritesProducts?.map((item) => ({
+      id: item._id,
+      name: item.title,
+      image: item.image,
+      category: item.category[0].name,
+      brand: item.brand[0].name,
+      count: 1,
+      url: getProductUrl(item.slug),
+    }));
+
+    dispatch(addFavorites(product));
+  };
+
   return (
-    <Meta title="Избранное">
+    <Meta
+      title="Избранное"
+      description="Здесь собраны ваши сохранненые товары,
+    которые вы сможете заказать в один клик!"
+    >
       <section className={styles.favorites}>
         <div className={styles.container}>
           <div className={styles.head}>
@@ -154,7 +177,10 @@ const Favorites: FC = () => {
 
                 <span>Вернуться назад</span>
               </Link>
-              <Button disabled={favoritesProducts?.length === 0}>
+              <Button
+                disabled={favoritesProducts?.length === 0}
+                onClick={onClickAddArray}
+              >
                 Перенести в корзину
               </Button>
             </div>

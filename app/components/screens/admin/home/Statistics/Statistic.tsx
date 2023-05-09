@@ -1,15 +1,14 @@
-import { FC } from 'react'
+import { FC } from 'react';
 
-import styles from '../Admin.module.scss'
-import CountUsers from './CountUsers'
-import PopularProducts from './PopularProducts'
+import styles from '../Admin.module.scss';
+import CountUsers from './CountUsers';
+import PopularProducts from './PopularProducts';
 
-
-const Statistic: FC = () => {
-  return <div className={styles.statistics}>
+const Statistic: FC = () => (
+  <div className={styles.statistics}>
     <CountUsers />
     <PopularProducts />
   </div>
-}
+);
 
-export default Statistic
+export default Statistic;

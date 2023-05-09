@@ -1,67 +1,79 @@
+import { FC } from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import dynamic from 'next/dynamic';
+import { stripHtml } from 'string-strip-html';
+import AdminNavigation from '@/components/ui/admin-navigation/AdminNavigation';
+import Field from '@/components/ui/form-elements/Field';
+import SlugField from '@/components/ui/form-elements/SlugField/SlugField';
+import Heading from '@/components/ui/heading/Heading';
+import SkeletonLoader from '@/components/ui/heading/SkeletonLoader';
+import { generateSlug } from '@/utils/string/generateSlug';
+import { INewEditInput } from './new-edit.interface';
+import { useNewEdit } from './useNewEdit';
 
-import AdminNavigation from '@/components/ui/admin-navigation/AdminNavigation'
-import Field from '@/components/ui/form-elements/Field'
-import SlugField from '@/components/ui/form-elements/SlugField/SlugField'
-import Heading from '@/components/ui/heading/Heading'
-import SkeletonLoader from '@/components/ui/heading/SkeletonLoader'
-import Meta from '@/utils/meta/Meta'
-import { generateSlug } from '@/utils/string/generateSlug'
-import { FC } from 'react'
-import { Controller, useForm } from 'react-hook-form'
-import { INewEditInput } from './new-edit.interface'
-import { useNewEdit } from './useNewEdit'
+import formStyles from '../../../ui/form-elements/admin-form.module.scss';
 
-import formStyles from '../../../ui/form-elements/admin-form.module.scss'
+import UploadField from '@/components/ui/form-elements/UploadField/UploadField';
+import styles from '../AdminTables.module.scss';
+import Button from '@/components/ui/form-elements/Button';
 
-
-import UploadField from '@/components/ui/form-elements/UploadField/UploadField'
-import dynamic from 'next/dynamic'
-import { stripHtml } from 'string-strip-html'
-import styles from '../AdminTables.module.scss'
-import Button from '@/components/ui/form-elements/Button'
-
-
-const DynamicTextEditor = dynamic(() => import('@/components/ui/form-elements/TextEditor'), {
-  ssr: false
-})
+const DynamicTextEditor = dynamic(() => import(`@/components/ui/form-elements/TextEditor`), {
+  ssr: false,
+});
 
 const NewEdit: FC = () => {
+  const {
+    handleSubmit, register, formState: { errors }, setValue, getValues, control,
+  } = useForm<INewEditInput>({
+    mode: `onChange`,
+  });
 
-  const { handleSubmit, register, formState: { errors }, setValue, getValues, control } = useForm<INewEditInput>({
-    mode: 'onChange'
-  })
-
-  const { isLoading, onSubmit } = useNewEdit(setValue)
+  const { isLoading, onSubmit } = useNewEdit(setValue);
 
   return (
-    <Meta title='Редактирование новостей'>
-      <section className={styles.wrapper}>
-        <div className={styles.container} style={{ marginTop: '600px' }}>
+    <section className={styles.wrapper}>
+      <div
+        className={styles.container}
+        style={{ marginTop: `600px` }}
+      >
 
-          <AdminNavigation />
+        <AdminNavigation />
 
-          <Heading title='Редактирование новостей' />
+        <Heading title="Редактирование новостей" />
 
-          <form onSubmit={handleSubmit(onSubmit)} className={formStyles.form}>
-            {isLoading ? <SkeletonLoader count={3} /> : <>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className={formStyles.form}
+        >
+          {isLoading ? <SkeletonLoader count={3} /> : (
+            <>
               <div className={formStyles.fields}>
 
-                <Field {...register('title', {
-                  required: 'Введите заголовок!',
-                })} placeholder="Заголовок"
+                <Field
+                  {...register(`title`, {
+                    required: `Введите заголовок!`,
+                  })}
+                  placeholder="Заголовок"
                   error={errors.title}
-                  style={{ width: '31%' }} />
+                  style={{ width: `31%` }}
+                />
 
-
-                <div style={{ width: '31%' }} >
-                  <SlugField register={register} error={errors.slug} generate={() => setValue('slug', generateSlug(getValues('title')))} />
+                <div style={{ width: `31%` }}>
+                  <SlugField
+                    register={register}
+                    error={errors.slug}
+                    generate={() => setValue(`slug`, generateSlug(getValues(`title`)))}
+                  />
                 </div>
 
-                <Field {...register('username', {
-                  required: 'Введите ваше имя!',
-                })} placeholder="Имя"
+                <Field
+                  {...register(`username`, {
+                    required: `Введите ваше имя!`,
+                  })}
+                  placeholder="Имя"
                   error={errors.username}
-                  style={{ width: '31%' }} />
+                  style={{ width: `31%` }}
+                />
 
                 <Controller
                   name="image_1"
@@ -76,10 +88,12 @@ const NewEdit: FC = () => {
                       error={error}
                       folder="news"
                       image={value}
-                      onChange={onChange} isNoImage={false} />
+                      onChange={onChange}
+                      isNoImage={false}
+                    />
                   )}
                   rules={{
-                    required: 'Добавьте изображение!',
+                    required: `Добавьте изображение!`,
                   }}
                 />
                 <Controller
@@ -95,7 +109,9 @@ const NewEdit: FC = () => {
                       error={error}
                       folder="news"
                       image={value}
-                      onChange={onChange} isNoImage={false} />
+                      onChange={onChange}
+                      isNoImage={false}
+                    />
                   )}
                 />
                 <Controller
@@ -111,49 +127,70 @@ const NewEdit: FC = () => {
                       error={error}
                       folder="news"
                       image={value}
-                      onChange={onChange} isNoImage={false} />
+                      onChange={onChange}
+                      isNoImage={false}
+                    />
                   )}
                 />
               </div>
 
-
-              <Controller control={control} name='description_short' defaultValue='Очень много текста примерно на три строчки, ибо больше никто читать не будет.' render={({
-                field: {
-                  onChange, value
-                },
-                fieldState: { error }
-              }) => (<DynamicTextEditor onChange={onChange} value={value} error={error}
-                placeholder='Короткое описание' />)}
+              <Controller
+                control={control}
+                name="description_short"
+                defaultValue="Очень много текста примерно на три строчки, ибо больше никто читать не будет."
+                render={({
+                  field: {
+                    onChange, value,
+                  },
+                  fieldState: { error },
+                }) => (
+                  <DynamicTextEditor
+                    onChange={onChange}
+                    value={value}
+                    error={error}
+                    placeholder="Короткое описание"
+                  />
+                )}
                 rules={{
                   validate: {
                     required: (v) => (v && stripHtml(v).result.length > 0 && stripHtml(v).result.length < 151)
-                      || 'Описание должно быть меньше 100 символов. Добавьте короткое описание!'
-                  }
+                      || `Описание должно быть меньше 100 символов. Добавьте короткое описание!`,
+                  },
                 }}
               />
-              <Controller control={control} name='description_full' defaultValue='' render={({
-                field: {
-                  onChange, value
-                },
-                fieldState: { error }
-              }) => (<DynamicTextEditor onChange={onChange} value={value} error={error}
-                placeholder='Полное описание' />)}
+              <Controller
+                control={control}
+                name="description_full"
+                defaultValue=""
+                render={({
+                  field: {
+                    onChange, value,
+                  },
+                  fieldState: { error },
+                }) => (
+                  <DynamicTextEditor
+                    onChange={onChange}
+                    value={value}
+                    error={error}
+                    placeholder="Полное описание"
+                  />
+                )}
                 rules={{
                   validate: {
                     required: (v) => (v && stripHtml(v).result.length > 0)
-                      || 'Добавьте полное описание!'
-                  }
+                      || `Добавьте полное описание!`,
+                  },
                 }}
               />
 
               <Button>Обновить</Button>
 
-            </>}
-          </form>
-        </div>
-      </section>
+            </>
+          )}
+        </form>
+      </div>
+    </section>
+  );
+};
 
-    </Meta>)
-}
-
-export default NewEdit
+export default NewEdit;

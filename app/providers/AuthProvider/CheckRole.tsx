@@ -1,31 +1,29 @@
-import { useAuth } from '@/hooks/useAuth'
-import { TypeComponentAuthFields } from '@/shared/types/auth.types'
-import { useRouter } from 'next/router'
-import { FC } from 'react'
+import { useRouter } from 'next/router';
+import { FC } from 'react';
+import { useAuth } from '@/hooks/useAuth';
+import { TypeComponentAuthFields } from '@/shared/types/auth.types';
 
 const CheckRole: FC<TypeComponentAuthFields> = ({ children, Component: { isOnlyAdmin, isOnlyUser } }) => {
-  const { user } = useAuth()
+  const { user } = useAuth();
 
-  const router = useRouter()
+  const router = useRouter();
 
-  const Children = () => <>{children}</>
+  // eslint-disable-next-line react/no-unstable-nested-components, react/jsx-no-useless-fragment
+  const Children = () => <>{children}</>;
 
-  if (user?.isAdmin) return <Children />
+  if (user?.isAdmin) return <Children />;
 
   if (isOnlyAdmin) {
-
-    router.pathname !== '/404' && router.replace('/404')
-    return null
+    router.pathname !== `/404` && router.replace(`/404`);
+    return null;
   }
 
-  const isUser = user && !user.isAdmin
+  const isUser = user && !user.isAdmin;
 
-  if (isUser && isOnlyUser) return <Children />
-  else {
-    router.pathname !== '/' && router.replace('/')
-    return null
-  }
+  if (isUser && isOnlyUser) return <Children />;
 
-}
+  router.pathname !== `/` && router.replace(`/`);
+  return null;
+};
 
-export default CheckRole
+export default CheckRole;

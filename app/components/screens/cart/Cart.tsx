@@ -27,7 +27,10 @@ const Cart: FC = () => {
   };
 
   return (
-    <Meta title="Избранное">
+    <Meta
+      title="Корзина"
+      description="Это ваша корзина. Укажите количество товара и скорее заказывайте!"
+    >
       <section className={styles.cart}>
         <div className={styles.container}>
           <div className={styles.head}>

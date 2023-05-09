@@ -21,6 +21,16 @@ const cartSlice = createSlice({
         });
       }
     },
+    addFavorites(state, action: PayloadAction<CartItemType[] | undefined>) {
+      if (action.payload === undefined) {
+        return;
+      }
+
+      let newState = [...state.items, ...action.payload];
+
+      newState = newState.filter((obj, index) => newState.findIndex((item) => item.id === obj.id) === index);
+      state.items = newState;
+    },
     minusItem(state, action: PayloadAction<CartItemType>) {
       const findItem = state.items.find(
         (obj) => obj.id === action.payload.id,
@@ -42,7 +52,7 @@ const cartSlice = createSlice({
 });
 
 export const {
-  addItem, removeItem, clearItems, minusItem,
+  addItem, removeItem, clearItems, minusItem, addFavorites,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -29,7 +29,7 @@ const LoginButton: FC = () => {
   };
   const { logout } = useActions();
 
-  const handleLogout = (e: MouseEvent<HTMLAnchorElement>) => {
+  const handleLogout = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     logout();
   };
@@ -114,7 +114,7 @@ const LoginButton: FC = () => {
             </Link>
             <button
               type="button"
-              onClick={() => handleLogout}
+              onClick={handleLogout}
               className={styles.box}
             >
               <div>
