@@ -12,6 +12,7 @@ import CartItem, { CartItemProps } from './CartItem';
 import { useAuth } from '@/hooks/useAuth';
 import { CartItemType } from '@/store/cart/types';
 import emptyCart from '@/assets/images/commons/emptybusket.jpg';
+import { useCart } from './useCart';
 
 const Cart: FC = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,10 @@ const Cart: FC = () => {
   const onClickClear = () => {
     dispatch(clearItems());
   };
+
+  const {
+    createAsync,
+  } = useCart();
 
   return (
     <Meta
@@ -156,7 +161,10 @@ const Cart: FC = () => {
 
                 <span>Вернуться назад</span>
               </Link>
-              <Button disabled={!user || items.length === 0}>
+              <Button
+                disabled={!user || items.length === 0}
+                onClick={createAsync}
+              >
                 Оформить заказ
               </Button>
 

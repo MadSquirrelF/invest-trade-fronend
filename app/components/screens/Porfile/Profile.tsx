@@ -163,6 +163,7 @@ const Profile: FC = () => {
                   placeholder="Имя"
                   type="text"
                   error={errors.username}
+
                 />
                 <Controller
                   control={control}

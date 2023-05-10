@@ -1,5 +1,5 @@
-import { IGetProducts, IProduct } from "@/shared/types/product.types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IGetProducts } from "@/shared/types/product.types";
 import { fetchProducts } from "./asyncActions";
 import { ProductSliceState, Status } from "./types";
 
@@ -8,13 +8,13 @@ const initialState: ProductSliceState = {
     data: [],
     total: 0,
     pageOf: 1,
-    last_page: 0
+    last_page: 0,
   },
   status: Status.LOADING,
-}
+};
 
 const productSlice = createSlice({
-  name: 'product',
+  name: `product`,
   initialState,
   reducers: {
     setItems(state, action: PayloadAction<IGetProducts>) {
@@ -40,8 +40,8 @@ const productSlice = createSlice({
       state.items.pageOf = 1;
       state.items.last_page = 1;
     });
-  }
-})
+  },
+});
 
 export const { setItems } = productSlice.actions;
 

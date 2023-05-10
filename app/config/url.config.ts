@@ -5,5 +5,6 @@ export const getWorkUrl = (slug: string) => `/work/${slug}`;
 export const getNewUrl = (slug: string) => `/new/${slug}`;
 export const getBrandUrl = (slug: string) => `/brand/${slug}`;
 
+export const getOrderUrl = (id: string) => `/order/${id}`;
 export const getAdminUrl = (url: string) => `/manage/${url}`;
 export const getAdminHomeUrl = () => getAdminUrl(``).slice(0, -1);

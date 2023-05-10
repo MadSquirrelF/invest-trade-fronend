@@ -108,9 +108,18 @@ const LoginButton: FC = () => {
               className={styles.box}
             >
               <div>
-                <MaterialIcon name="MdSettings" />
+                <MaterialIcon name="MdSupervisorAccount" />
               </div>
               <span>Профиль</span>
+            </Link>
+            <Link
+              href="/orders"
+              className={styles.box}
+            >
+              <div>
+                <MaterialIcon name="MdShoppingCart" />
+              </div>
+              <span>Заказы</span>
             </Link>
             <button
               type="button"

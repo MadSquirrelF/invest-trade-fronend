@@ -1,12 +1,10 @@
-import { FC } from 'react'
+import { FC } from 'react';
 
-import CategoryItems from './CategoryItems'
-import { useCategories } from './useCategories'
+import CategoryItems from './CategoryItems';
+import { useCategories } from './useCategories';
 
 const CategoryMenu: FC = () => {
-
-  const { isLoading, data } = useCategories()
-
+  const { isLoading, data } = useCategories();
 
   return isLoading ? (
     <CategoryItems
@@ -16,7 +14,7 @@ const CategoryMenu: FC = () => {
     <CategoryItems
       items={data || []}
     />
-  )
-}
+  );
+};
 
-export default CategoryMenu
+export default CategoryMenu;
