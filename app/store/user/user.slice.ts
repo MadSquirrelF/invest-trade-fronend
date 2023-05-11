@@ -1,37 +1,39 @@
-import { getStoreLocal } from "@/utils/local-storage";
 import { createSlice } from "@reduxjs/toolkit";
-import { checkAuth, login, logout, register } from "./user.actions";
+import { getStoreLocal } from "@/utils/local-storage";
+import {
+  checkAuth, login, logout, register,
+} from "./user.actions";
 import { IInitialState } from "./user.interface";
 
 const initialState: IInitialState = {
   isLoading: false,
-  user: getStoreLocal('user')
-}
+  user: getStoreLocal(`user`),
+};
 
 export const userSlice = createSlice({
-  name: 'user',
+  name: `user`,
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(register.pending, state => {
+    builder.addCase(register.pending, (state) => {
       state.isLoading = true;
     })
       .addCase(register.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.user = payload.user;
       })
-      .addCase(register.rejected, state => {
+      .addCase(register.rejected, (state) => {
         state.isLoading = false;
         state.user = null;
       })
-      .addCase(login.pending, state => {
+      .addCase(login.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(login.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.user = payload.user;
       })
-      .addCase(login.rejected, state => {
+      .addCase(login.rejected, (state) => {
         state.isLoading = false;
         state.user = null;
       })
@@ -41,8 +43,8 @@ export const userSlice = createSlice({
       })
       .addCase(checkAuth.fulfilled, (state, { payload }) => {
         state.user = payload.user;
-      })
+      });
   },
-})
+});
 
-export const { reducer } = userSlice
+export const { reducer } = userSlice;

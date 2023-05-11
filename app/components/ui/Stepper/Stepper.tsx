@@ -31,11 +31,6 @@ const steps: IStepper[] = [
     title: `Способ оплаты`,
     icon: `MdPayment`,
   },
-  {
-    id: 4,
-    title: `Данные заказа`,
-    icon: `MdDocumentScanner`,
-  },
 ];
 
 const Stepper: FC<{ currentStep: number }> = ({ currentStep }) => (

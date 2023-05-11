@@ -1,19 +1,19 @@
-import { useRouter } from "next/router";
 import { useMutation } from "react-query";
 import { toastr } from "react-redux-toastr";
-import { getOrderUrl } from "config/url.config";
 import { useMemo } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 import { toastError } from "@/utils/toastError";
 import { OrderService } from "@/services/order.service";
 import { selectCart } from "@/store/cart/selectors";
 import { CartItemType } from "@/store/cart/types";
-import { IOrderCreate } from "@/shared/types/order.types";
+import { IOrderCreate, IOrderEditAddress } from "@/shared/types/order.types";
+import { clearItems } from "@/store/cart/slice";
 
 export const useCart = () => {
-  const { push } = useRouter();
-
   const { items } = useSelector(selectCart);
+
+  const dispatch = useDispatch();
 
   const totalCount = items.reduce((sum: number, item: CartItemType) => sum + item.count, 0);
 
@@ -22,17 +22,37 @@ export const useCart = () => {
     total_count: totalCount,
   };
 
+  const onClickClear = () => {
+    dispatch(clearItems());
+  };
+
   const { mutateAsync: createAsync } = useMutation(`create order`, () => OrderService.createOrder(orderValue), {
     onError: (error) => {
       toastError(error, `Создание заказа`);
     },
     onSuccess: ({ data: _id }) => {
       toastr.success(`Создание заказа`, `Заказ успешно создан! Перенаправляем для уточнения деталей.`);
-      push(getOrderUrl(`order/details/${_id}`));
+      localStorage.setItem(`lastCreatedOrderId`, _id);
+      onClickClear();
+    },
+  });
+
+  const { push } = useRouter();
+
+  // @ts-ignore
+  const { mutateAsync } = useMutation(`update order`, (data: IOrderEditAddress) => OrderService.updateOrderUser(localStorage.getItem(`lastCreatedOrderId`), data), {
+    onError(error) {
+      toastError(error, `Ошибка оформления заказа`);
+    },
+    onSuccess() {
+      toastr.success(`Оформление заказа`, `Оформление успешно завершено`);
+      localStorage.removeItem(`lastCreatedOrderId`);
+      push(`/orders`);
     },
   });
 
   return useMemo(() => ({
     createAsync,
-  }), [createAsync]);
+    mutateAsync,
+  }), [createAsync, mutateAsync]);
 };

@@ -13,8 +13,10 @@ export const OrderService = {
     return axios.get<IOrder>(getOrdersUrl(`/${_id}`));
   },
 
-  async getAllUserOrders() {
-    return axios.get<IOrder[]>(getOrdersUrl(`/user-orders`));
+  async getAllUserOrders(searchTerm?: string) {
+    return axios.get<IOrder[]>(getOrdersUrl(`/user-orders`), {
+      params: searchTerm ? { searchTerm } : {},
+    });
   },
 
   async updateOrderUser(_id: string, data: IOrderEditAddress) {

@@ -17,9 +17,10 @@ export interface IOrder {
   payment: string;
   user: IUser;
   items: CartItemType[];
+  createdAt: string;
   isSendTelegram?: boolean;
 }
 
-export interface IOrderEditAddress extends Omit<IOrder, '_id' | 'status' | 'total_count' | 'user' | 'isSendTelegram' | 'items'> { }
+export interface IOrderEditAddress extends Omit<IOrder, '_id' | 'status' | 'total_count' | 'user' | 'isSendTelegram' | 'createdAt' | 'items'> { }
 
-export interface IOrderCreate extends Omit<IOrder, '_id' | 'status' | 'address' | 'user' | 'isSendTelegram' | 'payment'> { }
+export interface IOrderCreate extends Omit<IOrder, '_id' | 'status' | 'address' | 'user' | 'isSendTelegram' | 'createdAt' | 'payment'> { }

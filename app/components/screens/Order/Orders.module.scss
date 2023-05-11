@@ -1,0 +1,84 @@
+.root {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  .container {
+    margin-top: 160px;
+
+    .actions {
+      button {
+        &:first-child {
+          @apply mr-4;
+        }
+    
+        @apply outline-border-none bg-transparent text-xl text-primary opacity-80 transition-opacity hover:opacity-100;
+      }
+    
+      @apply flex items-center;
+    }
+
+    .info {
+      div {
+        width: 24%;
+    
+        &:last-child {
+          @apply text-right justify-end;
+        }
+    
+        @apply text-black font-semibold py-3;
+      }
+    
+      @apply flex items-center cursor-pointer bg-gray-100 justify-between shadow-md mt-4 px-5 rounded-lg transition-colors hover:bg-opacity-90;
+    }
+    
+    .itemHeader {
+      div {
+        @apply font-bold text-white  py-2.5;
+      }
+    
+      @apply bg-primary  shadow-md mt-8;
+    }
+    
+    .notFound {
+      @apply text-lg text-black font-bold shadow-md rounded-lg mt-4 px-5  text-center py-3;
+    }
+
+    .head {
+      h1 {
+        font-size: 48px;
+        line-height: 1;
+
+        span {
+          font-size: 48px;
+          line-height: 1;
+
+          @media (width <= 500px) {
+            font-size: 35px;
+          }
+
+          @apply uppercase text-primary font-black;
+        }
+
+        @media (width <= 500px) {
+          font-size: 35px;
+        }
+
+        @apply uppercase text-black font-black;
+      }
+
+      @apply relative text-left ;
+    }
+
+    p {
+      margin-top: 10px;
+      margin-bottom: 40px;
+      font-weight: 500;
+      font-size: 20px;
+
+      @media (width <= 500px) {
+        font-size: 15px;
+      }
+    }
+  }
+}

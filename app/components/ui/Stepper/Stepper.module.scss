@@ -2,7 +2,8 @@
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  width: 700px;
+  margin-bottom: 30px;
+  width: 600px;
 
   .step {
     &:not(:first-child)::before {
