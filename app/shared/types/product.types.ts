@@ -58,7 +58,6 @@ export interface IProduct {
   add: IAdds[];
   _id: string;
   is_available: boolean;
-  count_on_store: number;
   image: string;
   brand: IBrand[];
   details: Settings[];

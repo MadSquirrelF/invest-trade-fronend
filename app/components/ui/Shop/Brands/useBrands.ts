@@ -1,34 +1,32 @@
-import { useQuery } from 'react-query'
+import { useQuery } from 'react-query';
 
-import { CategoryService } from '@/services/category.service'
-import { toastError } from '@/utils/toastError'
-import { BrandService } from '@/services/brand.service'
+import { toastError } from '@/utils/toastError';
+import { BrandService } from '@/services/brand.service';
 
 export interface IBrandItem {
-  _id: string
-  name: string
-  image: string
+  _id: string;
+  name: string;
+  image: string;
 }
 export const useBrands = () => {
   const queryData = useQuery(
-    'get all brands ',
+    `get all brands `,
     () => BrandService.getAll(),
     {
-      select: ({ data }) =>
-        data
-          .map(
-            (brand): IBrandItem => ({
-              image: brand.logo_image,
-              _id: brand._id,
-              name: brand.name,
-            })
-          )
-          .splice(0, 4),
+      select: ({ data }) => data
+        .map(
+          (brand): IBrandItem => ({
+            image: brand.logo_image,
+            _id: brand._id,
+            name: brand.name,
+          }),
+        )
+        .splice(0, 4),
       onError(error) {
-        toastError(error, 'Ошибка получения брендов')
+        toastError(error, `Ошибка получения брендов`);
       },
-    }
-  )
+    },
+  );
 
-  return queryData
-}
+  return queryData;
+};

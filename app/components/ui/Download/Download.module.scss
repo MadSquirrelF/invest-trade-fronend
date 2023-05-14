@@ -43,57 +43,37 @@
         .download {
           right: 40px;
           top: 30%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           border-radius: 50%;
           padding: 40px;
           width: 176px;
           height: 176px;
           box-shadow: 0 10px 10px black;
+          transition: all 0.3s ease-in-out;
 
-          div {
-            h1 {
-              font-size: 36px;
-              line-height: 40px;
-              transition: all 0.3s ease-in-out;
-
-              span {
-                font-size: 24px;
-
-                @apply font-normal;
-              }
-
-              @apply font-bold;
-            }
-
-            svg {
-              left: 25px;
-              top: 20px;
-              font-size: 50px;
-              opacity: 0;
-              transform: translateY(-5px);
-              transition: all 0.3s ease-in-out;
-
-              @apply absolute;
-            }
-
-            @apply relative;
+          svg {
+            font-size: 50px;
+            fill: black;
+            transition: all 0.3s ease-in-out;
           }
 
           &:hover {
             box-shadow: 0 10px 10px blue;
 
-            div {
-              h1 {
-                opacity: 0;
-                transform: translateY(5px);
-              }
-
-              svg {
-                fill: blue;
-                opacity: 1;
-                transform: translateY(0);
-              }
+            svg {
+              fill: blue;
             }
           }
+
+          &:active {
+            svg {
+              transform: translateY(3px);
+            }
+          }
+
+        
 
           @apply absolute bg-white text-center;
         }
@@ -110,6 +90,21 @@
           .downloadInfo {
             display: block;
             margin: 20px 0;
+
+            .progressBar {
+              margin-left: 5px;
+              border-radius: 10px;
+            }
+
+            progress::-webkit-progress-bar {
+              border-radius: 7px;
+              background-color: grey;
+            }
+
+            progress::-webkit-progress-value {
+              border-radius: 7px;
+              background-color: blue;
+            }
           }
         }
 

@@ -1,88 +1,117 @@
 .container {
-	@apply flex justify-center items-center;
-	.form {
-		padding: 10px;
-		h1 {
-			color: #0000ff;
-		}
-		h3 {
-			@apply bg-transparent text-left font-bold text-black;
-			letter-spacing: -1px;
-		}
-		.button {
-			text-align: center;
-			button {
-				width: 100%;
-				&:hover {
-					filter: drop-shadow(0px 5px 5px #0000ffa4);
-				}
-				&:active {
-					background-color: darken(#0000ff, 5%);
-					transform: translateY(1px);
-				}
-			}
-		}
-		p {
-			@apply font-normal mt-2 text-black text-center;
-			letter-spacing: normal;
-			font-size: 14px;
-			cursor: pointer;
-			a {
-				@apply text-primary text-link;
-				letter-spacing: normal;
-			}
-		}
-	}
+  .form {
+    padding: 10px;
+
+    h1 {
+      color: #00f;
+    }
+
+    h3 {
+      letter-spacing: -1px;
+
+      @apply bg-transparent text-left font-bold text-black;
+    }
+
+    .button {
+      text-align: center;
+
+      button {
+        width: 100%;
+
+        &:hover {
+          filter: drop-shadow(0 5px 5px #0000ffa4);
+        }
+
+        &:active {
+          background-color: darken(#00f, 5%);
+          transform: translateY(1px);
+        }
+      }
+    }
+
+    p {
+      font-size: 14px;
+      letter-spacing: normal;
+      cursor: pointer;
+
+      a {
+        letter-spacing: normal;
+
+        @apply text-primary text-link;
+      }
+
+      @apply font-normal mt-2 text-black text-center;
+    }
+  }
+
+  @apply flex justify-center items-center;
 }
+
 .containerReg {
-	@apply flex justify-center items-center;
-	.form {
-		padding: 10px;
-		h1 {
-			color: #0000ff;
-		}
-		h3 {
-			@apply bg-transparent text-left font-bold text-black;
-			letter-spacing: -1px;
-		}
-		.button {
-			text-align: center;
-			button {
-				width: 100%;
-				&:hover {
-					filter: drop-shadow(0px 5px 5px #0000ffa4);
-				}
-				&:active {
-					background-color: darken(#0000ff, 5%);
-					transform: translateY(1px);
-				}
-			}
-		}
-		p {
-			@apply font-normal mt-2 text-black text-center;
-			letter-spacing: normal;
-			font-size: 14px;
-			cursor: pointer;
-			a {
-				@apply text-primary text-link;
-				letter-spacing: normal;
-			}
-		}
-	}
+  .form {
+    padding: 10px;
+
+    h1 {
+      color: #00f;
+    }
+
+    h3 {
+      letter-spacing: -1px;
+
+      @apply bg-transparent text-left font-bold text-black;
+    }
+
+    .button {
+      text-align: center;
+
+      button {
+        width: 100%;
+
+        &:hover {
+          filter: drop-shadow(0 5px 5px #0000ffa4);
+        }
+
+        &:active {
+          background-color: darken(#00f, 5%);
+          transform: translateY(1px);
+        }
+      }
+    }
+
+    p {
+      font-size: 14px;
+      letter-spacing: normal;
+      cursor: pointer;
+
+      a {
+        letter-spacing: normal;
+
+        @apply text-primary text-link;
+      }
+
+      @apply font-normal mt-2 text-black text-center;
+    }
+  }
+
+  @apply flex justify-center items-center;
 }
-@media (max-width: 700px) {
-	.containerReg {
-		margin-top: 270px;
-		.form {
-			h1 {
-				font-size: 24px;
-			}
-			h3 {
-				font-size: 15px;
-			}
-		}
-		p {
-			font-size: 8px;
-		}
-	}
+
+@media (width <= 700px) {
+  .containerReg {
+    margin-top: 270px;
+
+    .form {
+      h1 {
+        font-size: 24px;
+      }
+
+      h3 {
+        font-size: 15px;
+      }
+    }
+
+    p {
+      font-size: 8px;
+    }
+  }
 }

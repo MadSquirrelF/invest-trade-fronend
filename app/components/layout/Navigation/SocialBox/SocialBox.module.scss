@@ -58,8 +58,12 @@
     margin-bottom: 10px;
   }
 
-  @media (width <= 500px) {
+  @media (width <= 700px) {
     display: block;
+
+    .text {
+      display: none;
+    }
 
     .links {
       justify-content: start;

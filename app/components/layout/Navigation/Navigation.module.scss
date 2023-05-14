@@ -17,29 +17,20 @@
   }
 
   .Topcontainer {
-    padding: 16px;
+    display: block;
+    padding: 8px;
 
-    .ContactContainer {
+    .logoContainer {
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
 
-      @media (width <= 1400px) {
-        position: absolute;
-        right: 25%;
-        bottom: -127px;
-        z-index: 11;
-        display: block;
-        border-radius: 15px;
-        padding: 8px 16px;
-        text-align: left;
-        background: rgb(0 0 0 / 78.8%);
-        backdrop-filter: blur(11px);
-      }
-
-      @media (width <= 500px) {
-        right: 25%;
-        bottom: -200px;
-      }
+    .contactContainer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .logo {
@@ -52,7 +43,7 @@
 
     
 
-    @apply flex-center-between z-2;
+    @apply z-2;
   }
 
   .Bottomcontainer {

@@ -1,14 +1,11 @@
-import { FC } from 'react'
+import { FC } from 'react';
 
-import Brands from './Brands'
+import Brands from './Brands';
 
-import { useBrands } from './useBrands'
-
+import { useBrands } from './useBrands';
 
 const BrandMenu: FC = () => {
-
-  const { isLoading, data } = useBrands()
-
+  const { isLoading, data } = useBrands();
 
   return isLoading ? (
     <Brands
@@ -18,9 +15,7 @@ const BrandMenu: FC = () => {
     <Brands
       items={data || []}
     />
-  )
-}
+  );
+};
 
-export default BrandMenu
-
-
+export default BrandMenu;

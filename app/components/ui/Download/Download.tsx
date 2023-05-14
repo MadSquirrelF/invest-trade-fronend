@@ -7,6 +7,7 @@ import schtern from '../../../assets/images/icons/Schtern.svg';
 import maco from '../../../assets/images/icons/MACO.svg';
 import endow from '../../../assets/images/icons/Endow.png';
 import catalog from '../../../assets/images/commons/catalog.png';
+import ringer from '@/assets/images/icons/ringer.png';
 import MaterialIcon from '../MaterialIcon';
 
 import Button from '../form-elements/Button';
@@ -39,6 +40,13 @@ const data: ICatalog[] = [{
   name: `MACO`,
   image: maco,
   weight: `2,1 мб`,
+},
+{
+  filename: `Technical_Catalog_Ringer.pdf`,
+  fileUrl: `/files/Technical_Catalog_Ringer.pdf`,
+  name: `Ringer`,
+  image: ringer,
+  weight: `1 мб`,
 },
 ];
 
@@ -76,16 +84,9 @@ const Download: FC = () => {
               className={styles.download}
               onClick={() => download(data[activeIndex].fileUrl, data[activeIndex].filename)}
             >
-              <div>
-                <h1>
-                  PDF
-                  {` `}
-                  <br />
-                  {` `}
-                  <span>{data[activeIndex].weight}</span>
-                </h1>
-                <MaterialIcon name="MdDownload" />
-              </div>
+
+              <MaterialIcon name="MdDownload" />
+
             </button>
 
           </div>
@@ -105,6 +106,7 @@ const Download: FC = () => {
                   id="file"
                   value={percentage}
                   max="100"
+                  className={styles.progressBar}
                 />
                 <p>
                   Размер загрузки
@@ -143,42 +145,74 @@ const Download: FC = () => {
               <ul>
                 <li
                   className={cn(styles.box, { [styles.active]: activeIndex === 0 })}
-                  onClick={() => setActiveIndex(0)}
+
                 >
-                  <Image
-                    src={data[0].image}
-                    alt={data[0].name}
-                    priority
-                    draggable={false}
-                    width={90}
-                    height={40}
-                  />
+                  <button
+                    type="button"
+                    onClick={() => setActiveIndex(0)}
+                  >
+                    <Image
+                      src={data[0].image}
+                      alt={data[0].name}
+                      priority
+                      draggable={false}
+                      width={90}
+                      height={40}
+                    />
+                  </button>
+
                 </li>
                 <li
                   className={cn(styles.box, { [styles.active]: activeIndex === 1 })}
-                  onClick={() => setActiveIndex(1)}
                 >
-                  <Image
-                    src={data[1].image}
-                    alt={data[1].name}
-                    priority
-                    draggable={false}
-                    width={90}
-                    height={40}
-                  />
+                  <button
+                    type="button"
+                    onClick={() => setActiveIndex(1)}
+                  >
+                    <Image
+                      src={data[1].image}
+                      alt={data[1].name}
+                      priority
+                      draggable={false}
+                      width={90}
+                      height={40}
+                    />
+                  </button>
                 </li>
                 <li
                   className={cn(styles.box, { [styles.active]: activeIndex === 2 })}
-                  onClick={() => setActiveIndex(2)}
+
                 >
-                  <Image
-                    src={data[2].image}
-                    alt={data[2].name}
-                    priority
-                    draggable={false}
-                    width={90}
-                    height={40}
-                  />
+                  <button
+                    type="button"
+                    onClick={() => setActiveIndex(2)}
+                  >
+                    <Image
+                      src={data[2].image}
+                      alt={data[2].name}
+                      priority
+                      draggable={false}
+                      width={90}
+                      height={40}
+                    />
+                  </button>
+                </li>
+                <li
+                  className={cn(styles.box, { [styles.active]: activeIndex === 3 })}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setActiveIndex(3)}
+                  >
+                    <Image
+                      src={data[3].image}
+                      alt={data[3].name}
+                      priority
+                      draggable={false}
+                      width={90}
+                      height={40}
+                    />
+                  </button>
                 </li>
               </ul>
             </div>

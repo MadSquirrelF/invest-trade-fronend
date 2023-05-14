@@ -7,10 +7,10 @@ import { IAuthResponse, ILogin, IRegistration } from "./user.interface";
 
 /* register */
 export const register = createAsyncThunk<IAuthResponse, IRegistration>(`/register`, async ({
-  email, username, password, sex, avatar,
+  email, username, password, sex, phone_number, avatar,
 }, thunkApi) => {
   try {
-    const response = await AuthService.register(email, password, username, sex, avatar);
+    const response = await AuthService.register(email, password, username, sex, phone_number, avatar);
     toastr.success(`Регистрация`, `Вы успешно создали аккаунт!`);
     return response.data;
   } catch (error) {

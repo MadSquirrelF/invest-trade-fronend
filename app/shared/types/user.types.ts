@@ -5,7 +5,7 @@ export interface IUser {
   username: string;
   sex: string;
   avatar: string;
-  phone_number?: string;
+  phone_number: string;
   createdAt: string;
   isAdmin: boolean;
 }

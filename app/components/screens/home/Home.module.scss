@@ -10,6 +10,8 @@
   background-attachment: fixed;
 
   .content {
+    margin-top: 200px;
+
     h1 {
       font-size: 72px;
       line-height: 1;
@@ -69,7 +71,7 @@
       @apply flex items-baseline justify-evenly mt-4;
     }
 
-    @apply inline-block mt-32 z-3;
+    @apply inline-block  z-3;
   }
 
   @apply relative flex items-center text-left;
@@ -191,6 +193,8 @@
 @media (width <= 400px) {
   .home {
     .content {
+      margin-top: 150px;
+
       h1 {
         font-size: 42px;
 
@@ -226,7 +230,7 @@
         @apply block  mt-4;
       }
 
-      @apply inline-block mt-14 z-3;
+      @apply inline-block  z-3;
     }
   }
 

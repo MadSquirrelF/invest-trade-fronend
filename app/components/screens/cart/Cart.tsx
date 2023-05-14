@@ -363,13 +363,13 @@ const Cart: FC = () => {
                             {...register(`payment`, { required: true })}
                             type="radio"
                             name="payment"
-                            value="Наличные"
+                            value="Безналичный расчет"
                             className={styles.checkInput}
-                            id="cash"
+                            id="transfer"
                           />
-                          <label htmlFor="cash">
-                            <MaterialIcon name="MdAttachMoney" />
-                            <span>Наличные</span>
+                          <label htmlFor="transfer">
+                            <MaterialIcon name="MdOutlineAssignment" />
+                            <span>Безналичный расчет</span>
 
                           </label>
                         </div>
@@ -397,13 +397,13 @@ const Cart: FC = () => {
                             {...register(`payment`, { required: true })}
                             type="radio"
                             name="payment"
-                            value="Бизнес перевод"
+                            value="Наличные"
                             className={styles.checkInput}
-                            id="transfer"
+                            id="cash"
                           />
-                          <label htmlFor="transfer">
-                            <MaterialIcon name="MdOutlineAssignment" />
-                            <span>Бизнес перевод</span>
+                          <label htmlFor="cash">
+                            <MaterialIcon name="MdAttachMoney" />
+                            <span>Наличные</span>
 
                           </label>
                         </div>

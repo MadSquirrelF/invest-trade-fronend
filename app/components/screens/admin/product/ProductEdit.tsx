@@ -91,17 +91,6 @@ const ProductEdit: FC = () => {
                 />
               </div>
 
-              <Field
-                type="number"
-                {...register(`count_on_store`, {
-                  required: `Введите количество товара на складе`,
-                  valueAsNumber: true,
-                })}
-                placeholder="Количество товара на складе"
-                error={errors.count_on_store}
-                style={{ width: `20%` }}
-              />
-
               <Controller
                 name="category"
                 control={control}

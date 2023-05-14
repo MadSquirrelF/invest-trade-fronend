@@ -59,7 +59,7 @@
   @apply animate-fade;
 }
 
-@media (width <= 1500px) {
+@media (width <= 1500px) and (width >= 420px) {
   .menu {
     position: absolute;
     left: 0;
@@ -98,6 +98,68 @@
             display: block;
             margin-right: 10px;
             font-size: 30px;
+
+            &:hover {
+              @apply text-yellow-700;
+            }
+
+            @apply text-black font-bold;
+          }
+
+          @apply text-black;
+        }
+      }
+    }
+
+    &.active {
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      overflow-y: hidden;
+    }
+  }
+}
+
+@media (width <= 420px) {
+  .menu {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    display: none;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    transition: all 0.5s ease-in-out;
+
+    button {
+      display: block;
+
+      svg {
+        font-size: 25px;
+
+        &:hover {
+          color: red;
+          transform: rotate(180deg);
+          transition: all 0.5s ease-in-out;
+        }
+      }
+    }
+
+    .ul {
+      display: block;
+
+      li {
+        padding: 15px;
+        text-align: center;
+
+        .item {
+          svg,
+          span {
+            display: block;
+            margin-right: 10px;
+            font-size: 22px;
 
             &:hover {
               @apply text-yellow-700;

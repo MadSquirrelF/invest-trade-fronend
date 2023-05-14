@@ -36,7 +36,7 @@ const ProductList: FC = () => {
         <AdminTable
           isLoading={isLoading}
           removeHandler={deleteAsync}
-          headerItems={[`Название`, `Категории`, `Количество`, `Рейтинг`, `В наличии?`]}
+          headerItems={[`Название`, `Категории`, `Рейтинг`, `В наличии?`]}
           tableItems={data || []}
         />
         <Pagination

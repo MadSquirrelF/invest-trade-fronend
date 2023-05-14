@@ -20,7 +20,7 @@ export const useProduct = () => {
     select: ({ data }) => data.data.map((product): ITableItem => ({
       _id: product._id,
       editUrl: getAdminUrl(`product/edit/${product._id}`),
-      items: [product.title, getCategoriesList(product.category), String(product.count_on_store), String(product.rating), String(product.is_available)],
+      items: [product.title, getCategoriesList(product.category), String(product.rating), String(product.is_available)],
     })),
     onError: (error) => {
       toastError(error, `Список товара`);

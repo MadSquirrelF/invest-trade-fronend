@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import {
-  FC, useEffect, useRef, useState,
+  FC, useEffect, useRef,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-import { CSSTransition } from 'react-transition-group';
+
 import LoginModal from '@/components/ui/Auth/LoginModal';
 import RegistrationModal from '@/components/ui/Auth/RegistrationModal';
 import MaterialIcon from '@/components/ui/MaterialIcon';
@@ -34,10 +34,6 @@ const Navigation: FC = () => {
 
   const { items } = useSelector(selectCart);
 
-  const [isInfoOpen, setIsInfoOpen] = useState(true);
-
-  const nodeRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     if (isMounted.current) {
       const json = JSON.stringify(items);
@@ -60,25 +56,18 @@ const Navigation: FC = () => {
         className={styles.Topcontainer}
 
       >
-        <Logo />
+        <div className={styles.logoContainer}>
+          <Logo />
+          <DynamicLogin />
+        </div>
 
-        <CSSTransition
-          in={isInfoOpen}
-          nodeRef={nodeRef}
-          timeout={300}
-          classNames="popup-animation"
-          unmountOnExit
+        <div
+          className={styles.contactContainer}
         >
-          <div
-            className={styles.ContactContainer}
-            ref={nodeRef}
-          >
-            <SocialBox />
-            <ContactBox />
-          </div>
-        </CSSTransition>
+          <SocialBox />
+          <ContactBox />
+        </div>
 
-        <DynamicLogin />
         <Modal>{type === `login` ? (<LoginModal />) : (<RegistrationModal />)}</Modal>
       </div>
       <hr />
@@ -94,13 +83,6 @@ const Navigation: FC = () => {
           <MaterialIcon name="MdOutlineMenu" />
         </button>
         <div className={styles.ButtonContainer}>
-          <button
-            type="button"
-            className={styles.infotoogle}
-            onClick={() => setIsInfoOpen(!isInfoOpen)}
-          >
-            <MaterialIcon name="MdContactSupport" />
-          </button>
           <div className={styles.headerFavorites}>
             <Link href="/favorites">
               <MaterialIcon name="MdFavorite" />

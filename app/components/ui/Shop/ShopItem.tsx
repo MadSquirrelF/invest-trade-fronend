@@ -56,14 +56,6 @@ const ShopItem: FC<{ item: IProduct }> = ({ item }) => {
           </h3>
         </div>
         <div className={styles.box}>
-          <div className={cn(styles.circle, styles.blueGradient)}>
-
-            <h6>{item.count_on_store}</h6>
-
-          </div>
-          <h3>Доступно</h3>
-        </div>
-        <div className={styles.box}>
           <div className={cn(styles.circle, styles.blackGradient)}>
             <h5>{item.countOpened}</h5>
           </div>
