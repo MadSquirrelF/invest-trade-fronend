@@ -1,19 +1,21 @@
 .button {
-	@apply  bg-no-repeat  bg-left  bg-transparent;
-	width: 96px;
-	height: 64px;
-	background-size: 2900%;
+  width: 75px;
+  height: 64px;
+  background-size: 2900%;
+
+  @apply  bg-no-repeat  bg-left  bg-transparent;
 }
 
 .animate {
-	animation: heart-burst 0.8s steps(28) forwards;
+  animation: heart-burst 0.8s steps(28) forwards;
 }
 
 @keyframes heart-burst {
-	0% {
-		@apply bg-left;
-	}
-	100% {
-		@apply bg-right;
-	}
+  0% {
+    @apply bg-left;
+  }
+
+  100% {
+    @apply bg-right;
+  }
 }

@@ -2,6 +2,7 @@ import { FC, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
 import styles from './Shop.module.scss';
 import Search from './Search';
 import { Sort } from './Sort/Sort';
@@ -25,6 +26,9 @@ const Shop: FC = () => {
   const {
     sort, currentPage, searchValue, categoryIds, brandIds,
   } = useSelector(selectFilter);
+
+  const { push } = useRouter();
+
   const { items, status } = useSelector(selectProductData);
   const { scrollPosition } = useSelector(setScroll);
 
@@ -51,6 +55,7 @@ const Shop: FC = () => {
 
   const onChangePage = (page: number) => {
     dispatch(setCurrentPage(page));
+    push(`/#shop`);
   };
 
   const skeletons = [...new Array(6)].map((_, index) => <DynamicProductLoader key={index} />);

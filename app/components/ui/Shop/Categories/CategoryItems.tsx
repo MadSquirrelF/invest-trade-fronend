@@ -1,15 +1,12 @@
 import { FC, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import styles from './CategoryItems.module.scss';
 import CategoryItem from './CategoryItem';
 import { ICategoryItem } from './useCategories';
 
 import MaterialIcon from '../../MaterialIcon';
-import { setCategoryId } from '@/store/filter/slice';
 
 const CategoryItems: FC<{ items: ICategoryItem[] }> = ({ items }) => {
-  const dispatch = useDispatch();
   const [showButton, setShowButton] = useState(true);
   const [showCategories, setshowCategories] = useState(false);
 
@@ -32,14 +29,21 @@ const CategoryItems: FC<{ items: ICategoryItem[] }> = ({ items }) => {
           ))}
           <li
             className={styles.li}
-            onClick={() => setshowCategories(false)}
+
           >
-            <MaterialIcon name="MdClear" />
+            <button
+              type="button"
+              onClick={() => setshowCategories(false)}
+            >
+              <MaterialIcon name="MdClear" />
+            </button>
+
           </li>
         </ul>
       </CSSTransition>
       {showButton && (
-        <div
+        <button
+          type="button"
           className={styles.showButton}
           onClick={() => setshowCategories(true)}
         >
@@ -47,7 +51,7 @@ const CategoryItems: FC<{ items: ICategoryItem[] }> = ({ items }) => {
             <MaterialIcon name="MdDehaze" />
           </div>
           <h3>Категории</h3>
-        </div>
+        </button>
       )}
 
     </div>

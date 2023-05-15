@@ -1,20 +1,22 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { FilterSliceState, Sort, SortPropertyEnum, SortPropertyOrderEnum } from "./types";
+import {
+  FilterSliceState, Sort, SortPropertyEnum, SortPropertyOrderEnum,
+} from "./types";
 
 const initialState: FilterSliceState = {
-  searchValue: '',
+  searchValue: ``,
   currentPage: 1,
-  categoryIds: '',
-  brandIds: '',
+  categoryIds: ``,
+  brandIds: ``,
   sort: {
-    name: 'Название',
+    name: `Название`,
     sortProperty: SortPropertyEnum.TITLE,
-    sortOrder: SortPropertyOrderEnum.DESC
+    sortOrder: SortPropertyOrderEnum.DESC,
   },
-}
+};
 
 const filterSlice = createSlice({
-  name: 'filters',
+  name: `filters`,
   initialState,
   reducers: {
     setCategoryId(state, action: PayloadAction<string>) {
@@ -40,19 +42,21 @@ const filterSlice = createSlice({
         state.brandIds = action.payload.brandIds;
       } else {
         state.currentPage = 1;
-        state.categoryIds = '';
+        state.categoryIds = ``;
+        state.brandIds = ``;
         state.sort = {
-          name: 'выбрать',
+          name: `выбрать`,
           sortProperty: SortPropertyEnum.TITLE,
           sortOrder: SortPropertyOrderEnum.DESC,
         };
       }
-    }
-  }
+    },
+  },
 
-})
+});
 
-export const { setSort, setCurrentPage, setFilters, setSearchValue, setCategoryId, setBrandId } =
-  filterSlice.actions;
+export const {
+  setSort, setCurrentPage, setFilters, setSearchValue, setCategoryId, setBrandId,
+} = filterSlice.actions;
 
-export const { reducer } = filterSlice
+export const { reducer } = filterSlice;

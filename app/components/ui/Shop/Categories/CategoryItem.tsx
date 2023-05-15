@@ -5,7 +5,7 @@ import cn from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 import { ICategoryItem } from './useCategories';
 import styles from './CategoryItems.module.scss';
-import { setCategoryId, setCurrentPage } from '@/store/filter/slice';
+import { setBrandId, setCategoryId, setCurrentPage } from '@/store/filter/slice';
 import { selectFilter } from '@/store/filter/selectors';
 
 const MenuItem: FC<{ item: ICategoryItem }> = ({ item }) => {
@@ -13,8 +13,10 @@ const MenuItem: FC<{ item: ICategoryItem }> = ({ item }) => {
 
   const { categoryIds } = useSelector(selectFilter);
   const { push } = useRouter();
+
   const dispatchCategory = () => {
     dispatch(setCategoryId(item._id));
+    dispatch(setBrandId(``));
     push(`/#shop`);
     dispatch(setCurrentPage(1));
   };

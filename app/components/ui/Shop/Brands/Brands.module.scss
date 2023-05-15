@@ -1,6 +1,13 @@
 .brands {
   ul {
     display: flex;
+    user-select: none; /* Safari */
+    user-select: none; /* Konqueror HTML */
+    user-select: none; /* Old versions of Firefox */
+    user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+    -webkit-touch-callout: none; /* iOS Safari */
 
     li {
       position: relative;
