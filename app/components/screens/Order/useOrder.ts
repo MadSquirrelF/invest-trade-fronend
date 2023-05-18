@@ -1,31 +1,31 @@
-import { ChangeEvent, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useMutation, useQuery } from "react-query";
 import { toastr } from "react-redux-toastr";
-import { useDebounce } from "@/hooks/useDebounce";
+
+import { useSelector } from "react-redux";
 import { useAuth } from "@/hooks/useAuth";
 import { convertMongoDbData } from "@/utils/date/ConvertMongoDbData";
 import { toastError } from "@/utils/toastError";
 import { OrderService } from "@/services/order.service";
+import { selectFilter } from "@/store/filter/selectors";
+import { CartItemType } from "@/store/cart/types";
 
 export const useOrder = () => {
-  const [searchTerm, setSearchTerm] = useState(``);
-  const debouncedSearch = useDebounce(searchTerm, 500);
-
   const { user } = useAuth();
 
   interface IUserTableItem {
     _id: string;
     items: string[];
+    products: CartItemType[];
   }
 
-  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value);
-  };
+  const { orderSortValue } = useSelector(selectFilter);
 
-  const queryData = useQuery([`user orders list`, debouncedSearch], () => OrderService.getAllUserOrders(debouncedSearch), {
+  const queryData = useQuery([`user orders list`, orderSortValue], () => OrderService.getAllUserOrders(orderSortValue === `Все` ? `` : String(orderSortValue)), {
     select: ({ data }) => data.map((order): IUserTableItem => ({
       _id: order._id,
       items: [order._id, convertMongoDbData(order.createdAt), order.status, order.address.street, order.payment],
+      products: order.items,
     })),
     enabled: !!user,
     onError: (error) => {
@@ -44,9 +44,7 @@ export const useOrder = () => {
   });
 
   return useMemo(() => ({
-    handleSearch,
     ...queryData,
-    searchTerm,
     cancelAsync,
-  }), [queryData, searchTerm, cancelAsync]);
+  }), [queryData, cancelAsync]);
 };

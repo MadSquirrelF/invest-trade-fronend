@@ -7,6 +7,7 @@ const initialState: FilterSliceState = {
   searchValue: ``,
   currentPage: 1,
   categoryIds: ``,
+  orderSortValue: `Все`,
   brandIds: ``,
   sort: {
     name: `Название`,
@@ -21,6 +22,9 @@ const filterSlice = createSlice({
   reducers: {
     setCategoryId(state, action: PayloadAction<string>) {
       state.categoryIds = action.payload;
+    },
+    setOrderSortValue(state, action: PayloadAction<string>) {
+      state.orderSortValue = action.payload;
     },
     setBrandId(state, action: PayloadAction<string>) {
       state.brandIds = action.payload;
@@ -56,7 +60,7 @@ const filterSlice = createSlice({
 });
 
 export const {
-  setSort, setCurrentPage, setFilters, setSearchValue, setCategoryId, setBrandId,
+  setSort, setCurrentPage, setFilters, setOrderSortValue, setSearchValue, setCategoryId, setBrandId,
 } = filterSlice.actions;
 
 export const { reducer } = filterSlice;

@@ -76,7 +76,6 @@ const Cart: FC = () => {
       <section className={styles.cart}>
         <div className={styles.container}>
           <Stepper currentStep={currentStep} />
-
           {
             localStorage.getItem(`lastCreatedOrderId`) === null ? (
               <>

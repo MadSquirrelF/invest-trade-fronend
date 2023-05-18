@@ -28,7 +28,7 @@ const steps: IStepper[] = [
   },
   {
     id: 3,
-    title: `Способ оплаты`,
+    title: `Оплата`,
     icon: `MdPayment`,
   },
 ];

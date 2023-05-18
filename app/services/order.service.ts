@@ -1,11 +1,13 @@
 import { getOrdersUrl } from "config/api.config";
 import axios from "../api/interceptors";
-import { IOrder, IOrderCreate, IOrderEditAddress } from "@/shared/types/order.types";
+import {
+  IOrder, IOrderCreate, IOrderEditAddress, IOrderEditAdmin,
+} from "@/shared/types/order.types";
 
 export const OrderService = {
-  async getAllOrders(searchTerm?: string) {
+  async getAllOrders(statusOrder?: string) {
     return axios.get<IOrder[]>(getOrdersUrl(``), {
-      params: searchTerm ? { searchTerm } : {},
+      params: statusOrder ? { statusOrder } : {},
     });
   },
 
@@ -13,9 +15,13 @@ export const OrderService = {
     return axios.get<IOrder>(getOrdersUrl(`/${_id}`));
   },
 
-  async getAllUserOrders(searchTerm?: string) {
+  async updateAdminOrder(_id: string, data: IOrderEditAdmin) {
+    return axios.put<string>(getOrdersUrl(`/${_id}`), data);
+  },
+
+  async getAllUserOrders(statusOrder?: string) {
     return axios.get<IOrder[]>(getOrdersUrl(`/user-orders`), {
-      params: searchTerm ? { searchTerm } : {},
+      params: statusOrder ? { statusOrder } : {},
     });
   },
 

@@ -1,63 +1,82 @@
 .Add {
-	@apply relative h-full w-full;
-	.content {
-		@apply relative text-right;
-		.title {
-			@apply relative text-right;
-			h1 {
-				@apply uppercase text-black font-black;
-				font-size: 48px;
-				line-height: 1;
-				span {
-					@apply uppercase text-primary font-black;
-					font-size: 48px;
-					line-height: 1;
-				}
-			}
-		}
-		.gallery {
-			@apply relative mt-14 flex flex-wrap justify-center items-center;
-			.item {
-				@apply relative  text-center rounded-xl;
-				margin: 5px;
-				padding: 12px;
-				h4 {
-					@apply font-bold;
-					font-size: 16px;
-					width: 112px;
-					margin: 0 auto;
-				}
-				.image {
-					@apply relative;
-					height: 176px;
-					width: 176px;
-					margin: 10px auto;
-				}
-				&:hover {
-					transition: all 0.2s ease-in-out;
-					transform: translateY(-3px);
-					box-shadow: 0px 5px 5px blue;
-				}
-			}
-		}
-	}
+  .content {
+    .title {
+      h1 {
+        font-size: 48px;
+        line-height: 1;
+
+        span {
+          font-size: 48px;
+          line-height: 1;
+
+          @apply uppercase text-primary font-black;
+        }
+
+        @apply uppercase text-black font-black;
+      }
+
+      @apply relative text-right;
+    }
+
+    .gallery {
+      .item {
+        margin: 5px;
+        padding: 12px;
+
+        h4 {
+          margin: 0 auto;
+          width: 112px;
+          font-size: 16px;
+
+          @apply font-bold;
+        }
+
+        .image {
+          margin: 10px auto;
+          width: 176px;
+          height: 176px;
+
+          @apply relative;
+        }
+
+        &:hover {
+          box-shadow: 0 5px 5px blue;
+          transform: translateY(-3px);
+          transition: all 0.2s ease-in-out;
+        }
+
+        @apply relative  text-center rounded-xl;
+      }
+
+      @apply relative mt-14 flex flex-wrap justify-center items-center;
+    }
+
+    @apply relative text-right;
+  }
+
+  @apply relative h-full w-full;
 }
-@media (max-width: 700px) {
-	.Add {
-		.content {
-			.title {
-				@apply relative text-right;
-				h1 {
-					@apply uppercase text-black font-black;
-					font-size: 28px;
-					line-height: 1;
-					span {
-						@apply uppercase text-primary font-black;
-						font-size: 28px;
-						line-height: 1;
-					}
-				}
-			}
-		}
-	}
+
+@media (width <= 700px) {
+  .Add {
+    .content {
+      .title {
+        h1 {
+          font-size: 28px;
+          line-height: 1;
+
+          span {
+            font-size: 28px;
+            line-height: 1;
+
+            @apply uppercase text-primary font-black;
+          }
+
+          @apply uppercase text-black font-black;
+        }
+
+        @apply relative text-right;
+      }
+    }
+  }
 }

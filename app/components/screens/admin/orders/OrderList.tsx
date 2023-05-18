@@ -1,23 +1,26 @@
 import { FC, useCallback, useState } from 'react';
-import cn from 'classnames';
-
 import { useDispatch, useSelector } from 'react-redux';
 import Image from 'next/image';
-import styles from './Orders.module.scss';
-import SkeletonLoader from '@/components/ui/heading/SkeletonLoader';
-
-import { useOrder } from './useOrder';
+import cn from 'classnames';
+import { useRouter } from 'next/router';
+import styles from '../../Order/Orders.module.scss';
 import MaterialIcon from '@/components/ui/MaterialIcon';
+import SkeletonLoader from '@/components/ui/heading/SkeletonLoader';
 import { setOrderSortValue } from '@/store/filter/slice';
-import { OrderSort } from './OrderSort/OrderSort';
+import { OrderSort } from '../../Order/OrderSort/OrderSort';
 import { selectFilter } from '@/store/filter/selectors';
 
-const Orders: FC = () => {
-  const {
-    isLoading, data, cancelAsync,
-  } = useOrder();
+import { useGetAllOrders } from './useGetAllOrders';
+import AdminNavigation from '@/components/ui/admin-navigation/AdminNavigation';
+import Heading from '@/components/ui/heading/Heading';
 
+const OrderList: FC = () => {
   const dispatch = useDispatch();
+  const { push } = useRouter();
+
+  const {
+    isLoading, data, cancelAsync, deleteAsync,
+  } = useGetAllOrders();
 
   const [isProductOpen, setIseProductOpen] = useState(``);
 
@@ -30,6 +33,13 @@ const Orders: FC = () => {
     }
   };
 
+  const deleteOrder = (id: string) => {
+    // eslint-disable-next-line no-alert
+    if (window.confirm(`Вы точно хотите удалить данный заказ?`)) {
+      deleteAsync(id);
+    }
+  };
+
   const onChangeSort = useCallback((idx: string) => {
     dispatch(setOrderSortValue(idx));
   }, []);
@@ -37,17 +47,8 @@ const Orders: FC = () => {
   return (
     <section className={styles.root}>
       <div className={styles.container}>
-        <div className={styles.head}>
-          <h1>
-            Ваши
-            {` `}
-            <span>Заказы</span>
-          </h1>
-          <p>
-            На этой странице вы можете отслеживать статус ваших заказов и их данные.
-          </p>
-
-        </div>
+        <AdminNavigation />
+        <Heading title="Все заказы" />
         <div className={styles.statistic}>
           <OrderSort
             value={orderSortValue}
@@ -64,6 +65,9 @@ const Orders: FC = () => {
           <div className={cn(styles.info, styles.itemHeader)}>
             <div>
               ID
+            </div>
+            <div>
+              Имя
             </div>
             <div>
               Дата заказа
@@ -114,7 +118,7 @@ const Orders: FC = () => {
                   <div className={styles.valueContainer}>
                     {tableItem.items.map((value, index) => (
 
-                      index === 2 ? (
+                      index === 3 ? (
                         <div
                           key={value}
                           style={{
@@ -147,11 +151,18 @@ const Orders: FC = () => {
                     <div className={styles.actions}>
                       <button
                         type="button"
-                        disabled={tableItem.items[2] === `Отменен`}
+                        disabled={tableItem.items[3] === `Отменен`}
                         onClick={() => cancelOrder(tableItem._id)}
-                        className={styles.cancel}
+                        className={styles.delete}
                       >
-                        Отменить
+                        <MaterialIcon name="MdFreeCancellation" />
+                      </button>
+                      <button
+                        type="button"
+                        className={styles.delete}
+                        onClick={() => deleteOrder(tableItem._id)}
+                      >
+                        <MaterialIcon name="MdDeleteForever" />
                       </button>
                       <button
                         type="button"
@@ -159,6 +170,13 @@ const Orders: FC = () => {
                         onClick={() => setIseProductOpen(tableItem._id)}
                       >
                         <MaterialIcon name="MdRemoveRedEye" />
+                      </button>
+                      <button
+                        type="button"
+                        className={styles.watch}
+                        onClick={() => push(tableItem.editUrl)}
+                      >
+                        <MaterialIcon name="MdContentPasteSearch" />
                       </button>
                     </div>
                   </div>
@@ -192,4 +210,4 @@ const Orders: FC = () => {
   );
 };
 
-export default Orders;
+export default OrderList;
