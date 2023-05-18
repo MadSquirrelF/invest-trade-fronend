@@ -3,6 +3,7 @@ import { useMutation, useQuery } from "react-query";
 import { useSelector } from "react-redux";
 import { toastr } from "react-redux-toastr";
 import { getAdminUrl } from "config/url.config";
+import { useMemo } from "react";
 import { OrderService } from "@/services/order.service";
 import { toastError } from "@/utils/toastError";
 import { CartItemType } from "@/store/cart/types";
@@ -51,9 +52,9 @@ export const useGetAllOrders = () => {
     },
   });
 
-  return {
+  return useMemo(() => ({
     ...orderList,
-    cancelAsync,
     deleteAsync,
-  };
+    cancelAsync,
+  }), [orderList, deleteAsync, cancelAsync]);
 };

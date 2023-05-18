@@ -23,4 +23,5 @@ export interface IOrder {
 
 export interface IOrderEditAddress extends Omit<IOrder, '_id' | 'status' | 'total_count' | 'user' | 'isSendTelegram' | 'createdAt' | 'items'> { }
 export interface IOrderEditAdmin extends Omit<IOrder, '_id' | 'total_count' | 'user' | 'items' | 'isSendTelegram' | 'createdAt'> { }
+export interface IOrderChangeStatus extends Pick<IOrder, 'status' > { }
 export interface IOrderCreate extends Omit<IOrder, '_id' | 'status' | 'address' | 'user' | 'isSendTelegram' | 'createdAt' | 'payment'> { }

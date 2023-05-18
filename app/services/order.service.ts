@@ -1,7 +1,7 @@
 import { getOrdersUrl } from "config/api.config";
 import axios from "../api/interceptors";
 import {
-  IOrder, IOrderCreate, IOrderEditAddress, IOrderEditAdmin,
+  IOrder, IOrderChangeStatus, IOrderCreate, IOrderEditAddress, IOrderEditAdmin,
 } from "@/shared/types/order.types";
 
 export const OrderService = {
@@ -39,5 +39,9 @@ export const OrderService = {
 
   async cancelOrder(_id: string) {
     return axios.put<string>(getOrdersUrl(`/cancel/${_id}`));
+  },
+
+  async changeOrderStatus(_id: string, dto: IOrderChangeStatus) {
+    return axios.put<string>(getOrdersUrl(`/change-status/${_id}`), dto);
   },
 };

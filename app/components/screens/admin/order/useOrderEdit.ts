@@ -1,32 +1,48 @@
 import { useRouter } from "next/router";
-import { SubmitHandler } from 'react-hook-form';
-import { useMutation } from "react-query";
-import { getAdminUrl } from "config/url.config";
+import { useMutation, useQuery } from "react-query";
 import { toastr } from "react-redux-toastr";
+import { useMemo } from "react";
+import { getAdminUrl } from "config/url.config";
 import { OrderService } from "@/services/order.service";
 import { toastError } from "@/utils/toastError";
-import { IOrderEditAdmin } from "@/shared/types/order.types";
+import { IOrderChangeStatus } from "@/shared/types/order.types";
 
 export const useOrderEdit = () => {
   const { push, query } = useRouter();
 
   const orderId = String(query.id);
 
-  const { mutateAsync } = useMutation(`update order admin`, (data: IOrderEditAdmin) => OrderService.updateAdminOrder(orderId, data), {
+  const order = useQuery(`admin find one order`, () => OrderService.getOrderById(orderId), {
+    onSuccess: ({ data }) => data,
     onError(error) {
-      toastError(error, `Редактирование заказа`);
+      toastError(error, `get order by id`);
+    },
+    enabled: !!query.id,
+  });
+
+  const { mutateAsync } = useMutation(`change order status`, (data: IOrderChangeStatus) => OrderService.changeOrderStatus(orderId, data), {
+    onError(error) {
+      toastError(error, `Изменение статуса заказа`);
     },
     onSuccess() {
-      toastr.success(`Редактирование заказа`, `Обновлен успешно`);
+      toastr.success(`Изменение статуса заказа`, `Статус изменен успешно`);
+      order.refetch();
+    },
+  });
+
+  const { mutateAsync: deleteAsync } = useMutation(`delete admin order`, () => OrderService.deleteOrder(orderId), {
+    onError(error) {
+      toastError(error, `Удаление заказа админом`);
+    },
+    onSuccess() {
+      toastr.success(`Удаление заказа админом`, `Заказ удален админом`);
       push(getAdminUrl(`orders`));
     },
   });
 
-  const onSubmit: SubmitHandler<IOrderEditAdmin> = async (data) => {
-    await mutateAsync(data);
-  };
-
-  return {
-    onSubmit,
-  };
+  return useMemo(() => ({
+    ...order,
+    mutateAsync,
+    deleteAsync,
+  }), [mutateAsync, order, deleteAsync]);
 };
