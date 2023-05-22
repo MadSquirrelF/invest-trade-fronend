@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { hideModal, selectModal } from '@/store/modal/modal.slice';

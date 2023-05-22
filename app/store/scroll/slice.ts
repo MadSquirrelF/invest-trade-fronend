@@ -1,4 +1,3 @@
-import { getStoreLocal } from "@/utils/local-storage";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TypeRootState } from "../store";
 
@@ -6,11 +5,11 @@ export interface IInitialState {
   scrollPosition: number;
 }
 const initialState: IInitialState = {
-  scrollPosition: 0
-}
+  scrollPosition: 0,
+};
 
 export const scrollSlice = createSlice({
-  name: 'scroll',
+  name: `scroll`,
   initialState,
   reducers: {
     setScrollPositon(state, action: PayloadAction<number>) {
@@ -18,11 +17,10 @@ export const scrollSlice = createSlice({
     },
   },
 
-})
+});
 
-export const { setScrollPositon } =
-  scrollSlice.actions;
+export const { setScrollPositon } = scrollSlice.actions;
 
 export const setScroll = (state: TypeRootState) => state.scroll;
 
-export const { reducer } = scrollSlice
+export const { reducer } = scrollSlice;

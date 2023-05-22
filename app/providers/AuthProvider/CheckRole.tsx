@@ -14,6 +14,7 @@ const CheckRole: FC<TypeComponentAuthFields> = ({ children, Component: { isOnlyA
   if (user?.isAdmin) return <Children />;
 
   if (isOnlyAdmin) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     router.pathname !== `/404` && router.replace(`/404`);
     return null;
   }
@@ -22,6 +23,7 @@ const CheckRole: FC<TypeComponentAuthFields> = ({ children, Component: { isOnlyA
 
   if (isUser && isOnlyUser) return <Children />;
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   router.pathname !== `/` && router.replace(`/`);
   return null;
 };

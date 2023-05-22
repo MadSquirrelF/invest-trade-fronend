@@ -34,6 +34,7 @@ instance.interceptors.response.use((config) => config, async (error) => {
     try {
       await AuthService.getNewTokens();
       return await instance.request(originalRequest);
+    // eslint-disable-next-line @typescript-eslint/no-shadow
     } catch (error) {
       if (errorCatch(error) === `jwt expired`) removeTokensStorage();
     }

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useRouter } from 'next/router';
 import { FC } from 'react';
 import Image from 'next/image';
@@ -22,6 +23,7 @@ const MenuItem: FC<{ item: ICategoryItem }> = ({ item }) => {
   };
 
   return (
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
     <li
       className={cn(styles.li, { [styles.active]: item._id === categoryIds })}
       onClick={() => dispatchCategory()}

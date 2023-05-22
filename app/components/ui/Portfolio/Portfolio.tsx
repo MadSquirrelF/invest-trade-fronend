@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import styles from './Portfolio.module.scss';
-import { ISlide, ISlider } from '../slider/slider.interface';
+import { ISlide } from '../slider/slider.interface';
 import Slider from '../slider/Slider';
 import { IClouds } from './cloud.interface';
 
@@ -35,7 +35,7 @@ const Portfolio: FC<IPorfolio> = ({ slides, clouds: { clouds } }) => (
     </div>
     {slides.length && <Slider slides={slides} />}
     <div className={styles.clouds}>
-      {clouds.map((cloud, i) => (
+      {clouds.map((cloud) => (
         <Image
           key={cloud.title}
           src={cloud.image}

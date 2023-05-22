@@ -9,4 +9,3 @@ export interface ICloudItem {
 export interface IClouds {
   clouds: ICloudItem[];
 }
-

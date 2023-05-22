@@ -1,10 +1,8 @@
-import BrandsList from '@/components/screens/admin/brands/BrandList'
-import { NextPageAuth } from '@/shared/types/auth.types'
+import BrandsList from '@/components/screens/admin/brands/BrandList';
+import { NextPageAuth } from '@/shared/types/auth.types';
 
-const BrandsListPage: NextPageAuth = () => {
-  return <BrandsList />
-}
+const BrandsListPage: NextPageAuth = () => <BrandsList />;
 
-BrandsListPage.isOnlyAdmin = true
+BrandsListPage.isOnlyAdmin = true;
 
-export default BrandsListPage
+export default BrandsListPage;

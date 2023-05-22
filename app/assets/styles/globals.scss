@@ -16,6 +16,8 @@ html {
   background: white;
   scroll-behavior: smooth;
   scroll-padding-top: 9rem;
+  text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -48,10 +50,6 @@ html::-webkit-scrollbar-thumb {
   cursor: pointer;
 }
 
-html {
-  text-size-adjust: 100%;
-  text-size-adjust: 100%;
-}
 
 a,
 span,

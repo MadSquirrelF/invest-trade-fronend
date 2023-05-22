@@ -1,14 +1,13 @@
-import { NextPageAuth } from '@/shared/types/auth.types'
-import dynamic from 'next/dynamic'
-const DynamicFavorites = dynamic(() => import('../app/components/screens/favorites/Favorites'), {
+import dynamic from 'next/dynamic';
+import { NextPageAuth } from '@/shared/types/auth.types';
+
+const DynamicFavorites = dynamic(() => import(`../app/components/screens/favorites/Favorites`), {
   ssr: false,
-})
-const FavoritesPage: NextPageAuth = () => {
-  return (
-    <DynamicFavorites />
-  )
-}
+});
+const FavoritesPage: NextPageAuth = () => (
+  <DynamicFavorites />
+);
 
-FavoritesPage.isOnlyUser = true
+FavoritesPage.isOnlyUser = true;
 
-export default FavoritesPage
+export default FavoritesPage;

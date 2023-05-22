@@ -1,6 +1,7 @@
 .header {
-	@apply flex-center-between mt-8;
-	button {
-		@apply bg-primary bg-opacity-80;
-	}
+  button {
+    @apply bg-primary bg-opacity-80;
+  }
+
+  @apply flex-center-between mt-8;
 }

@@ -20,9 +20,9 @@ const HomePage: NextPage<IHome> = ({ slides, Adds, news }) => (
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const { data: works } = await WorkService.getAll();
+    const { data: dataWorks } = await WorkService.getAll();
 
-    const slides: ISlide[] = works.map((slide) => ({
+    const slides: ISlide[] = dataWorks.map((slide) => ({
       _id: slide._id,
       link: getWorkUrl(slide.slug),
       poster: slide.poster,

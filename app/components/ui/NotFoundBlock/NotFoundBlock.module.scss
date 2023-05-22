@@ -1,23 +1,29 @@
 .root {
-	@apply relative h-screen w-full;
-	.container {
-		@apply relative block text-center p-10 bg-white rounded-xl;
-		margin-top: 200px;
+  .container {
+    margin-top: 200px;
 
-		.text {
-			p {
-				@apply text-lg my-4;
-			}
-			img {
-				margin: 0 auto;
-			}
-			button {
-				@apply relative;
-				margin-top: 30px;
-				a {
-					@apply relative w-full h-full;
-				}
-			}
-		}
-	}
+    .text {
+      p {
+        @apply text-lg my-4;
+      }
+
+      img {
+        margin: 0 auto;
+      }
+
+      button {
+        margin-top: 30px;
+
+        a {
+          @apply relative w-full h-full;
+        }
+
+        @apply relative;
+      }
+    }
+
+    @apply relative block text-center p-10 bg-white rounded-xl;
+  }
+
+  @apply relative h-screen w-full;
 }

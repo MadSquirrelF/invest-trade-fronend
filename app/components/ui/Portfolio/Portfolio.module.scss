@@ -1,94 +1,117 @@
 .Portfolio {
-	background-image: url('../../../assets/images/Backgrounds/space_background3.jpg');
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	height: 150vh;
-	position: relative;
-	padding-top: 100px;
-	width: 100%;
-	margin: 0;
-	z-index: 1;
-	box-shadow: inset 0px 600px 400px black;
-	.content {
-		@apply z-3 flex justify-between;
-		align-items: flex-end;
-		width: 100%;
-		.title {
-			@apply relative text-left;
-			h1 {
-				@apply uppercase text-white font-black;
-				font-size: 48px;
-				line-height: 1;
-				span {
-					@apply uppercase text-primary font-black;
-					font-size: 48px;
-					line-height: 1;
-				}
-			}
-		}
-		.subtitle {
-			@apply relative text-right;
-			h2 {
-				@apply text-white font-bold;
-				font-size: 24px;
-				span {
-					@apply text-white font-normal;
-					font-size: 20px;
-				}
-			}
-		}
-	}
-	@keyframes animate {
-		0% {
-			opacity: 0;
-			transform: scale(1);
-		}
-		25% {
-			opacity: 1;
-		}
-		75% {
-			opacity: 1;
-		}
-		100% {
-			transform: scale(3);
-		}
-	}
-	.clouds {
-		@apply absolute bottom-0 left-0 h-full w-full overflow-hidden;
-		pointer-events: none;
-		.cloud {
-			--i: '1';
-			@apply absolute w-full bottom-0;
-			height: auto;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding-top: 100px;
+  width: 100%;
+  height: 150vh;
+  box-shadow: inset 0 600px 400px black;
+  background-image: url("../../../assets/images/Backgrounds/space_background3.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 
-			animation: animate calc(3s * var(--i)) linear infinite;
-		}
-	}
-}
-@media (max-width: 1300px) {
-	.Portfolio {
-		.content {
-			display: block;
-			.subtitle {
-				@apply mt-5 text-left;
-			}
-		}
-	}
-}
-@media (max-width: 600px) {
-	.Portfolio {
-		.content {
-			.title {
-				h1 {
-					font-size: 38px;
+  .content {
+    align-items: flex-end;
+    width: 100%;
 
-					span {
-						font-size: 38px;
-					}
-				}
-			}
-		}
-	}
+    .title {
+      h1 {
+        font-size: 48px;
+        line-height: 1;
+
+        span {
+          font-size: 48px;
+          line-height: 1;
+
+          @apply uppercase text-primary font-black;
+        }
+
+        @apply uppercase text-white font-black;
+      }
+
+      @apply relative text-left;
+    }
+
+    .subtitle {
+      h2 {
+        font-size: 24px;
+
+        span {
+          font-size: 20px;
+
+          @apply text-white font-normal;
+        }
+
+        @apply text-white font-bold;
+      }
+
+      @apply relative text-right;
+    }
+
+    @apply z-3 flex justify-between;
+  }
+
+  .clouds {
+    pointer-events: none;
+
+    .cloud {
+      --i: "1";
+
+      height: auto;
+      animation: animate calc(3s * var(--i)) linear infinite;
+
+      @apply absolute w-full bottom-0;
+    }
+
+    @apply absolute bottom-0 left-0 h-full w-full overflow-hidden;
+  }
+
+  @keyframes animate {
+    0% {
+      opacity: 0;
+      transform: scale(1);
+    }
+
+    25% {
+      opacity: 1;
+    }
+
+    75% {
+      opacity: 1;
+    }
+
+    100% {
+      transform: scale(3);
+    }
+  }
+}
+
+@media (width <= 1300px) {
+  .Portfolio {
+    .content {
+      display: block;
+
+      .subtitle {
+        @apply mt-5 text-left;
+      }
+    }
+  }
+}
+
+@media (width <= 600px) {
+  .Portfolio {
+    .content {
+      .title {
+        h1 {
+          font-size: 38px;
+
+          span {
+            font-size: 38px;
+          }
+        }
+      }
+    }
+  }
 }

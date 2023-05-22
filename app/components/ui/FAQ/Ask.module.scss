@@ -1,136 +1,167 @@
 .root {
-	@apply relative z-1  w-full overflow-hidden;
-
-	.bgtext {
-		@apply absolute z-1 font-bold uppercase text-black;
-		filter: blur(5px);
-		font-size: 200px;
-		line-height: 444px;
-		opacity: 0.2;
-		left: 5%;
-		top: 0%;
-		letter-spacing: 0.1em;
-		-webkit-touch-callout: none; /* iOS Safari */
-		-webkit-user-select: none; /* Safari */
-		-khtml-user-select: none; /* Konqueror HTML */
-		-moz-user-select: none; /* Old versions of Firefox */
-		-ms-user-select: none; /* Internet Explorer/Edge */
-		user-select: none; /* Non-prefixed version, currently
+  .bgtext {
+    left: 5%;
+    top: 0%;
+    font-size: 200px;
+    line-height: 444px;
+    letter-spacing: 0.1em;
+    opacity: 0.2;
+    user-select: none; /* Safari */
+    user-select: none; /* Konqueror HTML */
+    user-select: none; /* Old versions of Firefox */
+    user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
-	}
-	.title {
-		@apply relative text-right mb-14;
-		h1 {
-			@apply text-5xl uppercase text-black font-black;
-			span {
-				@apply text-5xl uppercase text-primary font-black;
-			}
-		}
-	}
-	.row {
-		@apply relative text-center z-2 items-center flex-wrap;
-		.container {
-			z-index: 2;
-			max-width: 70rem;
-			margin: 0 auto;
-			.item {
-				@apply mb-12;
-				border-radius: 5px;
-				box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-				&.active {
-					.question {
-						@apply bg-primary;
-						svg {
-							transform: rotate(180deg);
-						}
-					}
+    filter: blur(5px);
+    -webkit-touch-callout: none; /* iOS Safari */
 
-					.answer {
-						@apply max-h-96 h-auto p-6 text-left;
-						background-color: white;
-						border-radius: 5px;
-						transition: all 0.5s cubic-bezier(1, 0, 1, 0);
-					}
-				}
-				&:last-child {
-					margin-bottom: 0.5rem;
-				}
-				.question {
-					@apply flex p-6 items-center gap-4 justify-between cursor-pointer;
-					border-radius: 5px;
-					background:#302f2f;
-					.content {
-						@apply flex items-center;
-						.count {
-							@apply bg-primary h-10 w-10 flex items-center justify-center p-2 mr-4;
-							border-radius: 50%;
-							p {
-								@apply text-white font-semibold;
-								line-height: 24px;
-							}
-						}
-						h2 {
-							@apply text-white text-left font-semibold  mr-4;
-							font-size: 20px;
-						}
-					}
-					svg {
-						@apply fill-white;
-						font-size: 20px;
-						transition: all 0.5s ease-in-out;
-					}
-				}
-				.answer {
-					@apply max-h-0 overflow-hidden;
+    @apply absolute z-1 font-bold uppercase text-black;
+  }
 
-					transition: all 0.5s cubic-bezier(0, 1, 0, 1);
-					p {
-						font-size: 1.5rem;
-						line-height: 2;
-						animation: fadeIn 0.2s linear;
-						color: #302f2f;
-					}
-				}
-			}
-		}
-	}
+  .title {
+    h1 {
+      span {
+        @apply text-5xl uppercase text-primary font-black;
+      }
+
+      @apply text-5xl uppercase text-black font-black;
+    }
+
+    @apply relative text-right mb-14;
+  }
+
+  .row {
+    .container {
+      z-index: 2;
+      margin: 0 auto;
+      max-width: 70rem;
+
+      .item {
+        border-radius: 5px;
+        box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 20%);
+
+        .question {
+          border-radius: 5px;
+          background:#302f2f;
+
+          .content {
+            .count {
+              border-radius: 50%;
+
+              p {
+                line-height: 24px;
+
+                @apply text-white font-semibold;
+              }
+
+              @apply bg-primary h-10 w-10 flex items-center justify-center p-2 mr-4;
+            }
+
+            h2 {
+              font-size: 20px;
+
+              @apply text-white text-left font-semibold  mr-4;
+            }
+
+            @apply flex items-center;
+          }
+
+          svg {
+            font-size: 20px;
+            transition: all 0.5s ease-in-out;
+
+            @apply fill-white;
+          }
+
+          @apply flex p-6 items-center gap-4 justify-between cursor-pointer;
+        }
+
+        .answer {
+          transition: all 0.5s cubic-bezier(0, 1, 0, 1);
+
+          p {
+            font-size: 1.5rem;
+            line-height: 2;
+            color: #302f2f;
+            animation: fadeIn 0.2s linear;
+          }
+
+          @apply max-h-0 overflow-hidden;
+        }
+
+        &:last-child {
+          margin-bottom: 0.5rem;
+        }
+
+        &.active {
+          .question {
+            svg {
+              transform: rotate(180deg);
+            }
+
+            @apply bg-primary;
+          }
+
+          .answer {
+            border-radius: 5px;
+            background-color: white;
+            transition: all 0.5s cubic-bezier(1, 0, 1, 0);
+
+            @apply max-h-96 h-auto p-6 text-left;
+          }
+        }
+
+        @apply mb-12;
+      }
+    }
+
+    @apply relative text-center z-2 items-center flex-wrap;
+  }
+
+  @apply relative z-1  w-full overflow-hidden;
 }
-@media (max-width: 500px) {
-	.root {
-		.bgtext {
-			@apply absolute z-1 font-bold uppercase text-black;
-			filter: blur(5px);
-			font-size: 100px;
-			display: none;
-			line-height: 444px;
-			opacity: 0.2;
-		}
-		.title {
-			h1 {
-				font-size: 38px;
-				span {
-					font-size: 38px;
-				}
-			}
-		}
-		.row {
-			.container {
-				.item {
-					.question {
-						.content {
-							h2 {
-								font-size: 15px;
-							}
-						}
-					}
-					.answer {
-						p {
-							font-weight: 500;
-							font-size: 13px;
-						}
-					}
-				}
-			}
-		}
-	}
+
+@media (width <= 500px) {
+  .root {
+    .bgtext {
+      display: none;
+      font-size: 100px;
+      line-height: 444px;
+      opacity: 0.2;
+      filter: blur(5px);
+
+      @apply absolute z-1 font-bold uppercase text-black;
+    }
+
+    .title {
+      h1 {
+        font-size: 38px;
+
+        span {
+          font-size: 38px;
+        }
+      }
+    }
+
+    .row {
+      .container {
+        .item {
+          .question {
+            .content {
+              h2 {
+                font-size: 15px;
+              }
+            }
+          }
+
+          .answer {
+            p {
+              font-weight: 500;
+              font-size: 13px;
+            }
+          }
+        }
+      }
+    }
+  }
 }

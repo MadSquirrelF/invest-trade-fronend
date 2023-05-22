@@ -1,83 +1,104 @@
 .root {
-	@apply relative h-screen w-full flex items-center justify-center;
-	.container {
-		@apply relative w-full flex items-stretch justify-between;
-		margin-top: 250px;
-		.info {
-			@apply relative;
-			hr {
-				@apply mt-4 text-gray-600;
-			}
-			.box {
-				@apply relative mt-5;
-				h2 {
-					@apply text-primary font-black;
-					font-size: 30px;
-				}
-			}
-			.title {
-				@apply relative flex items-center;
-				.image {
-					@apply relative  mr-11;
-					width: 160px;
-					height: 160px;
-					img {
-						@apply rounded-full;
-					}
-				}
-				.name {
-					h2 {
-						@apply text-primary font-black;
-						font-size: 30px;
-					}
-				}
-			}
-		}
+  .container {
+    margin-top: 250px;
 
-		.form {
-			@apply relative w-1/2;
+    .info {
+      hr {
+        @apply mt-4 text-gray-600;
+      }
 
-			.fields {
-				@apply w-1/2;
-				button {
-					@apply mt-5;
-				}
-			}
-		}
-	}
+      .box {
+        h2 {
+          font-size: 30px;
+
+          @apply text-primary font-black;
+        }
+
+        @apply relative mt-5;
+      }
+
+      .title {
+        .image {
+          width: 160px;
+          height: 160px;
+
+          img {
+            @apply rounded-full;
+          }
+
+          @apply relative  mr-11;
+        }
+
+        .name {
+          h2 {
+            font-size: 30px;
+
+            @apply text-primary font-black;
+          }
+        }
+
+        @apply relative flex items-center;
+      }
+
+      @apply relative;
+    }
+
+    .form {
+      .fields {
+        button {
+          @apply mt-5;
+        }
+
+        @apply w-1/2;
+      }
+
+      @apply relative w-1/2;
+    }
+
+    @apply relative w-full flex items-stretch justify-between;
+  }
+
+  @apply relative h-screen w-full flex items-center justify-center;
 }
-@media (max-width: 1500px) {
-	.root {
-		.container {
-			display: block;
-			margin-top: 600px;
-			.form {
-				width: 100%;
-				margin: 50px 0;
-				.fields {
-					width: 60%;
-				}
-			}
-		}
-	}
+
+@media (width <= 1500px) {
+  .root {
+    .container {
+      display: block;
+      margin-top: 600px;
+
+      .form {
+        margin: 50px 0;
+        width: 100%;
+
+        .fields {
+          width: 60%;
+        }
+      }
+    }
+  }
 }
-@media (max-width: 600px) {
-	.root {
-		.container {
-			.info {
-				.box {
-					@apply relative mt-5;
-					h2 {
-						@apply text-primary font-black;
-						font-size: 20px;
-					}
-				}
-			}
-			.form {
-				.fields {
-					width: 100%;
-				}
-			}
-		}
-	}
+
+@media (width <= 600px) {
+  .root {
+    .container {
+      .info {
+        .box {
+          h2 {
+            font-size: 20px;
+
+            @apply text-primary font-black;
+          }
+
+          @apply relative mt-5;
+        }
+      }
+
+      .form {
+        .fields {
+          width: 100%;
+        }
+      }
+    }
+  }
 }

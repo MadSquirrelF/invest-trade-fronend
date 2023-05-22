@@ -665,7 +665,9 @@
           @apply relative  z-1;
         }
 
+        /* stylelint-disable-next-line no-duplicate-selectors */
         .content {
+          /* stylelint-disable-next-line no-duplicate-selectors */
           .container {
             .info {
               .title {

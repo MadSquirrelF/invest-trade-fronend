@@ -17,7 +17,7 @@ const Contact: FC<IContact> = ({ clouds: { clouds } }) => (
     id="footer"
   >
     <div className={styles.clouds}>
-      {clouds.map((cloud, i) => (
+      {clouds.map((cloud) => (
         <Image
           key={cloud.title}
           src={cloud.image}

@@ -1,13 +1,17 @@
 .selectContainer {
-	@apply relative transition-colors focus-within:border-primary;
-	label {
-		@apply block font-extrabold text-black;
-		span {
-			@apply text-xs uppercase text-black block mb-2;
-		}
-	}
-	.error {
-		@apply absolute -bottom-6 left-0 w-full text-primary;
-		font-size: 14px;
-	}
+  label {
+    span {
+      @apply text-xs uppercase text-black block mb-2;
+    }
+
+    @apply block font-extrabold text-black;
+  }
+
+  .error {
+    font-size: 14px;
+
+    @apply absolute -bottom-6 left-0 w-full text-primary;
+  }
+
+  @apply relative transition-colors focus-within:border-primary;
 }

@@ -1,25 +1,30 @@
 .wrapper {
-	@apply bg-transparent  mt-1   text-center z-2;
-	padding: 4px;
-	text-align: left;
+  padding: 4px;
+  text-align: left;
 
-	> h3 {
-		@apply text-yellow-700 font-semibold;
-		font-size: 20px;
-	}
+  > h3 {
+    font-size: 20px;
 
-	> p {
-		@apply mt-2 mb-1 text-white  opacity-60;
-		font-size: 16px;
-	}
+    @apply text-yellow-700 font-semibold;
+  }
 
-	> div {
-		@apply opacity-90;
-		font-size: 30px;
-	}
+  > p {
+    font-size: 16px;
 
-	> .thanks {
-		@apply text-yellow-700  font-semibold animate-scaleIn;
-		font-size: 24px;
-	}
+    @apply mt-2 mb-1 text-white  opacity-60;
+  }
+
+  > div {
+    font-size: 30px;
+
+    @apply opacity-90;
+  }
+
+  > .thanks {
+    font-size: 24px;
+
+    @apply text-yellow-700  font-semibold animate-scaleIn;
+  }
+
+  @apply bg-transparent  mt-1   text-center z-2;
 }

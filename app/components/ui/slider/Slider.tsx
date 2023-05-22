@@ -6,7 +6,7 @@ import styles from './Slider.module.scss';
 import SlideArrow from './SlideArrow/SlideArrow';
 import SlideItem from './SlideItem';
 
-const Slider: FC<ISlider> = ({ slides, buttonTitle }) => {
+const Slider: FC<ISlider> = ({ slides }) => {
   const {
     slideIn, index, isNext, isPrev, handleArrowClick,
   } = useSlider(slides.length);
@@ -21,7 +21,6 @@ const Slider: FC<ISlider> = ({ slides, buttonTitle }) => {
       >
         <SlideItem
           slide={slides[index]}
-          buttonTitle={buttonTitle}
         />
       </CSSTransition>
 

@@ -8,4 +8,3 @@ export interface IIconItem {
 export interface IIcon {
   items: IIconItem[];
 }
-

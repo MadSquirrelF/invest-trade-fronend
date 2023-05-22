@@ -5,7 +5,7 @@ import { useRateProduct } from "./useRateProduct";
 import styles from './RateProduct.module.scss';
 import AuthButton from "@/components/ui/AuthPlaceholder/AuthButton";
 
-const RateProduct: FC<{ slug: string; _id: string }> = ({ slug, _id }) => {
+const RateProduct: FC<{ _id: string }> = ({ _id }) => {
   const { user } = useAuth();
   const { handleClick, isSended, rating } = useRateProduct(_id);
 

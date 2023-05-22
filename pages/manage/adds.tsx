@@ -1,11 +1,8 @@
-import AddList from '@/components/screens/admin/adds/AddList'
-import { NextPageAuth } from '@/shared/types/auth.types'
+import AddList from '@/components/screens/admin/adds/AddList';
+import { NextPageAuth } from '@/shared/types/auth.types';
 
+const AddListPage: NextPageAuth = () => <AddList />;
 
-const AddListPage: NextPageAuth = () => {
-  return <AddList />
-}
+AddListPage.isOnlyAdmin = true;
 
-AddListPage.isOnlyAdmin = true
-
-export default AddListPage
+export default AddListPage;

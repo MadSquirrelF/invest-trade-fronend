@@ -148,7 +148,6 @@ const SingleProduct: FC<{ product: IProduct; similarProducts: IGalleryItem[] }> 
                       <p>{stripHtml(product.description_short).result}</p>
                     </div>
                     <DynamicRateProduct
-                      slug={product.slug}
                       _id={product._id}
                     />
                     <div className={styles.buttons}>

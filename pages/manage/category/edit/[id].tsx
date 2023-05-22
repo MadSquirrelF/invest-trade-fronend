@@ -1,11 +1,8 @@
-import CategoryEdit from '@/components/screens/admin/category/CategoryEdit'
-import { NextPageAuth } from '@/shared/types/auth.types'
+import CategoryEdit from '@/components/screens/admin/category/CategoryEdit';
+import { NextPageAuth } from '@/shared/types/auth.types';
 
+const CategoryEditPage: NextPageAuth = () => <CategoryEdit />;
 
-const CategoryEditPage: NextPageAuth = () => {
-  return <CategoryEdit />
-}
+CategoryEditPage.isOnlyAdmin = true;
 
-CategoryEditPage.isOnlyAdmin = true
-
-export default CategoryEditPage
+export default CategoryEditPage;
