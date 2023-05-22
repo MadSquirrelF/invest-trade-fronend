@@ -1,57 +1,74 @@
 .sidebar {
-	@apply fixed bottom-0  w-full;
+  z-index: 3;
+  padding: 0 10%;
 
-	z-index: 3;
+  .container {
+    border-radius: 10px 10px 0 0;
+    box-shadow: 1px 1px 10px blue;
 
-	padding: 0px 10%;
-	.container {
-		@apply w-full bg-white h-full flex items-center justify-evenly px-4 py-1;
-		box-shadow: 1px 1px 10px blue;
-		border-radius: 10px 10px 0px 0px;
-		.image {
-			@apply relative;
-			width: 96px;
-			height: 96px;
-		}
-		.text {
-			@apply relative;
-			max-width: 900px;
-			h1 {
-				@apply font-black text-primary;
-				font-size: 20px;
-			}
-			p {
-				@apply font-bold text-gray-800 mt-2;
-				font-size: 12px;
-			}
-			a {
-				@apply text-link text-primary;
-			}
-		}
-	}
+    .image {
+      width: 96px;
+      height: 96px;
+
+      @apply relative;
+    }
+
+    .text {
+      max-width: 900px;
+
+      h1 {
+        font-size: 20px;
+
+        @apply font-black text-primary;
+      }
+
+      p {
+        font-size: 12px;
+
+        @apply font-bold text-gray-800 mt-2;
+      }
+
+      a {
+        @apply text-link text-primary;
+      }
+
+      @apply relative;
+    }
+
+    @apply w-full bg-white h-full flex items-center justify-evenly px-4 py-1;
+  }
+
+  @apply fixed bottom-0  w-full;
 }
-@media (max-width: 1200px) {
-	.sidebar {
-		.container {
-			@apply px-5 py-2;
-			.image {
-				display: none;
-			}
-			.text {
-				margin-right: 10px;
-			}
-		}
-	}
+
+@media (width <= 1200px) {
+  .sidebar {
+    .container {
+      .image {
+        display: none;
+      }
+
+      .text {
+        margin-right: 10px;
+      }
+
+      @apply px-5 py-2;
+    }
+  }
 }
-@media (max-width: 600px) {
-	.sidebar {
-		padding: 0px 0%;
-		.container {
-			@apply px-5 py-2;
-			display: block;
-			.text {
-				margin-bottom: 20px;
-			}
-		}
-	}
+
+@media (width <= 600px) {
+  .sidebar {
+    padding: 0 0%;
+
+    .container {
+      display: block;
+
+      .text {
+        margin-bottom: 20px;
+      }
+
+      @apply px-5 py-2;
+    }
+  }
 }

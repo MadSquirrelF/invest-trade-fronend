@@ -1,56 +1,57 @@
 @mixin fade-bg-gradient($direction: 90deg) {
-	&::before {
-		@apply w-full h-full absolute top-0 left-0 z-1;
-		content: '';
-		border-radius: 25px;
+  &::before {
+    content: "";
+    border-radius: 25px;
+    background: linear-gradient(
+      90deg,
+      #000 3.31%,
+      rgba(#000, 0.99) 7.71%,
+      rgba(#000, 0.96) 12.11%,
+      rgba(#000, 0.93) 20.11%,
+      rgba(#000, 0.91) 29.51%,
+      rgba(#000, 0.85) 34.11%,
+      rgba(#000, 0.76) 38.52%,
+      rgba(#000, 0.67) 42.92%,
+      rgba(#000, 0.55) 47.32%,
+      rgba(#000, 0.44) 51.72%,
+      rgba(#000, 0.33) 56.12%,
+      rgba(#000, 0.23) 60.52%,
+      rgba(#000, 0.15) 64.92%,
+      rgba(#000, 0.08) 69.32%,
+      rgba(#000, 0.03) 73.52%,
+      rgba(#000, 0.01) 77.92%,
+      rgba(#000, 0) 81.32%
+    );
 
-		background: linear-gradient(
-			90deg,
-			#000000 3.31%,
-			rgba(#000000, 0.99) 7.71%,
-			rgba(#000000, 0.96) 12.11%,
-			rgba(#000000, 0.93) 20.11%,
-			rgba(#000000, 0.91) 29.51%,
-			rgba(#000000, 0.85) 34.11%,
-			rgba(#000000, 0.76) 38.52%,
-			rgba(#000000, 0.67) 42.92%,
-			rgba(#000000, 0.55) 47.32%,
-			rgba(#000000, 0.44) 51.72%,
-			rgba(#000000, 0.33) 56.12%,
-			rgba(#000000, 0.23) 60.52%,
-			rgba(#000000, 0.15) 64.92%,
-			rgba(#000000, 0.08) 69.32%,
-			rgba(#000000, 0.03) 73.52%,
-			rgba(#000000, 0.01) 77.92%,
-			rgba(#000000, 0) 81.32%
-		);
-	}
+    @apply w-full h-full absolute top-0 left-0 z-1;
+  }
 }
-@mixin fade-bg-gradient-full($direction: 90deg) {
-	&::before {
-		@apply w-full h-full absolute top-0 left-0 z-1;
-		content: '';
-		border-radius: 25px;
 
-		background: linear-gradient(
-			$direction,
-			#000000 3.31%,
-			rgba(#000000, 0.99) 7.71%,
-			rgba(#000000, 0.96) 12.11%,
-			rgba(#000000, 0.93) 20.11%,
-			rgba(#000000, 0.91) 29.51%,
-			rgba(#000000, 0.9) 34.11%,
-			rgba(#000000, 0.88) 38.52%,
-			rgba(#000000, 0.86) 42.92%,
-			rgba(#000000, 0.84) 47.32%,
-			rgba(#000000, 0.82) 51.72%,
-			rgba(#000000, 0.8) 56.12%,
-			rgba(#000000, 0.78) 60.52%,
-			rgba(#000000, 0.76) 64.92%,
-			rgba(#000000, 0.74) 69.32%,
-			rgba(#000000, 0.72) 73.52%,
-			rgba(#000000, 0.7) 77.92%,
-			rgba(#000000, 0.72) 90.32%
-		);
-	}
+@mixin fade-bg-gradient-full($direction: 90deg) {
+  &::before {
+    content: "";
+    border-radius: 25px;
+    background: linear-gradient(
+      $direction,
+      #000 3.31%,
+      rgba(#000, 0.99) 7.71%,
+      rgba(#000, 0.96) 12.11%,
+      rgba(#000, 0.93) 20.11%,
+      rgba(#000, 0.91) 29.51%,
+      rgba(#000, 0.9) 34.11%,
+      rgba(#000, 0.88) 38.52%,
+      rgba(#000, 0.86) 42.92%,
+      rgba(#000, 0.84) 47.32%,
+      rgba(#000, 0.82) 51.72%,
+      rgba(#000, 0.8) 56.12%,
+      rgba(#000, 0.78) 60.52%,
+      rgba(#000, 0.76) 64.92%,
+      rgba(#000, 0.74) 69.32%,
+      rgba(#000, 0.72) 73.52%,
+      rgba(#000, 0.7) 77.92%,
+      rgba(#000, 0.72) 90.32%
+    );
+
+    @apply w-full h-full absolute top-0 left-0 z-1;
+  }
 }

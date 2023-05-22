@@ -4,12 +4,11 @@ import { reducers } from "./rootReducer";
 
 export const store = configureStore({
   reducer: reducers,
-  devTools: true
-})
+  devTools: true,
+});
 
 type AppDispatch = typeof store.dispatch;
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 
-export type TypeRootState = ReturnType<typeof store.getState>
-
+export type TypeRootState = ReturnType<typeof store.getState>;

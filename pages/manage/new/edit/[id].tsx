@@ -1,11 +1,8 @@
-import NewEdit from '@/components/screens/admin/new/NewEdit'
-import { NextPageAuth } from '@/shared/types/auth.types'
+import NewEdit from '@/components/screens/admin/new/NewEdit';
+import { NextPageAuth } from '@/shared/types/auth.types';
 
+const NewEditPage: NextPageAuth = () => <NewEdit />;
 
-const NewEditPage: NextPageAuth = () => {
-  return <NewEdit />
-}
+NewEditPage.isOnlyAdmin = true;
 
-NewEditPage.isOnlyAdmin = true
-
-export default NewEditPage
+export default NewEditPage;

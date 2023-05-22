@@ -1,16 +1,19 @@
 .root {
-	@apply rounded-3xl border border-gray-300 px-3 py-2 flex items-center transition-colors cursor-pointer;
+  svg {
+    @apply fill-gray-300 mr-2 text-3xl transition-colors;
+  }
 
-	svg {
-		@apply fill-gray-300 mr-2 text-3xl transition-colors;
-	}
-	input {
-		@apply text-black placeholder:text-gray-300 block w-full bg-transparent outline-none;
-	}
-	&:focus-within {
-		@apply border-primary;
-		svg {
-			@apply fill-gray-500;
-		}
-	}
+  input {
+    @apply text-black placeholder:text-gray-300 block w-full bg-transparent outline-none;
+  }
+
+  &:focus-within {
+    svg {
+      @apply fill-gray-500;
+    }
+
+    @apply border-primary;
+  }
+
+  @apply rounded-3xl border border-gray-300 px-3 py-2 flex items-center transition-colors cursor-pointer;
 }

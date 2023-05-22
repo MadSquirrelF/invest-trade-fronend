@@ -1,0 +1,508 @@
+.root {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  .container {
+    margin-top: 190px;
+    margin-bottom: 50px;
+
+    .actions {
+      .cancel {
+        border-radius: 10px;
+        padding: 4px;
+        color: red;
+        background-color: #f9f9f9;
+
+        &:hover {
+          color: rgb(201 0 0);
+          transition: color 0.2s ease-in-out;
+        }
+
+        @apply mr-4;
+      }
+
+      .delete {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 5px;
+        border-radius: 10px;
+        padding: 4px;
+        width: 40px;
+        height: 40px;
+        background-color: #f9f9f9;
+
+        svg {
+          font-size: 18px;
+          fill: red;
+        }
+
+        &:hover {
+          svg {
+            fill: rgb(168 3 3);
+          }
+        }
+      }
+
+      .watch {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 5px;
+        border-radius: 10px;
+        padding: 4px;
+        width: 40px;
+        height: 40px;
+        background-color: #f9f9f9;
+
+        svg {
+          font-size: 18px;
+          fill: blue;
+        }
+
+        &:hover {
+          svg {
+            fill: rgb(0 0 167);
+          }
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+      }
+
+      
+    
+      @apply flex items-center;
+    }
+
+    .ShopItems {
+      display: none;
+      margin-top: 10px;
+      transition: all 0.2s ease-in-out;
+
+      .box {
+        margin: 5px;
+        padding: 5px;
+        box-shadow: 0 1px 3px rgb(0 0 0 / 26.7%);
+
+        .image {
+          margin: 10px auto;
+          width: 60px;
+          height: 60px;
+
+          @apply relative;
+        }
+
+        &:hover {
+          box-shadow: 0 5px 5px blue;
+          transform: translateY(-3px);
+          transition: all 0.2s ease-in-out;
+        }
+
+        @apply relative  text-center rounded-xl;
+      }
+
+      &.active {
+        @apply relative flex flex-wrap justify-start items-center;
+      }
+
+      
+    }
+
+    .values {
+      position: relative;
+      
+
+      .nameContainer {
+        display: none;
+        
+        h5 {
+          font-size: 16px;
+
+          @apply text-white font-semibold py-3;
+        }
+
+        @media (width <= 790px) and (width >= 500px ) {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          margin-right: 30px;
+          padding: 10px;
+          height: 100%;
+          background-color: blue;
+
+          @apply rounded-lg;
+        }
+
+        @media (width < 500px ) {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          margin-right: 10px;
+          padding: 10px;
+          height: 100%;
+          background-color: blue;
+
+          h5 {
+            font-size: 10px;
+          }
+
+          @apply rounded-lg;
+        }
+      }
+
+      .valueContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        div {
+          overflow: hidden;
+          margin-right: 20px;
+          width: 24%;
+          text-overflow: ellipsis;
+  
+          &:last-child {
+            overflow: visible;
+            margin-right: 0;
+  
+            @apply text-right justify-end;
+          }
+      
+          @apply text-black font-semibold py-3;
+        }
+  
+        .statusBlock {
+          overflow: visible;
+          color: blue;
+  
+          svg {
+            flex: none;
+            border-radius: 50%;
+            fill: blue;
+          }
+  
+          &.red {
+            color: red;
+  
+            svg {
+              fill: red;
+              animation: at-ripple-red 0.6s linear infinite;
+            }
+            
+          }
+  
+          &.green {
+            color: green;
+  
+            svg {
+              fill: green;
+              animation: at-ripple-green 0.6s linear infinite;
+            }
+            
+          }
+  
+          &.yellow {
+            color: orange;
+  
+            svg {
+              fill: orange;
+              animation: at-ripple-yellow 0.6s linear infinite;
+            }
+            
+          }
+  
+          &.blue {
+            color: blue;
+  
+            svg {
+              fill: blue;
+              animation: at-ripple-blue 0.6s linear infinite;
+            }
+            
+          }
+  
+          @keyframes at-ripple-blue {
+            0% {
+              box-shadow: 0 3px 5px rgb(0 0 255 / 10%), 0 0 0 0 rgb(0 0 255 / 10%),
+                0 0 0 4px rgb(0 0 255 / 10%), 0 0 0 5px rgb(0 0 255 / 10%);
+            }
+        
+            100% {
+              box-shadow: 0 3px 5px rgb(0 0 255 / 10%),
+                0 0 0 4px rgb(0 0 255 / 10%), 0 0 0 5px rgb(0 0 255 / 10%),
+                0 0 0 10px rgb(0 0 255 / 0%);
+            }
+          }
+  
+          @keyframes at-ripple-green {
+            0% {
+              box-shadow: 0 3px 5px rgb(0 128 0 / 20%), 0 0 0 0 rgb(0 128 0 / 20%),
+                0 0 0 4px rgb(0 128 0 / 20%), 0 0 0 5px rgb(0 128 0 / 20%);
+            }
+        
+            100% {
+              box-shadow: 0 3px 5px rgb(0 128 0 / 20%),
+                0 0 0 4px rgb(0 128 0 / 20%), 0 0 0 5px rgb(0 128 0 / 20%),
+                0 0 0 10px rgb(0 128 0 / 0%);
+            }
+          }
+  
+          @keyframes at-ripple-yellow {
+            0% {
+              box-shadow: 0 3px 5px rgb(255 166 0 / 20%), 0 0 0 0 rgb(255 166 0 / 20%),
+                0 0 0 4px rgb(255 166 0 / 20%), 0 0 0 5px rgb(255 166 0 / 20%);
+            }
+        
+            100% {
+              box-shadow: 0 3px 5px rgb(255 166 0 / 20%),
+                0 0 0 4px rgb(255 166 0 / 20%), 0 0 0 5px rgb(255 166 0 / 20%),
+                0 0 0 10px rgb(255 166 0 / 0%);
+            }
+          }
+  
+          @keyframes at-ripple-red {
+            0% {
+              box-shadow: 0 3px 5px rgb(255 0 21 / 20%), 0 0 0 0 rgb(255 0 21 / 20%),
+                0 0 0 4px rgb(255 0 21 / 20%), 0 0 0 5px rgb(255 0 21 / 20%);
+            }
+        
+            100% {
+              box-shadow: 0 3px 5px rgb(255 0 21 / 20%),
+                0 0 0 4px rgb(255 0 21 / 20%), 0 0 0 5px rgb(255 0 21 / 20%),
+                0 0 0 10px rgb(255 0 21 / 0%);
+            }
+          }
+        }
+
+        @media (width <= 790px) and (width >= 500px) {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 10px;
+          height: 100%;
+
+          div {
+            overflow: hidden;
+            margin-right: 0;
+            padding: 0;
+            width: 100%;
+            font-size: 16px;
+            text-overflow: ellipsis;
+    
+            &:last-child {
+              justify-content: space-between;
+              overflow: visible;
+              margin-right: 0
+    
+             
+            }
+        
+            @apply text-black font-semibold;
+          }
+          
+        }
+
+        @media (width < 500px) {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 10px;
+          height: 100%;
+
+          div {
+            overflow: hidden;
+            margin-right: 0;
+            padding: 0;
+            width: 100%;
+            font-size: 10px;
+            text-overflow: ellipsis;
+    
+            &:last-child {
+              justify-content: space-between;
+              overflow: visible;
+              margin-right: 0
+    
+             
+            }
+        
+            @apply text-black font-semibold;
+          }
+        }
+
+      }
+
+      
+
+      @apply cursor-pointer shadow-md mt-4 px-5 rounded-lg transition-colors hover:bg-opacity-90;
+
+      @media (width <= 790px) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 40px;
+        padding: 0;
+        height: 350px;
+      }
+    }
+
+    .info {
+      div {
+        overflow: hidden;
+        margin-right: 20px;
+        width: 24%;
+        text-overflow: ellipsis;
+
+       
+        
+
+        &:last-child {
+          overflow: visible;
+          margin-right: 0;
+
+          @apply text-right justify-end;
+        }
+    
+        @apply text-black font-semibold py-3;
+      }
+
+      @media (width <= 790px) {
+        display: none;
+      }
+
+     
+
+      @apply flex items-center cursor-pointer  justify-between shadow-md mt-4 px-5 rounded-lg transition-colors hover:bg-opacity-90;
+    }
+    
+    .itemHeader {
+      div {
+        @apply font-bold text-white  py-2.5;
+      }
+    
+      @apply bg-primary  shadow-md mt-8;
+    }
+
+    .statistic {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 50px;
+
+      
+  
+      span {
+        display: flex;
+        align-items: center;
+        margin-left: 5px;
+        font-weight: bold;
+        font-size: 20px;
+        color: blue;
+        gap: 10px;
+      }
+      
+
+      .sort {
+        display: flex;
+        align-items: center;
+
+        li {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center; 
+          margin-right: 10px;
+          border-radius: 30px 0;
+          padding: 10px 15px;
+          width: auto;
+          height: auto;
+          box-shadow: -4px 3px 2px rgb(212 212 212);
+          font-weight: bold;
+          color: lightgray;
+          background-color: rgb(255 255 255);
+          cursor: pointer;
+          user-select: none; /* Safari */
+          user-select: none; /* Konqueror HTML */
+          user-select: none; /* Old versions of Firefox */
+          user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+          transition: all 0.2s ease-in-out;
+          -webkit-touch-callout: none;
+
+          &:hover {
+            box-shadow: -4px 3px 2px rgb(139 139 139);
+          }
+
+          &:active {
+            box-shadow: -4px 3px 2px rgb(0 0 255 / 63.7%);
+          }
+
+          &.active {
+            box-shadow: -4px 3px 2px rgb(0 0 255);
+            color: black;
+          }
+          
+        }
+
+        @media (width <= 790px) {
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+
+          li {
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+
+    .notFound {
+      @apply text-lg text-black font-bold shadow-md rounded-lg mt-4 px-5  text-center py-3;
+    }
+
+    .head {
+      h1 {
+        font-size: 48px;
+        line-height: 1;
+
+        
+
+        span {
+          font-size: 48px;
+          line-height: 1;
+
+          @media (width <= 500px) {
+            font-size: 35px;
+          }
+
+          @apply uppercase text-primary font-black;
+        }
+
+        @media (width <= 500px) {
+          font-size: 35px;
+        }
+
+        @apply uppercase text-black font-black;
+      }
+
+      @apply relative text-left ;
+    }
+
+    
+
+    p {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-weight: 500;
+      font-size: 20px;
+
+      @media (width <= 500px) {
+        font-size: 15px;
+      }
+    }
+  }
+}

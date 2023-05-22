@@ -1,62 +1,75 @@
 .root {
-	background-color: white;
-	position: fixed;
-	width: 70px;
-	height: 70px;
-	bottom: 40px;
-	right: 80px;
-	z-index: 1;
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	opacity: 0;
-	cursor: pointer;
-	border: 2px solid blue;
-	span {
-		font-size: 30px;
-		transform: rotate(-46deg);
-	}
-}
-.show {
-	opacity: 1;
-	transition: transform 0.2s ease-in-out;
-	background-color: white;
-	position: fixed;
-	width: 70px;
-	height: 70px;
-	bottom: 40px;
-	right: 80px;
-	z-index: 5;
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
-	border: 2px solid blue;
-	filter: drop-shadow(-2px 2px 3px black);
-	&:hover {
-		background-color: rgb(134, 142, 255);
-	}
-	&:active {
-		transform: translateY(3px);
-		background-color: rgb(87, 97, 248);
-	}
+  position: fixed;
+  right: 80px;
+  bottom: 40px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid blue;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  background-color: white;
+  opacity: 0;
+  cursor: pointer;
 
-	span {
-		font-size: 30px;
-		transform: rotate(-46deg);
-	}
+  span {
+    font-size: 30px;
+    transform: rotate(-46deg);
+  }
 }
-@media (max-width: 520px) {
-	.show {
-		width: 60px;
-		height: 60px;
-		bottom: 30px;
-		right: 30px;
-		span {
-			font-size: 25px;
-			transform: rotate(-46deg);
-		}
-	}
+
+.show {
+  position: fixed;
+  right: 80px;
+  bottom: 40px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid blue;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  background-color: white;
+  opacity: 1;
+  cursor: pointer;
+  filter: drop-shadow(-2px 2px 3px black);
+  transition: transform 0.2s ease-in-out;
+
+  span {
+    font-size: 30px;
+    user-select: none; /* Safari */
+    user-select: none; /* Konqueror HTML */
+    user-select: none; /* Old versions of Firefox */
+    user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+																		supported by Chrome, Opera and Firefox */
+    transform: rotate(-46deg);
+    -webkit-touch-callout: none; /* iOS Safari */
+  }
+
+  &:hover {
+    background-color: rgb(134 142 255);
+  }
+
+  &:active {
+    background-color: rgb(87 97 248);
+    transform: translateY(3px);
+  }
+}
+
+@media (width <= 520px) {
+  .show {
+    right: 30px;
+    bottom: 30px;
+    width: 60px;
+    height: 60px;
+
+    span {
+      font-size: 25px;
+      transform: rotate(-46deg);
+    }
+  }
 }

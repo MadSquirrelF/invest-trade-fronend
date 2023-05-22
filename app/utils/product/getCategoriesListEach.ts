@@ -1,10 +1,10 @@
 export const getCategoriesListEach = (
   index: number,
   length: number,
-  name: string
-) => (index + 1 === length ? name : name + ', ')
+  name: string,
+) => (index + 1 === length ? name : `${name}, `);
 
 interface IArrayItem {
-  name: string
+  name: string;
 }
-export const getCategoriesList = (array: IArrayItem[]) => array.map(i => i.name).join(', ')
+export const getCategoriesList = (array: IArrayItem[]) => array.map((i) => i.name).join(`, `);

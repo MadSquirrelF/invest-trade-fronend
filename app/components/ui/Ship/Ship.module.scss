@@ -1,108 +1,147 @@
 .root {
-	@apply relative w-full z-1 h-full overflow-hidden pb-8 mt-40;
+  .title {
+    padding: 20px 10%;
 
-	.title {
-		padding: 20px 10%;
-		h1 {
-			@apply uppercase text-black font-black;
-			font-size: 48px;
-			line-height: 1;
-			span {
-				@apply text-primary uppercase font-black;
-				font-size: 48px;
-				line-height: 1;
-			}
-		}
-	}
-	.container {
-		@apply flex relative w-full;
-		.box {
-			@apply relative px-4;
-			height: 577px;
-			width: 480px;
-			box-shadow: inset 0px -100px 150px black;
-			transition: 0.5s;
-			cursor: pointer;
-			&:hover {
-				box-shadow: inset 0px 0px 0px black;
-			}
-			img {
-				@apply absolute -z-1 w-full h-full;
-			}
-			span {
-				@apply absolute  uppercase top-5 left-3 text-white font-light z-1;
-				font-size: 30px;
-				line-height: 36px;
-			}
-			p {
-				@apply absolute  uppercase bottom-5 left-3 text-white font-normal z-1;
-				height: 150px;
-				font-size: 30px;
-				line-height: 36px;
-				width: 400px;
-			}
-		}
-	}
+    h1 {
+      font-size: 48px;
+      line-height: 1;
+
+      span {
+        font-size: 48px;
+        line-height: 1;
+
+        @apply text-primary uppercase font-black;
+      }
+
+      @apply uppercase text-black font-black;
+    }
+  }
+
+  .container {
+    display: flex;
+    width: 100%;
+
+    .box {
+      position: relative;
+      overflow: hidden;
+      width: 480px;
+      height: 577px;
+      box-shadow: inset 0 -100px 150px black;
+      cursor: pointer;
+      transition: 0.5s;
+      aspect-ratio: 9 / 16;
+
+      img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      span {
+        font-size: 30px;
+        line-height: 36px;
+
+        @apply absolute  uppercase top-5 left-3 text-white font-light z-1;
+      }
+
+      p {
+        width: 400px;
+        height: 150px;
+        font-size: 30px;
+        line-height: 36px;
+
+        @apply absolute  uppercase bottom-5 left-3 text-white font-normal z-1;
+      }
+
+      &:hover {
+        box-shadow: inset 0 0 0 black;
+      }
+
+      @apply relative px-4;
+    }
+
+  }
+
+  @apply relative w-full z-1 h-full overflow-hidden pb-8 mt-40;
 }
-@media (max-width: 1700px) {
-	.root {
-		padding: 20px 10%;
-		.title {
-			padding: 0;
-			margin-bottom: 20px;
-		}
-		.container {
-			@apply flex items-center w-full justify-evenly flex-wrap;
-			.box {
-				margin-bottom: 20px;
-				box-shadow: inset 0px -100px 150px black,
-					10px 10px 20px rgba(0, 0, 0, 0.514);
-			}
-		}
-	}
+
+@media (width <= 1700px) {
+  .root {
+    padding: 0 10%;
+
+    .title {
+      margin-bottom: 20px;
+      padding: 0;
+    }
+
+    .container {
+      justify-content: space-between;
+
+      .box {
+        margin-bottom: 50px;
+        border-radius: 6px;
+        box-shadow: inset 0 -100px 150px black,
+          10px 10px 20px rgb(0 0 0 / 51.4%);
+      }
+
+      @apply flex items-center w-full flex-wrap;
+    }
+  }
 }
-@media (max-width: 1200px) {
-	.root {
-		padding: 20px 10%;
-		.container {
-			.box {
-				margin-bottom: 20px;
-				box-shadow: inset 0px -100px 150px black,
-					10px 10px 20px rgba(0, 0, 0, 0.514);
-				width: 100%;
-				height: 600px;
-			}
-		}
-	}
+
+@media (width <= 1200px) {
+  .root {
+    .container {
+      .box {
+        margin-bottom: 20px;
+        width: 100%;
+        height: 600px;
+        box-shadow: inset 0 -100px 150px black,
+          10px 10px 20px rgb(0 0 0 / 51.4%);
+      }
+    }
+  }
 }
-@media (max-width: 600px) {
-	.root {
-		.title {
-			h1 {
-				@apply uppercase text-black font-black;
-				font-size: 30px;
-				line-height: 1;
-				span {
-					@apply text-primary uppercase font-black;
-					font-size: 30px;
-					line-height: 1;
-				}
-			}
-		}
-		.container {
-			.box {
-				margin-bottom: 20px;
-				box-shadow: inset 0px -100px 150px black,
-					10px 10px 20px rgba(0, 0, 0, 0.514);
-				width: 100%;
-				height: 450px;
-				p {
-					font-size: 20px;
-					line-height: 36px;
-					height: auto;
-					width: auto;
-				}
-			}
-		}
-	}
+
+@media (width <= 600px) {
+  .root {
+    padding: 0 5%;
+
+    .title {
+      h1 {
+        font-size: 30px;
+        line-height: 1;
+
+        span {
+          font-size: 30px;
+          line-height: 1;
+
+          @apply text-primary uppercase font-black;
+        }
+
+        @apply uppercase text-black font-black;
+      }
+    }
+
+    .container {
+      .box {
+        margin-bottom: 20px;
+        width: 100%;
+        height: 450px;
+        box-shadow: inset 0 -100px 150px black,
+          10px 10px 20px rgb(0 0 0 / 51.4%);
+
+        p {
+          width: auto;
+          height: auto;
+          font-size: 20px;
+          line-height: 36px;
+        }
+      }
+    }
+  }
 }

@@ -1,8 +1,8 @@
 export interface IFavoriteItem {
-  title: string
-  _id: string
-  posterPath: string
-  logoPath: string
-  name: string
-  url: string
+  _id: string;
+  name: string;
+  image: string;
+  brand: string;
+  category: string;
+  url: string;
 }

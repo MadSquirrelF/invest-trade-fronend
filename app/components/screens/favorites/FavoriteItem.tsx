@@ -1,43 +1,77 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { FC } from 'react'
+import Image from 'next/image';
+import Link from 'next/link';
+import { FC } from 'react';
 
-import styles from './Favorites.module.scss'
-import { IFavoriteItem } from './favorites.interface'
-import FavoriteButton from '@/components/ui/Shop/FavoriteButton/FavoriteButton'
-import Button from '@/components/ui/form-elements/Button'
-import MaterialIcon from '@/components/ui/MaterialIcon'
+import { useDispatch } from 'react-redux';
+import styles from './Favorites.module.scss';
+import { IFavoriteItem } from './favorites.interface';
+import FavoriteButton from '@/components/ui/Shop/FavoriteButton/FavoriteButton';
+import MaterialIcon from '@/components/ui/MaterialIcon';
+import { CartItemType } from '@/store/cart/types';
+import { addItem } from '@/store/cart/slice';
 
 const FavoriteItem: FC<{ item: IFavoriteItem }> = ({ item }) => {
+  const dispatch = useDispatch();
+
+  const onClickAdd = () => {
+    const product: CartItemType = {
+      id: item._id,
+      name: item.name,
+      image: item.image,
+      category: item.category,
+      brand: item.brand,
+      count: 0,
+      url: item.url,
+    };
+    dispatch(addItem(product));
+  };
   return (
-    <div className={styles.itemWrapper}>
-      <div className={styles.brand}>
-        <Image src={item.logoPath} alt={item.name} priority draggable={false} width={90} height={50} />
-      </div>
-      <Link href={item.url}>
-        <div className={styles.image}>
+    <div className={styles.item}>
+      <div className={styles.infoContainer}>
+        <div className={styles.imgContainer}>
           <Image
+            src={item.image}
             alt={item.name}
-            src={item.posterPath}
-            fill
             draggable={false}
-            priority
+            height={100}
+            width={100}
           />
         </div>
-      </Link>
-      <h2>{item.title}</h2>
-
-      <div className={styles.cart}>
-        <div className={styles.productFunctions}>
-          <FavoriteButton productId={item._id} />
-          <Link href={item.url} className={styles.button}><MaterialIcon name='MdVisibility' /></Link>
-          <div className={styles.button}><MaterialIcon name='MdAddShoppingCart' /></div>
+        <div className={styles.info}>
+          <h3>{item.name}</h3>
+          <p>
+            Категория:
+            <b>
+              {` `}
+              {item.category}
+            </b>
+            , Производство:
+            <b>
+              {` `}
+              {item.brand}
+            </b>
+          </p>
         </div>
-
       </div>
 
+      <div className={styles.buttons}>
+        <FavoriteButton productId={item._id} />
+        <Link
+          href={item.url}
+          className={styles.option}
+        >
+          <MaterialIcon name="MdVisibility" />
+        </Link>
+        <button
+          type="button"
+          className={styles.option}
+          onClick={onClickAdd}
+        >
+          <MaterialIcon name="MdAddShoppingCart" />
+        </button>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default FavoriteItem
+export default FavoriteItem;

@@ -1,18 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CartItem, CartSliceState } from "./types";
+import { CartItemType, CartSliceState } from "./types";
+import { getCartFromLS } from "@/utils/local-storage";
 
-const initialState: CartSliceState = {
-  items: [],
-};
+const initialState: CartSliceState = getCartFromLS();
 
 const cartSlice = createSlice({
-  name: 'cart',
+  name: `cart`,
   initialState,
   reducers: {
-    addItem(state, action: PayloadAction<CartItem>) {
+    addItem(state, action: PayloadAction<CartItemType>) {
       const findItem = state.items.find(
-        (obj) =>
-          obj.id === action.payload.id
+        (obj) => obj.id === action.payload.id,
       );
       if (findItem) {
         findItem.count++;
@@ -23,32 +21,38 @@ const cartSlice = createSlice({
         });
       }
     },
-    minusItem(state, action: PayloadAction<CartItem>) {
+    addFavorites(state, action: PayloadAction<CartItemType[] | undefined>) {
+      if (action.payload === undefined) {
+        return;
+      }
+
+      let newState = [...state.items, ...action.payload];
+
+      newState = newState.filter((obj, index) => newState.findIndex((item) => item.id === obj.id) === index);
+      state.items = newState;
+    },
+    minusItem(state, action: PayloadAction<CartItemType>) {
       const findItem = state.items.find(
-        (obj) =>
-          obj.id === action.payload.id
+        (obj) => obj.id === action.payload.id,
       );
       if (findItem) {
         findItem.count--;
       }
     },
-    removeItem(state, action: PayloadAction<CartItem>) {
-      const findItem = state.items.find((obj) => {
-        return obj.id === action.payload.id;
-      });
+    removeItem(state, action: PayloadAction<CartItemType>) {
+      const findItem = state.items.find((obj) => obj.id === action.payload.id);
       if (findItem) {
-        state.items = state.items.filter((obj) => {
-          return obj.id !== action.payload.id;
-        });
+        state.items = state.items.filter((obj) => obj.id !== action.payload.id);
       }
-
     },
     clearItems(state) {
       state.items = [];
     },
-  }
-})
+  },
+});
 
-export const { addItem, removeItem, clearItems, minusItem } = cartSlice.actions
+export const {
+  addItem, removeItem, clearItems, minusItem, addFavorites,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -1,36 +1,36 @@
-import Home from '@/components/screens/home/Home'
-import { IHome } from '@/components/screens/home/Home.interface'
-import { IAddItem } from '@/components/ui/Adds/addsContainer/add.interface'
-import { INewItem } from '@/components/ui/NewsMain/new.interface'
-import { ISlide } from '@/components/ui/slider/slider.interface'
-import { AddService } from '@/services/add.service'
-import { NewService } from '@/services/new.service'
-import { WorkService } from '@/services/work.service'
-import { getAddUrl, getNewUrl, getWorkUrl } from 'config/url.config'
+import { getAddUrl, getNewUrl, getWorkUrl } from 'config/url.config';
+import { GetStaticProps, NextPage } from 'next';
+import Home from '@/components/screens/home/Home';
+import { IHome } from '@/components/screens/home/Home.interface';
 
+import { INewItem } from '@/components/ui/NewsMain/new.interface';
+import { ISlide } from '@/components/ui/slider/slider.interface';
+import { AddService } from '@/services/add.service';
+import { NewService } from '@/services/new.service';
+import { WorkService } from '@/services/work.service';
+import { IAdds } from '@/shared/types/product.types';
 
-import { GetStaticProps, NextPage } from 'next'
-
-
-const HomePage: NextPage<IHome> = ({ slides, Adds, news }) => {
-  return (
-    <Home Adds={Adds} slides={slides} news={news} />
-  )
-}
+const HomePage: NextPage<IHome> = ({ slides, Adds, news }) => (
+  <Home
+    Adds={Adds}
+    slides={slides}
+    news={news}
+  />
+);
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const { data: works } = await WorkService.getAll()
+    const { data: dataWorks } = await WorkService.getAll();
 
-    const slides: ISlide[] = works.map((slide) => ({
+    const slides: ISlide[] = dataWorks.map((slide) => ({
       _id: slide._id,
       link: getWorkUrl(slide.slug),
       poster: slide.poster,
       description: slide.description,
-      title: slide.title
-    }))
+      title: slide.title,
+    }));
 
-    const { data: dataNews } = await NewService.getAll()
+    const { data: dataNews } = await NewService.getAll();
 
     const news: INewItem[] = dataNews.map((item) => ({
       _id: item._id,
@@ -43,36 +43,36 @@ export const getStaticProps: GetStaticProps = async () => {
       title: item.title,
       username: item.username,
       createdAt: item.createdAt,
-      countOpened: item.countOpened
-    }))
+      countOpened: item.countOpened,
+    }));
 
-    const { data: dataAdds } = await AddService.getAll()
+    const { data: dataAdds } = await AddService.getAll();
 
-    const Adds: IAddItem[] = dataAdds.map((a) => ({
-      title: a.name,
-      link: getAddUrl(a.slug),
+    const Adds: IAdds[] = dataAdds.map((a) => ({
+      _id: a._id,
+      name: a.name,
+      slug: getAddUrl(a.slug),
       price: a.price,
-      imagePath: a.photo
-    }))
-
+      photo: a.photo,
+    }));
 
     return {
       props: {
-        slides, Adds, news
+        slides,
+        Adds,
+        news,
       } as IHome,
       revalidate: 60,
-    }
-
+    };
   } catch (error) {
     return {
       props: {
         slides: [],
         Adds: [],
         news: [],
-      }
-    }
-
+      },
+    };
   }
-}
+};
 
-export default HomePage
+export default HomePage;

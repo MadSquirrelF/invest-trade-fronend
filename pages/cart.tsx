@@ -1,13 +1,10 @@
-import Cart from '@/components/ui/Cart/Cart'
-import { NextPageAuth } from '@/shared/types/auth.types'
+import { NextPage } from 'next';
+import dynamic from 'next/dynamic';
 
+const DynamicCart = dynamic(() => import(`../app/components/screens/cart/Cart`), { ssr: false });
 
-const CartPage: NextPageAuth = () => {
-  return (
-    <Cart />
-  )
-}
+const CartPage: NextPage = () => (
+  <DynamicCart />
+);
 
-CartPage.isOnlyUser = true
-
-export default CartPage
+export default CartPage;

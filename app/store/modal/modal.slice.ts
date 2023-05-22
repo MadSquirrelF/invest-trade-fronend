@@ -1,4 +1,3 @@
-import { getStoreLocal } from "@/utils/local-storage";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TypeRootState } from "../store";
 
@@ -8,22 +7,21 @@ export interface IInitialState {
   nav: boolean;
 }
 
-
 const initialState: IInitialState = {
   modal: false,
-  type: 'login',
-  nav: false
-}
+  type: `login`,
+  nav: false,
+};
 
 export const modalSlice = createSlice({
-  name: 'modal',
+  name: `modal`,
   initialState,
   reducers: {
     setLogin(state) {
-      state.type = 'login';
+      state.type = `login`;
     },
     setRegistration(state) {
-      state.type = 'registration';
+      state.type = `registration`;
     },
     showModal(state) {
       state.modal = true;
@@ -37,11 +35,12 @@ export const modalSlice = createSlice({
 
   },
 
-})
+});
 
-export const { hideModal, showModal, setLogin, setRegistration, setNav } =
-  modalSlice.actions;
+export const {
+  hideModal, showModal, setLogin, setRegistration, setNav,
+} = modalSlice.actions;
 
 export const selectModal = (state: TypeRootState) => state.modal;
 
-export const { reducer } = modalSlice
+export const { reducer } = modalSlice;

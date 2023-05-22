@@ -1,25 +1,33 @@
-import { IProduct } from "@/shared/types/product.types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IGetProducts } from "@/shared/types/product.types";
 import { fetchProducts } from "./asyncActions";
 import { ProductSliceState, Status } from "./types";
 
 const initialState: ProductSliceState = {
-  items: [],
+  items: {
+    data: [],
+    total: 0,
+    pageOf: 1,
+    last_page: 0,
+  },
   status: Status.LOADING,
-}
+};
 
 const productSlice = createSlice({
-  name: 'product',
+  name: `product`,
   initialState,
   reducers: {
-    setItems(state, action: PayloadAction<IProduct[]>) {
+    setItems(state, action: PayloadAction<IGetProducts>) {
       state.items = action.payload;
     },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.pending, (state) => {
       state.status = Status.LOADING;
-      state.items = [];
+      state.items.data = [];
+      state.items.total = 0;
+      state.items.pageOf = 1;
+      state.items.last_page = 1;
     });
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
       state.items = action.payload;
@@ -27,10 +35,13 @@ const productSlice = createSlice({
     });
     builder.addCase(fetchProducts.rejected, (state) => {
       state.status = Status.ERROR;
-      state.items = [];
+      state.items.data = [];
+      state.items.total = 0;
+      state.items.pageOf = 1;
+      state.items.last_page = 1;
     });
-  }
-})
+  },
+});
 
 export const { setItems } = productSlice.actions;
 

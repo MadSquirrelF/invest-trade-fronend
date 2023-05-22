@@ -1,31 +1,36 @@
 .root {
-	margin-top: 30px;
-	li {
-		display: inline-block;
-		margin-top: 30px;
-		a {
-			display: inline-block;
-			color: blue;
-			text-align: center;
-			line-height: 42px;
-			font-weight: 600;
-			width: 45px;
-			height: 45px;
-			font-size: 20px;
-			margin-left: 10px;
-			border: 2px solid blue;
-			border-radius: 30px;
-			cursor: pointer;
-			&:hover {
-				background-color: blue;
-				color: white;
-			}
-		}
-	}
-	:global(.selected) {
-		a {
-			background-color: blue;
-			color: white;
-		}
-	}
+  margin-top: 30px;
+
+  li {
+    display: inline-block;
+    margin-top: 30px;
+
+    a {
+      display: inline-block;
+      margin-left: 10px;
+      border: 2px solid blue;
+      border-radius: 30px;
+      width: 45px;
+      height: 45px;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 42px;
+      text-align: center;
+      color: blue;
+      cursor: pointer;
+
+      &:hover {
+        color: white;
+        background-color: blue;
+      }
+    }
+  }
+
+  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+  :global(.selected) {
+    a {
+      color: white;
+      background-color: blue;
+    }
+  }
 }

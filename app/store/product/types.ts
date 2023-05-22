@@ -1,12 +1,12 @@
-import { IProduct } from "@/shared/types/product.types";
+import { IGetProducts } from "@/shared/types/product.types";
 
 export enum Status {
-  LOADING = 'loading',
-  SUCCESS = 'success',
-  ERROR = 'error',
+  LOADING = `loading`,
+  SUCCESS = `success`,
+  ERROR = `error`,
 }
 export interface ProductSliceState {
-  items: IProduct[];
+  items: IGetProducts;
   status: Status;
 }
 
@@ -16,4 +16,5 @@ export type SearchProductParams = {
   searchTerm: string;
   page: string;
   categoryIds: string;
-}
+  brandIds: string;
+};

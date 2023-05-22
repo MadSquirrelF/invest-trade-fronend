@@ -1,13 +1,10 @@
-import Aboutdetailed from '@/components/ui/About/Aboutdetailed'
-import { NextPage } from 'next'
+import { NextPage } from 'next';
 
-import React from 'react'
+import React from 'react';
+import Aboutdetailed from '@/components/ui/About/Aboutdetailed';
 
-const AboutPage: NextPage = () => {
-  return (
-    <Aboutdetailed />
-  )
-}
+const AboutPage: NextPage = () => (
+  <Aboutdetailed />
+);
 
-
-export default AboutPage
+export default AboutPage;

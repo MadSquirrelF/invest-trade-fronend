@@ -1,102 +1,314 @@
-.root {
-	@apply relative h-screen   w-full;
-	.container {
-		@apply relative;
-		margin-top: 200px;
-		.title {
-			@apply relative text-left;
-			h1 {
-				@apply uppercase text-black font-black;
-				font-size: 48px;
-				line-height: 1;
-				span {
-					@apply uppercase text-primary font-black;
-					font-size: 48px;
-					line-height: 1;
-				}
-			}
-		}
-		p {
-			font-size: 20px;
-			font-weight: 500;
-			margin-top: 10px;
-		}
-		.wrapper {
-			@apply relative flex flex-wrap mt-12;
-			.itemWrapper {
-				@apply relative mr-8 mb-8 border-gray-300 border;
-				transition: all 0.2s ease-in-out;
-				border-radius: 10px;
-				width: 300px;
-				height: 360px;
-				background-color: rgb(252, 252, 252);
-				box-shadow: -3px 5px 0px #0000ff;
-				&:hover {
-					transform: scale(1.01);
-					box-shadow: -4px 7px 0px #0000ff;
-				}
-				h2 {
-					font-size: 16px;
-					color: black;
-					font-weight: 900;
-					margin-top: 9px;
-					padding: 0 5px;
-				}
-				.cart {
-					@apply absolute block  z-2;
-					bottom: 10px;
-					right: 20px;
+.favorites {
+  position: relative;
+  width: 100%;
+  height: 100vh;
 
-					.productFunctions {
-						@apply flex items-center w-full justify-between;
-						.button {
-							@apply bg-gray-300 cursor-pointer;
-							padding: 8px;
-							border-radius: 50%;
-							transition: all 0.2s ease-in-out;
-							margin: 0 10px;
-							svg {
-								@apply fill-primary;
-								height: 24px;
-								width: 24px;
-							}
-							&:hover {
-								@apply bg-primary;
-								transition: all 0.2s ease-in-out;
-								svg {
-									@apply fill-white;
-								}
-							}
-							&:active {
-								transition: all 0.2s ease-in-out;
-								transform: translateY(3px);
-								background-color: rgb(4, 14, 163);
-							}
-						}
-					}
-				}
-				a {
-					.image {
-						@apply relative w-full;
-						height: 65%;
-						img {
-							border-radius: 10px;
-						}
-					}
-				}
+  .container {
+    margin-top: 190px;
 
-				.brand {
-					@apply absolute z-2 flex items-center justify-center  top-0 left-0 bg-white;
-					padding: 8px;
-					width: 100px;
-					height: 40px;
-					border-radius: 10px 0px 10px 0px;
-					box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.56);
-					&.big {
-						height: 70px;
-					}
-				}
-			}
-		}
-	}
+    .head {
+      h1 {
+        font-size: 48px;
+        line-height: 1;
+
+        span {
+          font-size: 48px;
+          line-height: 1;
+
+          @media (width <= 500px) {
+            font-size: 40px;
+          }
+
+          @apply uppercase text-primary font-black;
+        }
+
+        @media (width <= 500px) {
+          font-size: 40px;
+        }
+
+        @apply uppercase text-black font-black;
+      }
+
+      @apply relative text-left ;
+    }
+
+    p {
+      margin-top: 10px;
+      margin-bottom: 40px;
+      font-weight: 500;
+      font-size: 20px;
+
+      @media (width <= 500px) {
+        font-size: 15px;
+      }
+    }
+	
+    .items{
+      display: block;
+
+      .emptyWishlist {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .item {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+        border-top: 1px solid #c9c9c9;
+        padding-top: 30px;
+        width: 100%;
+
+        .infoContainer {
+          display: flex;
+          align-items: center;
+        }
+
+        .imgContainer {
+          display: flex;
+          align-items: center;
+          flex: none;
+          margin-right: 50px;
+
+
+          @media (width <= 700px) {
+            margin-right: 20px;
+
+            img {
+              margin: 0 auto;
+            }
+          }
+          
+         
+        }
+
+        .info {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          h3 {
+            font-weight: bold;
+            font-size: 22px;
+            line-height: 27px;
+            letter-spacing: 0.01em;
+          }
+
+          p {
+            font-size: 18px;
+            color: #8d8d8d;
+
+            b {
+              color: #5e5e5e;
+            }
+          }
+
+          @media (width <= 500px) {
+            h3 {
+              font-weight: bold;
+              font-size: 16px;
+              line-height: 27px;
+              letter-spacing: 0.01em;
+            }
+
+            p {
+              font-size: 13px;
+              color: #8d8d8d;
+	
+              b {
+                color: #5e5e5e;
+              }
+            }
+          }
+        }
+
+        .buttons {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .option {
+            margin: 0 10px;
+            border-radius: 50%;
+            padding: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+
+            svg {
+              width: 24px;
+              height: 24px;
+
+              @apply fill-primary;
+            }
+
+            &:hover {
+              background-color: blue;
+              transition: all 0.2s ease-in-out;
+
+              svg {
+                @apply fill-white;
+              }
+            }
+
+            &:active {
+              background-color: rgb(4 14 163);
+              transform: translateY(3px);
+              transition: all 0.2s ease-in-out;
+            }
+
+            @apply bg-gray-300;
+          }
+
+          @media (width <= 700px) {
+            justify-content: space-evenly;
+            margin-top: 50px;
+          }
+
+          
+        }
+
+        @media (width <= 700px) {
+          display: block;
+          text-align: left;
+        }
+      }
+    }
+
+    .bottom {
+      margin: 50px 0;
+
+      .details {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        span {
+          font-size: 22px;
+	
+          &:last-of-type {
+            b {
+              color: blue;
+            }
+          }
+        }
+
+        @media (width <= 700px) {
+          display: block;
+          text-align: center;
+        }
+      }
+
+      .actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 40px;
+        padding-bottom: 30px;
+
+        .return {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid #c9c9c9 ;
+          border-radius: 30px;
+          padding: 10px 40px;
+          font-size: 15px;
+
+          span {
+            font-weight: 500;
+            font-weight: 600;
+            color: darken($color: #c9c9c9, $amount: 20);
+          }
+
+          svg {
+            margin-right: 12px;
+
+            path {
+              fill: transparent;
+              stroke-width: 2;
+            }
+          }
+
+          &:hover {
+            border-color: darken($color: #c9c9c9, $amount: 90);
+            background-color: darken($color: #c9c9c9, $amount: 90);
+
+            span {
+              color: #c9c9c9;
+            }
+          }
+        }
+
+        @media (width <= 700px) {
+          display: block;
+          text-align: center;
+
+          button {
+            margin: 10px 0;
+          }
+        }
+      }
+    }
+
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+			
+
+      .title {
+        display: flex;
+        align-items: center;
+
+        svg {
+          margin-right: 20px;
+          font-size: 50px;
+          fill: red;
+        }
+      }
+
+      .clearPage {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        span {
+          display: inline-block;
+          margin-left: 7px;
+          font-size: 18px;
+          color: #c9c9c9;
+        }
+
+        span,
+        svg,
+        path {
+          transition: all 0.3 ease-in-out;
+        }
+
+
+        &:hover {
+          svg {
+            path {
+              stroke: darken($color: #c9c9c9, $amount: 50);
+            }
+          }
+
+          span {
+            color: darken($color: #c9c9c9, $amount: 50);
+          }
+        }
+
+        @media (width <= 700px) {
+          margin-top: 30px;
+        }
+      }
+
+
+      @media (width <= 700px) {
+        display: block;
+      }
+    }
+  }
 }

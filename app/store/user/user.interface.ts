@@ -6,7 +6,7 @@ export interface IUserState {
   sex: string;
   avatar?: string;
   isAdmin: boolean;
-  phone_number?: string;
+  phone_number: string;
 }
 export interface ITokens {
   accessToken: string;
@@ -28,10 +28,11 @@ export interface IRegistration {
   sex: string;
   avatar?: string;
   password: string;
+  phone_number: string;
 }
 
 export interface IAuthResponse extends ITokens {
   user: IUser & {
-    isAdmin: boolean
-  }
+    isAdmin: boolean;
+  };
 }

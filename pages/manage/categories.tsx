@@ -1,11 +1,8 @@
-import CategoryList from '@/components/screens/admin/categories/CategoryList'
-import { NextPageAuth } from '@/shared/types/auth.types'
+import CategoryList from '@/components/screens/admin/categories/CategoryList';
+import { NextPageAuth } from '@/shared/types/auth.types';
 
+const CategoryListPage: NextPageAuth = () => <CategoryList />;
 
-const CategoryListPage: NextPageAuth = () => {
-  return <CategoryList />
-}
+CategoryListPage.isOnlyAdmin = true;
 
-CategoryListPage.isOnlyAdmin = true
-
-export default CategoryListPage
+export default CategoryListPage;

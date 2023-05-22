@@ -1,23 +1,33 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { FilterSliceState, Sort, SortPropertyEnum, SortPropertyOrderEnum } from "./types";
+import {
+  FilterSliceState, Sort, SortPropertyEnum, SortPropertyOrderEnum,
+} from "./types";
 
 const initialState: FilterSliceState = {
-  searchValue: '',
+  searchValue: ``,
   currentPage: 1,
-  categoryIds: '63a570091103121336665284',
+  categoryIds: ``,
+  orderSortValue: `Все`,
+  brandIds: ``,
   sort: {
-    name: 'Название',
+    name: `Название`,
     sortProperty: SortPropertyEnum.TITLE,
-    sortOrder: SortPropertyOrderEnum.DESC
+    sortOrder: SortPropertyOrderEnum.DESC,
   },
-}
+};
 
 const filterSlice = createSlice({
-  name: 'filters',
+  name: `filters`,
   initialState,
   reducers: {
     setCategoryId(state, action: PayloadAction<string>) {
       state.categoryIds = action.payload;
+    },
+    setOrderSortValue(state, action: PayloadAction<string>) {
+      state.orderSortValue = action.payload;
+    },
+    setBrandId(state, action: PayloadAction<string>) {
+      state.brandIds = action.payload;
     },
     setSearchValue(state, action: PayloadAction<string>) {
       state.searchValue = action.payload;
@@ -33,21 +43,24 @@ const filterSlice = createSlice({
         state.currentPage = action.payload.currentPage;
         state.sort = action.payload.sort;
         state.categoryIds = action.payload.categoryIds;
+        state.brandIds = action.payload.brandIds;
       } else {
         state.currentPage = 1;
-        state.categoryIds = '';
+        state.categoryIds = ``;
+        state.brandIds = ``;
         state.sort = {
-          name: 'Название',
+          name: `выбрать`,
           sortProperty: SortPropertyEnum.TITLE,
           sortOrder: SortPropertyOrderEnum.DESC,
         };
       }
-    }
-  }
+    },
+  },
 
-})
+});
 
-export const { setSort, setCurrentPage, setFilters, setSearchValue, setCategoryId } =
-  filterSlice.actions;
+export const {
+  setSort, setCurrentPage, setFilters, setOrderSortValue, setSearchValue, setCategoryId, setBrandId,
+} = filterSlice.actions;
 
-export const { reducer } = filterSlice
+export const { reducer } = filterSlice;

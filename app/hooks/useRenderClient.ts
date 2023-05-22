@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
 export const useRenderClient = () => {
-  const [isRenderClient, setIsRenderClient] = useState(false)
+  const [isRenderClient, setIsRenderClient] = useState(false);
 
   useEffect(() => {
-    !isRenderClient && setIsRenderClient(true)
-  }, [isRenderClient])
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    !isRenderClient && setIsRenderClient(true);
+  }, [isRenderClient]);
 
-  return { isRenderClient }
-}
+  return { isRenderClient };
+};
