@@ -8,7 +8,7 @@ import styles from './Favorites.module.scss';
 import { useFavorites } from './useFavorites';
 import Meta from '@/utils/meta/Meta';
 import SkeletonLoader from '@/components/ui/heading/SkeletonLoader';
-import emptyWishlist from '@/assets/images/commons/emptyWishlist.jpg';
+import emptyWishlist from '@/assets/images/commons/emptywishlist.jpg';
 import MaterialIcon from '@/components/ui/MaterialIcon';
 import Button from '@/components/ui/form-elements/Button';
 import { addFavorites } from '@/store/cart/slice';
