@@ -9,6 +9,7 @@ import { useUpdateCountOpened } from './useUpdateCountOpened';
 import styles from './SingleNew.module.scss';
 import { convertMongoDbData } from '@/utils/date/ConvertMongoDbData';
 import MaterialIcon from '@/components/ui/MaterialIcon';
+import NoImage from '@/assets/images/commons/noImage.jpg';
 
 const SingleNew: FC<{ item: INew }> = ({ item }) => {
   useUpdateCountOpened(item.slug);
@@ -79,36 +80,60 @@ const SingleNew: FC<{ item: INew }> = ({ item }) => {
           </div>
           <div className={styles.container}>
             <div className={styles.images}>
-              <div className={styles.banner}>
-                <Image
-                  src={item.image_1}
-                  alt={item.image_1}
-                  draggable={false}
-                  fill
-                  priority
-                />
-              </div>
-              <div className={styles.banner}>
-                {item.image_2 ? (
+              <div className={styles.card}>
+                <div className={styles.banner}>
                   <Image
-                    src={item.image_2}
-                    alt={item.image_2}
+                    src={item.image_1}
+                    alt={item.image_1}
                     draggable={false}
                     fill
                     priority
                   />
-                ) : null}
+                </div>
               </div>
-              <div className={styles.banner}>
-                {item.image_3 ? (
-                  <Image
-                    src={item.image_3}
-                    alt={item.image_3}
-                    draggable={false}
-                    fill
-                    priority
-                  />
-                ) : null}
+
+              <div className={styles.card}>
+                <div className={styles.banner}>
+                  {item.image_2 ? (
+                    <Image
+                      src={item.image_2}
+                      alt={item.image_2}
+                      draggable={false}
+                      fill
+                      priority
+                    />
+                  ) : (
+                    <Image
+                      src={NoImage}
+                      alt="noImage"
+                      draggable={false}
+                      fill
+                      priority
+                    />
+                  )}
+                </div>
+              </div>
+
+              <div className={styles.card}>
+                <div className={styles.banner}>
+                  {item.image_3 ? (
+                    <Image
+                      src={item.image_3}
+                      alt={item.image_3}
+                      draggable={false}
+                      fill
+                      priority
+                    />
+                  ) : (
+                    <Image
+                      src={NoImage}
+                      alt="noImage"
+                      draggable={false}
+                      fill
+                      priority
+                    />
+                  )}
+                </div>
               </div>
 
             </div>

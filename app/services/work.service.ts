@@ -10,6 +10,10 @@ export const WorkService = {
       params: searchTerm ? { searchTerm } : {},
     });
   },
+
+  async getBySlug(slug: string) {
+    return axiosClassic.get<IWork>(getWorksUrl(`/by-slug/${slug}`));
+  },
   async getById(_id: string) {
     return axios.get<IWorkEditInput>(getWorksUrl(`/${_id}`));
   },

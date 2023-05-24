@@ -34,7 +34,10 @@ const WorkEdit: FC = () => {
   return (
     <Meta title="Редактирование портфолио">
       <section className={styles.wrapper}>
-        <div className={styles.container}>
+        <div
+          className={styles.container}
+          style={{ marginTop: `600px` }}
+        >
 
           <AdminNavigation />
 
@@ -74,7 +77,7 @@ const WorkEdit: FC = () => {
                       fieldState: { error },
                     }) => (
                       <UploadField
-                        placeholder="Постер"
+                        placeholder="Постер для главной страницы"
                         error={error}
                         folder="posts"
                         image={value}
@@ -86,11 +89,125 @@ const WorkEdit: FC = () => {
                       required: `Worker is required!`,
                     }}
                   />
+
+                  <Controller
+                    name="image_1"
+                    control={control}
+                    defaultValue=""
+                    render={({
+                      field: { value, onChange },
+                      fieldState: { error },
+                    }) => (
+                      <UploadField
+                        placeholder="Первое изображение страницы"
+                        error={error}
+                        folder="posts"
+                        image={value}
+                        onChange={onChange}
+                        isNoImage={false}
+                      />
+                    )}
+                  />
+
+                  <Controller
+                    name="image_2"
+                    control={control}
+                    defaultValue=""
+                    render={({
+                      field: { value, onChange },
+                      fieldState: { error },
+                    }) => (
+                      <UploadField
+                        placeholder="Второе изображение страницы"
+                        error={error}
+                        folder="posts"
+                        image={value}
+                        onChange={onChange}
+                        isNoImage={false}
+                      />
+                    )}
+                  />
+
+                  <Controller
+                    name="image_3"
+                    control={control}
+                    defaultValue=""
+                    render={({
+                      field: { value, onChange },
+                      fieldState: { error },
+                    }) => (
+                      <UploadField
+                        placeholder="Третье изображение страницы"
+                        error={error}
+                        folder="posts"
+                        image={value}
+                        onChange={onChange}
+                        isNoImage={false}
+                      />
+                    )}
+                  />
+
+                  <Controller
+                    name="image_4"
+                    control={control}
+                    defaultValue=""
+                    render={({
+                      field: { value, onChange },
+                      fieldState: { error },
+                    }) => (
+                      <UploadField
+                        placeholder="Четвертое изображение страницы"
+                        error={error}
+                        folder="posts"
+                        image={value}
+                        onChange={onChange}
+                        isNoImage={false}
+                      />
+                    )}
+                  />
+
+                  <Controller
+                    name="image_5"
+                    control={control}
+                    defaultValue=""
+                    render={({
+                      field: { value, onChange },
+                      fieldState: { error },
+                    }) => (
+                      <UploadField
+                        placeholder="Пятое изображение страницы"
+                        error={error}
+                        folder="posts"
+                        image={value}
+                        onChange={onChange}
+                        isNoImage={false}
+                      />
+                    )}
+                  />
+
+                  <Controller
+                    name="image_6"
+                    control={control}
+                    defaultValue=""
+                    render={({
+                      field: { value, onChange },
+                      fieldState: { error },
+                    }) => (
+                      <UploadField
+                        placeholder="Шестое изображение страницы"
+                        error={error}
+                        folder="posts"
+                        image={value}
+                        onChange={onChange}
+                        isNoImage={false}
+                      />
+                    )}
+                  />
                 </div>
 
                 <Controller
                   control={control}
-                  name="description"
+                  name="description_short"
                   defaultValue=""
                   render={({
                     field: {
@@ -102,7 +219,32 @@ const WorkEdit: FC = () => {
                       onChange={onChange}
                       value={value}
                       error={error}
-                      placeholder="Описание"
+                      placeholder="Короткое описание"
+                    />
+                  )}
+                  rules={{
+                    validate: {
+                      required: (v) => (v && stripHtml(v).result.length > 0 && stripHtml(v).result.length < 200)
+                        || `Описание должно быть меньше 100 символов. Добавьте короткое описание!`,
+                    },
+                  }}
+                />
+
+                <Controller
+                  control={control}
+                  name="description_full"
+                  defaultValue=""
+                  render={({
+                    field: {
+                      onChange, value,
+                    },
+                    fieldState: { error },
+                  }) => (
+                    <DynamicTextEditor
+                      onChange={onChange}
+                      value={value}
+                      error={error}
+                      placeholder="Полное описание"
                     />
                   )}
                   rules={{

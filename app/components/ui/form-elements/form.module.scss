@@ -1,6 +1,7 @@
 .button {
   padding: 10px 40px;
   font-size: 15px;
+  
 
   &:hover {
     box-shadow: 1px 1px 5px rgb(0 0 0 / 76.7%);
@@ -8,7 +9,7 @@
 
   &:active {
     transform: translateY(1px);
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
 
   &:disabled,

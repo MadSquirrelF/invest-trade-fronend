@@ -1,27 +1,33 @@
 .form {
-	@apply mt-12;
-	.fields {
-		@apply flex items-center flex-wrap justify-between;
-	}
-	button {
-		@apply mt-10;
-	}
-	.details {
-		display: block;
-		h1 {
-			font-size: 20px;
-			margin-top: 20px;
-			font-weight: 500;
-		}
-		position: relative;
-		section {
-			padding: 0;
-			display: flex;
-			align-items: flex-start;
-			justify-content: left;
-			input {
-				margin-right: 20px;
-			}
-		}
-	}
+  .fields {
+    @apply flex items-center flex-wrap justify-between;
+  }
+
+  button {
+    @apply mt-10;
+  }
+
+  .details {
+    position: relative;
+    display: block;
+
+    h1 {
+      margin-top: 20px;
+      font-weight: 500;
+      font-size: 20px;
+    }
+
+    section {
+      display: flex;
+      align-items: flex-start;
+      justify-content: left;
+      padding: 0;
+
+      input {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  @apply mt-12;
 }

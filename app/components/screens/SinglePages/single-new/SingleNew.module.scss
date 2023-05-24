@@ -18,31 +18,55 @@
 
     .container {
       .images {
-        .banner {
+        display: flex;
+        width: 100%;
+
+        .card {
           position: relative;
-          overflow: hidden;
-          margin-right: 10px;
-          border-radius: 6px;
-          width: 450px;
-          height: 300px;
-          box-shadow: 0 1px 5px black;
-          aspect-ratio: 1;
+          flex-grow: 1;
+          margin-bottom: 0;
+          padding: 16px;
+          width: 50%;
+          max-width: 50%;
 
-          img {
-            position: absolute;
-            left: 0;
-            top: 0;
+
+          .banner {
+            position: relative;
+            overflow: hidden;
+            border-radius: 6px;
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            box-shadow: 0 1px 5px black;
+            aspect-ratio: 1;
+  
+            img {
+              position: absolute;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+  
+            &:last-child {
+              margin-right: 0;
+            }
+  
+            @apply relative  rounded-xl;
           }
 
-          &:last-child {
-            margin-right: 0;
+          @media (width <= 1000px) and (width >= 500px) {
+            width: 50%;
+            max-width: 50%;
           }
 
-          @apply relative  rounded-xl;
+          @media (width < 500px)  {
+            margin-bottom: 16px;
+            width: 100%;
+            max-width: 100%;
+          }
         }
+
+        
 
         .adds {
           img {
@@ -53,8 +77,21 @@
 
           @apply relative mt-6 flex items-center justify-evenly;
         }
+        
 
-        @apply relative pb-7 flex-center-between;
+        @media (width > 500px)  {
+          align-items: center;
+          flex-wrap: wrap;
+          margin-top: 24px;
+          margin-right: -16px;
+          margin-left: -16px;
+        }
+
+        @media (width < 500px)  {
+          display: block;
+        }
+
+        @apply relative pb-7;
       }
 
       .text {
@@ -123,23 +160,7 @@
   @apply relative h-screen w-full;
 }
 
-@media (width <= 1000px) {
-  .root {
-    .wrapper {
-      .container {
-        .images {
-          .banner {
-            margin-bottom: 20px;
-            width: 300px;
-            height: 200px;
-          }
 
-          @apply flex-wrap justify-center;
-        }
-      }
-    }
-  }
-}
 
 @media (width <= 600px) {
   .root {
@@ -186,12 +207,6 @@
       .container {
         display: block;
         text-align: left;
-
-        .images {
-          .banner {
-            height: 250px;
-          }
-        }
 
         .text {
           margin-bottom: 40px;

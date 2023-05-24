@@ -26,7 +26,14 @@ export const getStaticProps: GetStaticProps = async () => {
       _id: slide._id,
       link: getWorkUrl(slide.slug),
       poster: slide.poster,
-      description: slide.description,
+      description_short: slide.description_short,
+      description_full: slide.description_full,
+      image_1: slide.image_1,
+      image_2: slide.image_2,
+      image_3: slide.image_3,
+      image_4: slide.image_4,
+      image_5: slide.image_5,
+      image_6: slide.image_6,
       title: slide.title,
     }));
 
