@@ -61,7 +61,7 @@ const ProductEdit: FC = () => {
     <section className={styles.wrapper}>
       <div
         className={styles.container}
-        style={{ marginTop: `1000px` }}
+        style={{ marginTop: `1400px` }}
       >
 
         <AdminNavigation />

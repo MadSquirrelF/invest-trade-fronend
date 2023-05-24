@@ -32,7 +32,10 @@ const CategoryEdit: FC = () => {
   return (
 
     <section className={styles.wrapper}>
-      <div className={styles.container}>
+      <div
+        className={styles.container}
+        style={{ marginTop: `400px` }}
+      >
         <AdminNavigation />
         <Heading title="Редактирование категорий" />
         <form

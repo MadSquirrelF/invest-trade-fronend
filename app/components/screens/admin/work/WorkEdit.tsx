@@ -36,7 +36,7 @@ const WorkEdit: FC = () => {
       <section className={styles.wrapper}>
         <div
           className={styles.container}
-          style={{ marginTop: `600px` }}
+          style={{ marginTop: `800px` }}
         >
 
           <AdminNavigation />
